@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView android:id="@+id/screeningtest_teaming_round1"
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/teaming_round1"/>
+
+        <RadioGroup
+            android:id="@+id/screeningtest_teaming_act1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textIsSelectable="true"
+            android:orientation="vertical"
+            android:layout_below="@id/screeningtest_teaming_round1"
+            android:paddingLeft="50dp">
+            <RadioButton android:id="@+id/radio_round1Smooth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/teaming_smooth"/>
+            <RadioButton android:id="@+id/radio_round1Jerky"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/teaming_jerky"/>
+        </RadioGroup>
+
+        <TextView android:id="@+id/screeningtest_teaming_eyesMovedAct1"
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/teaming_eyesMoved"
+            android:layout_below="@id/screeningtest_teaming_act1"/>
+
+        <RadioGroup
+            android:id="@+id/screeningtest_teaming_eyesMoved1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textIsSelectable="true"
+            android:orientation="vertical"
+            android:paddingLeft="50dp"
+            android:layout_below="@id/screeningtest_teaming_eyesMovedAct1">
+            <RadioButton android:id="@+id/radio_round1Together"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/teaming_eyesMoved_together"/>
+            <RadioButton android:id="@+id/radio_round1LorR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/teaming_eyesMoved_LorR"/>
+        </RadioGroup>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView android:id="@+id/screeningtest_teaming_round2"
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/teaming_round2"/>
+
+        <RadioGroup
+            android:id="@+id/screeningtest_teaming_act2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textIsSelectable="true"
+            android:orientation="vertical"
+            android:paddingLeft="50dp"
+            android:layout_below="@id/screeningtest_teaming_round2">
+            <RadioButton android:id="@+id/radio_round2Smooth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/teaming_smooth"/>
+            <RadioButton android:id="@+id/radio_round2Jerky"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/teaming_jerky"/>
+        </RadioGroup>
+
+        <TextView android:id="@+id/screeningtest_teaming_eyesMovedAct2"
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/teaming_eyesMoved"
+            android:layout_below="@id/screeningtest_teaming_act2"/>
+
+        <RadioGroup
+            android:id="@+id/screeningtest_teaming_eyesMoved2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textIsSelectable="true"
+            android:orientation="vertical"
+            android:paddingLeft="50dp"
+            android:layout_below="@id/screeningtest_teaming_eyesMovedAct2">
+            <RadioButton android:id="@+id/radio_round2Together"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/teaming_eyesMoved_together"/>
+            <RadioButton android:id="@+id/radio_round2LorR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/teaming_eyesMoved_LorR"/>
+        </RadioGroup>
+
+    </RelativeLayout>
+</LinearLayout>

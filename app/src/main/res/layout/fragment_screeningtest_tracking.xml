@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout android:id="@+id/outerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1">
+    <TextView android:id="@+id/screeningtest_tracking_horizontal"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="@string/tracking_horizontal"/>
+
+    <RadioGroup
+        android:id="@+id/screeningtest_tracking_hor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textIsSelectable="true"
+        android:orientation="vertical"
+        android:layout_below="@id/screeningtest_tracking_horizontal">
+        <RadioButton android:id="@+id/radio_hsmooth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/skipping_skip"
+            android:textSize="15dp"
+            android:background="@drawable/testbutton"/>
+        <RadioButton android:id="@+id/radio_hbumpy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/skipping_gallop"
+            android:textSize="15dp"
+            android:background="@drawable/testbutton"/>
+        <RadioButton android:id="@+id/radio_hunable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/skipping_mixed"
+            android:textSize="15dp"
+            android:background="@drawable/testbutton"/>
+    </RadioGroup>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1">
+    <TextView android:id="@+id/screeningtest_tracking_vertical"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_below="@id/screeningtest_tracking_hor"
+        android:text="@string/tracking_vertical"/>
+
+    <RadioGroup
+        android:id="@+id/screeningtest_tracking_ver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textIsSelectable="true"
+        android:orientation="vertical"
+        android:layout_below="@id/screeningtest_tracking_vertical">
+        <RadioButton android:id="@+id/radio_vsmooth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/skipping_skip"
+            android:textSize="15dp"
+            android:background="@drawable/testbutton"/>
+        <RadioButton android:id="@+id/radio_vbumpy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/skipping_gallop"
+            android:textSize="15dp"
+            android:background="@drawable/testbutton"/>
+        <RadioButton android:id="@+id/radio_vunable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/skipping_mixed"
+            android:textSize="15dp"
+            android:background="@drawable/testbutton"/>
+    </RadioGroup>
+   </LinearLayout>
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/outerLayout">
+    <TextView android:id="@+id/screeningtest_tracking_needbeanbag"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="@string/tracking_needbeanbag"
+        />
+
+    <RadioGroup
+        android:id="@+id/screeningtest_tracking_needbeanbagchk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textIsSelectable="true"
+        android:orientation="vertical"
+        android:layout_below="@id/screeningtest_tracking_needbeanbag">
+        <RadioButton android:id="@+id/radio_trackingYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tracking_yes"/>
+        <RadioButton android:id="@+id/radio_trackingNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tracking_no"/>
+    </RadioGroup>
+    </LinearLayout>
+</RelativeLayout>
+</LinearLayout>

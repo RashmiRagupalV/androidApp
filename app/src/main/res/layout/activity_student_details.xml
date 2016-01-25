@@ -1,0 +1,171 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="redflag.capstone.com.redflag.StudentDetailsActivity"
+    android:background="@drawable/mainbackground">
+
+    <LinearLayout
+        android:id="@+id/stdDetailSection"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F3F781"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginBottom="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Student Detail"
+            android:textStyle="bold"
+            android:textColor="#E06C24"
+            android:textSize="30dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_marginTop="50dp">
+
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="Student Name"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"/>
+
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="Sam Smith"
+                android:paddingLeft="80dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="Gender"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="110dp"/>
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="Male"
+                android:paddingLeft="80dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="School"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="110dp"/>
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="Public"
+                android:paddingLeft="80dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="Class"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="120dp"/>
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="2"
+                android:paddingLeft="80dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="Age"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="130dp"/>
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="6"
+                android:paddingLeft="80dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="Guardian Name"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="50dp"/>
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="Jim"
+                android:paddingLeft="80dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/stdTestHistorySection"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/stdDetailSection"
+        android:background="#F3F781"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Screening History"
+            android:textStyle="bold"
+            android:textColor="#E06C24"
+            android:textSize="30dp"/>
+
+
+    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:text="Start New Test"
+        android:textStyle="bold"
+        android:layout_gravity="right"
+        android:layout_marginRight="30dp"
+        android:onClick="beginScreeningTest"/>
+
+</LinearLayout>

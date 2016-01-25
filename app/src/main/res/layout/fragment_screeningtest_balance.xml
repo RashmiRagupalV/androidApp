@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView android:id="@+id/screeningtest_balance_round1"
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/teaming_round1"/>
+
+        <TextView android:id="@+id/screeningtest_balance_eyesOpenLFoot1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_below="@id/screeningtest_balance_round1"
+            android:text="@string/balance_eyesOpenLFoot"/>
+
+        <TextView android:id="@+id/screeningtest_balance_eyesOpenRFoot1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_below="@id/screeningtest_balance_eyesOpenLFoot1"
+            android:text="@string/balance_eyesOpenRFoot"/>
+
+        <TextView android:id="@+id/screeningtest_balance_eyesClosedLFoot1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_below="@id/screeningtest_balance_eyesOpenRFoot1"
+            android:text="@string/balance_eyesClosedLFoot"/>
+
+        <TextView android:id="@+id/screeningtest_balance_eyesClosedRFoot1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_below="@id/screeningtest_balance_eyesClosedLFoot1"
+            android:text="@string/balance_eyesClosedRFoot"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView android:id="@+id/screeningtest_balance_round2"
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/teaming_round2"/>
+
+        <TextView android:id="@+id/screeningtest_balance_eyesOpenLFoot2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_below="@id/screeningtest_balance_round2"
+            android:text="@string/balance_eyesOpenLFoot"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_toRightOf="@id/screeningtest_balance_eyesOpenLFoot2">
+
+            <EditText android:id="@+id/balance_timing21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/balance_seconds"/>
+
+        </LinearLayout>
+
+        <TextView android:id="@+id/screeningtest_balance_eyesOpenRFoot2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_below="@id/screeningtest_balance_eyesOpenLFoot2"
+            android:text="@string/balance_eyesOpenRFoot"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_toRightOf="@id/screeningtest_balance_eyesOpenRFoot2">
+
+            <EditText android:id="@+id/balance_timing22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/balance_seconds"/>
+
+        </LinearLayout>
+
+        <TextView android:id="@+id/screeningtest_balance_eyesClosedLFoot2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_below="@id/screeningtest_balance_eyesOpenRFoot2"
+            android:text="@string/balance_eyesClosedLFoot"/>
+
+        <TextView android:id="@+id/screeningtest_balance_eyesClosedRFoot2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_below="@id/screeningtest_balance_eyesClosedLFoot2"
+            android:text="@string/balance_eyesClosedRFoot"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

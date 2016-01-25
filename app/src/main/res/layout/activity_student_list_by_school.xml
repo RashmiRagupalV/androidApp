@@ -1,0 +1,57 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="200dp"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="#F8FA76"
+    tools:context="redflag.capstone.com.redflag.StudentListBySchoolActivity">
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:text="@string/hello_world"
+        android:background="#20f0f0"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <!--android:background="@drawable/cell_shape"-->
+        <TextView
+            android:id="@+id/row1col1textView"
+            android:text="@string/hello_world"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_centerInParent="true"
+        android:background="#20f0f0"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/row2col1textView"
+            android:text="Student Name"
+            android:padding="5dp"
+            android:layout_gravity="left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/row2col2textView"
+            android:text="Screening History"
+            android:padding="5dp"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:onClick="loadScreeningHistory"/>
+    </TableRow>
+
+</TableLayout>

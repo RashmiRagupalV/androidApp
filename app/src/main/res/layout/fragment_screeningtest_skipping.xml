@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<RadioGroup
+        android:id="@+id/screeningtest_skipping"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textIsSelectable="true"
+        android:orientation="vertical">
+        <RadioButton android:id="@+id/radio_skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/skipping_skip"
+            android:textSize="30dp"
+            android:background="@drawable/testbutton"/>
+        <RadioButton android:id="@+id/radio_gallop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/skipping_gallop"
+            android:textSize="30dp"
+            android:background="@drawable/testbutton"/>
+        <RadioButton android:id="@+id/radio_mixed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/skipping_mixed"
+            android:textSize="30dp"
+            android:background="@drawable/testbutton"/>
+</RadioGroup>
+
+</LinearLayout>

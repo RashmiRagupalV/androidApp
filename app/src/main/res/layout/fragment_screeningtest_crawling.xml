@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:orientation="horizontal" >
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_weight="1">
+<CheckBox
+    android:id="@+id/chkCross"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="50dp"
+    android:text="@string/crawling_cross"
+    android:textSize="30dp"
+    android:background="@drawable/testbutton"/>
+
+<CheckBox
+    android:id="@+id/chkElbow"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="50dp"
+    android:text="@string/crawling_elbow"
+    android:textSize="30dp"
+    android:background="@drawable/testbutton"/>
+
+<CheckBox
+    android:id="@+id/chkSide"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="50dp"
+    android:text="@string/crawling_side"
+    android:textSize="30dp"
+    android:background="@drawable/testbutton"/>
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1">
+<CheckBox
+    android:id="@+id/chkDragLeft"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="50dp"
+    android:text="@string/crawling_dragLeft"
+    android:textSize="30dp"
+    android:background="@drawable/testbutton"/>
+
+<CheckBox
+    android:id="@+id/chkDragRight"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="50dp"
+    android:text="@string/crawling_dragRight"
+    android:textSize="30dp"
+    android:background="@drawable/testbutton"/>
+    </LinearLayout>
+</LinearLayout>
