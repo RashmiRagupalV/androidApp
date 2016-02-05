@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/mainbackground">
+    android:background="@drawable/mainbackground"
+    android:weightSum="1">
 
     <ImageView
         android:id="@+id/appIcon"
@@ -129,6 +130,24 @@
 
             </LinearLayout>
         </TableRow>
-    </TableLayout>
+    </TableLayout> -->
+
+    <Button
+        android:layout_width="207dp"
+        android:layout_height="77dp"
+        android:text="Register"
+        android:id="@+id/button"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="212dp"
+        android:layout_height="wrap_content"
+        android:text="Record Activities"
+        android:id="@+id/button2"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.10" />
 
 </LinearLayout>

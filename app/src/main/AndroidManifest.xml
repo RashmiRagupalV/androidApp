@@ -17,6 +17,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".Login"
+            android:screenOrientation="landscape"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,22 +27,27 @@
         </activity>
         <activity
             android:name=".LoginSuccessActivity"
+            android:screenOrientation="landscape"
             android:label="@string/title_activity_login_success" >
         </activity>
         <activity
             android:name=".StudentListActivity"
+            android:screenOrientation="landscape"
             android:label="@string/title_activity_student_list_by_school" >
         </activity>
         <activity
             android:name=".FilterStudentBySchoolActivity"
+            android:screenOrientation="landscape"
             android:label="@string/title_activity_filter_student_by_school" >
         </activity>
 
         <activity android:name="AndroidDatabaseManager"
+            android:screenOrientation="landscape"
             android:label="AndroidDatabaseManager"/>
 
         <activity
             android:name=".ScreeningTestListActivity"
+            android:screenOrientation="landscape"
             android:label="@string/title_screeningtest_list"
             android:parentActivityName=".StudentListActivity" >
             <meta-data
@@ -50,6 +56,7 @@
         </activity>
         <activity
             android:name=".ScreeningTestDetailActivity"
+            android:screenOrientation="landscape"
             android:label="@string/title_screeningtest_detail"
             android:parentActivityName=".ScreeningTestListActivity" >
             <meta-data
@@ -58,34 +65,42 @@
         </activity>
         <activity
             android:name=".StudentSearchAndListActivity"
+            android:screenOrientation="landscape"
             android:label="@string/title_activity_student_search_and_list" >
         </activity>
         <activity
             android:name=".RegisterStudentActivity"
+            android:screenOrientation="landscape"
             android:label="@string/title_activity_register_student" >
         </activity>
         <activity
             android:name=".StudentDetailsActivity"
+            android:screenOrientation="landscape"
             android:label="@string/title_activity_student_details" >
         </activity>
         <activity
             android:name=".ReportActivity"
+            android:screenOrientation="landscape"
             android:label="@string/title_activity_report" >
         </activity>
         <activity
             android:name=".TutorialActivity"
+            android:screenOrientation="landscape"
             android:label="@string/title_activity_tutorial" >
         </activity>
         <activity
             android:name=".DummyListActivity"
+            android:screenOrientation="landscape"
             android:label="@string/title_activity_dummy_list" >
         </activity>
         <activity
             android:name=".EnregistrementVideoStackActivity"
+            android:screenOrientation="landscape"
             android:label="@string/title_activity_enregistrement_video_stack" >
         </activity>
         <activity
             android:name=".VideoCapture"
+            android:screenOrientation="landscape"
             android:label="@string/title_activity_video_capture" >
         </activity>
     </application>

@@ -13,10 +13,20 @@ import android.database.Cursor;
  * Created by rashm on 1/10/2016.
  */
 public class DatabaseOperations extends SQLiteOpenHelper {
-    public static final int database_version = 4;
-    public String CREATE_QUERY = "CREATE TABLE " + TableData.TableInfo.TABLE_NAME + "(" + "User Name" + " TEXT," + "Password" + " TEXT );";
-    public String CREATE_QUERY_REGISTER = "CREATE TABLE " + TableData.RegisterInfo.TABLE_NAME + "(" + TableData.RegisterInfo.USER_FNAME + " TEXT," + TableData.RegisterInfo.USER_LNAME + " TEXT," + TableData.RegisterInfo.USER_EMAIl + " TEXT," + TableData.RegisterInfo.USER_AGE + " TEXT," + TableData.RegisterInfo.USER_SCHOOL + " TEXT," + TableData.RegisterInfo.USER_CLASS + " TEXT, " + TableData.RegisterInfo.USER_GUARDIAN + " TEXT );";
-    public static final String DATABASE_NAME = "user_info";
+    public static final int database_version = 10;
+    public String CREATE_QUERY_LOGIN = "CREATE TABLE " + TableData.TableInfo.TABLE_NAME +
+            "(" + TableData.TableInfo.USER_NAME + " TEXT," +
+            TableData.TableInfo.USER_PASS + " TEXT," +
+            TableData.TableInfo.USER_TYPE + " TEXT );";
+    public String CREATE_QUERY_REGISTER = "CREATE TABLE " + TableData.RegisterInfo.TABLE_NAME +
+            "(" + TableData.RegisterInfo.USER_FNAME + " TEXT," +
+            TableData.RegisterInfo.USER_LNAME + " TEXT," +
+            TableData.RegisterInfo.USER_EMAIl + " TEXT," +
+            TableData.RegisterInfo.USER_AGE + " TEXT," +
+            TableData.RegisterInfo.USER_SCHOOL + " TEXT," +
+            TableData.RegisterInfo.USER_CLASS + " TEXT, " +
+            TableData.RegisterInfo.USER_GUARDIAN + " TEXT );";
+    public static final String DATABASE_NAME = "redflag.db";
 
     public DatabaseOperations(Context context) {
         super(context, DATABASE_NAME, null, database_version);
@@ -25,21 +35,28 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-      //  db.execSQL(CREATE_QUERY);
-      //  db.execSQL(CREATE_QUERY_REGISTER);
+
+        db.execSQL(CREATE_QUERY_LOGIN);
+        db.execSQL(CREATE_QUERY_REGISTER);
+        insert_user_admin(db);
         Log.d("Database operations", "Tables created !");
+        // I can insert some values in the oncreate for the admin table
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
        // db.execSQL("DROP TABLE IF EXISTS " + CREATE_QUERY);
-        db.execSQL(CREATE_QUERY_REGISTER);
+
         // Create tables again
+//        db.execSQL(CREATE_QUERY_LOGIN);
+//        db.execSQL(CREATE_QUERY_REGISTER);
+//        Log.d("Database operations", "Tables created !");
+ //       insert_user_admin(db);
         onCreate(db);
 
     }
 
-    public void putInformation(DatabaseOperations dop, String name, String pass)
+    /*public void putInformation(DatabaseOperations dop, String name, String pass)
     {
         SQLiteDatabase SQ = dop.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -48,8 +65,19 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         long k = SQ.insert(TableData.TableInfo.TABLE_NAME, null, cv);
         Log.d("Database operations","One row inserted");
 
-    }
+    }*/
 
+    public void insert_user_admin(SQLiteDatabase dop)
+    {
+       // SQLiteDatabase SQ = dop.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(TableData.TableInfo.USER_NAME, "Rashmi");
+        cv.put(TableData.TableInfo.USER_PASS, "rashmi");
+        cv.put(TableData.TableInfo.USER_TYPE, "Admin");
+        long k = dop.insert(TableData.TableInfo.TABLE_NAME, null, cv);
+        Log.d("Database operations","One row inserted");
+
+    }
     public void register_student(DatabaseOperations dop, String struser_fname, String struser_lname,String struser_email, String struser_age,String struser_school, String struser_class, String struser_guardian)
     {
         SQLiteDatabase SQ = dop.getWritableDatabase();
@@ -65,6 +93,30 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Log.d(TableData.RegisterInfo.TABLE_NAME,"done");
         Log.d("Database operations","One row inserted");
         SQ.close();
+    }
+
+    public Cursor isValidUser(DatabaseOperations dop, String struser_uname, String struser_pwd, String is_admin)
+    {
+        String query = null;
+        query = "SELECT * FROM " + TableData.TableInfo.TABLE_NAME + " WHERE "
+                    + TableData.TableInfo.USER_NAME + " = '" + struser_uname + "' AND "
+                    + TableData.TableInfo.USER_PASS + " = '" + struser_pwd + "' AND "
+                    + TableData.TableInfo.USER_TYPE + " = '" + is_admin + "'";
+
+
+      //  = database.rawQuery(query,null);
+
+        /*if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;*/
+        SQLiteDatabase SQ = dop.getWritableDatabase();
+        String[] columns = new String[3];
+
+        Cursor cr = SQ.rawQuery(query, null);
+        Log.d("Database operations", "rows retrieved");
+       // SQ.close();
+        return cr;
     }
 
 

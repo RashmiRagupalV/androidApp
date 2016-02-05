@@ -8,12 +8,15 @@ import android.provider.BaseColumns;
 public class TableData {
     public TableData(){}
 
+    // Codes:
+    // Admin - 1
+    // Tester - 2
     public static abstract class TableInfo implements BaseColumns
     {
-        public static final String USER_NAME = "admin";
-        public static final String USER_PASS = "admin";
-
-        public static final String TABLE_NAME = "reg_data";
+        public static final String USER_NAME = "UserName";
+        public static final String USER_PASS = "Password";
+        public static final String USER_TYPE = "UserType";
+        public static final String TABLE_NAME = "login_user";
     }
 
     public static abstract class RegisterInfo implements BaseColumns
