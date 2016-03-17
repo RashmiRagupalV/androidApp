@@ -23,7 +23,6 @@ public class TableData {
     {
         public static final String USER_FNAME = "FirstName";
         public static final String USER_LNAME = "LastName";
-        public static final String USER_EMAIl = "Email";
         public static final String USER_AGE = "Age";
         public static final String USER_SCHOOL = "School";
         public static final String USER_CLASS = "Class";

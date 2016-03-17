@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     android:paddingTop="4px"
     android:background="@drawable/mainbackground">
-
+<!--
     <ImageButton
         android:id="@+id/searchButton1"
         android:text="Search"
@@ -43,14 +43,14 @@
         </TableRow>
         </TableLayout>
 
-   <!-- <ListView
+    <ListView
         android:id="@android:id/list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@id/searchText1"
         android:drawSelectorOnTop="false"
         android:entries="@array/stds"
-        android:onClick="studentDetail"/>-->
+        android:onClick="studentDetail"/>
 
     <Button
         android:layout_width="20dp"
@@ -59,7 +59,7 @@
         android:text="D"
         android:onClick="studentDetail"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"/>-->
 
 </RelativeLayout>
 

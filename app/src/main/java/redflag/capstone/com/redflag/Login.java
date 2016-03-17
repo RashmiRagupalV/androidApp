@@ -23,8 +23,8 @@ public class Login extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        dBHelper = new DatabaseOperations(getBaseContext());
-//        dBHelper.getWritableDatabase();
+        dBHelper = new DatabaseOperations(getBaseContext());
+        dBHelper.getWritableDatabase();
         setContentView(R.layout.activity_login);
     }
 
@@ -50,54 +50,42 @@ public class Login extends Activity {
 
     public void validateLogin(View view) {
         EditText editText = (EditText) findViewById(R.id.login_name);
-        String user_name = editText.getText().toString();
+        String user_name = editText.getText().toString().toUpperCase();
         EditText editText1 = (EditText) findViewById(R.id.password);
         String user_pass = editText1.getText().toString();
-        CheckBox isChecked = ((CheckBox) findViewById(R.id.checkBox));
         dBHelper = new DatabaseOperations(ctxt);
-        if (isChecked.isChecked()) { // Check if Admin checkbox is selected
-            cursor = dBHelper.isValidUser(dBHelper, user_name, user_pass, "Admin");
-            if(cursor.moveToFirst()){
-                do{
-                    //assing values
-                    String column1 = cursor.getString(0);
+        if(user_name.isEmpty()){
+            Toast.makeText(getBaseContext(), "UserName not entered !", Toast.LENGTH_LONG).show();
+        }
+        if(user_pass.isEmpty()){
+            Toast.makeText(getBaseContext(), "Password not entered !", Toast.LENGTH_LONG).show();
+        }
+        if(!user_name.isEmpty() && !user_pass.isEmpty()) {
+            cursor = dBHelper.isValidUser(dBHelper);
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                    String column1 = cursor.getString(0).toUpperCase();
                     String column2 = cursor.getString(1);
-                    String column3 = cursor.getString(2);
-                    //Do something Here with values
-
-                }while(cursor.moveToNext());
+                    if (!column1.equals(user_name)) {
+                        Toast.makeText(getBaseContext(), "Username is incorrect !", Toast.LENGTH_LONG).show();
+                        editText.setText("");
+                        editText1.setText("");
+                    }
+                    else if (!column2.equals(user_pass)) {
+                        Toast.makeText(getBaseContext(), "Password is incorrect !", Toast.LENGTH_LONG).show();
+                        editText.setText("");
+                        editText1.setText("");
+                    }
+                    else if (user_name.equals(column1) && user_pass.equals(column2)) {
+                        Intent loginIntent = new Intent(this, LoginSuccessActivity.class);
+                        loginIntent.putExtra(EXTRA_MESSAGE, user_name);
+                        cursor.close();
+                        dBHelper.close();
+                        startActivity(loginIntent);
+                    }
+                } while (cursor.moveToNext());
             }
-            cursor.close();
-            dBHelper.close();
-            Intent loginIntent = new Intent(this, LoginSuccessActivity.class);
-            loginIntent.putExtra(EXTRA_MESSAGE, user_name);
-            startActivity(loginIntent);
         }
-        else
-        {
-            Toast.makeText(getBaseContext(), "User is not an authenticated Admin !", Toast.LENGTH_LONG).show();
-            editText.setText("");
-            editText1.setText("");
-            isChecked.toggle();
-
-        }
-//        else
-//        if(!(user_name.equals(TableData.TableInfo.USER_NAME)))
-//        {
-//            Toast.makeText(getBaseContext(), "User is not an authenticated Admin !", Toast.LENGTH_LONG).show();
-//            editText.setText("");
-//            editText1.setText("");
-//        }
-//        else if(!(user_pass.equals(TableData.TableInfo.USER_PASS)))
-//        {
-//                Toast.makeText(getBaseContext(),"Passwords are not matching !", Toast.LENGTH_LONG).show();
-//                editText.setText("");
-//                editText1.setText("");
-//        }
-//        else {
-//            Intent loginIntent = new Intent(this, LoginSuccessActivity.class);
-//            loginIntent.putExtra(EXTRA_MESSAGE, user_name);
-//            startActivity(loginIntent);
-//        }
     }
 }

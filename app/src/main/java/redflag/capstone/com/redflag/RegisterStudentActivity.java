@@ -241,7 +241,8 @@ import static android.app.PendingIntent.getActivity;
     }
 }*/
 
-/*public class RegisterStudentActivity extends Activity
+/*
+public class RegisterStudentActivity extends Activity
 {
     EditText USER_NAME,USER_PASS,CON_PASS;
     String user_name,user_pass,con_pass;
@@ -289,7 +290,7 @@ import static android.app.PendingIntent.getActivity;
 }*/
 
 
-public class RegisterStudentActivity extends Activity {
+public class RegisterStudentActivity extends Activity implements OnClickListener, OnItemSelectedListener{
     EditText user_fname, user_lname, user_email, user_age, user_school, user_class, user_guardian;
     String struser_fname, struser_lname, struser_email, struser_age, struser_school, struser_class, struser_guardian;
     Button REG;
@@ -312,8 +313,8 @@ public class RegisterStudentActivity extends Activity {
             public void onClick(View v) {
 
                 //FOr debugging
-                Intent dbmanager = new Intent(RegisterStudentActivity.this, AndroidDatabaseManager.class);
-                startActivity(dbmanager);
+//                Intent dbmanager = new Intent(RegisterStudentActivity.this, AndroidDatabaseManager.class);
+//                startActivity(dbmanager);
                 ///
 
                 struser_fname = user_fname.getText().toString();
@@ -331,6 +332,21 @@ public class RegisterStudentActivity extends Activity {
 
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
 
