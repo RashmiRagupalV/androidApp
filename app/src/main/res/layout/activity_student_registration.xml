@@ -21,8 +21,8 @@
     <EditText
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:hint="Enter First Name"
-        android:id="@+id/user_fname"
+        android:hint="Enter Child Name"
+        android:id="@+id/user_cname"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
         />
@@ -35,28 +35,30 @@
     <EditText
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:hint="Enter Last Name"
-        android:id="@+id/user_lname"
+        android:hint="Enter Teacher's Name"
+        android:id="@+id/user_tname"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         />
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Enter Email"
-        android:id="@+id/user_email"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-       />
 
     <EditText
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:hint="Enter Age"
+        android:hint="Enter Child's Age"
         android:id="@+id/user_age"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         />
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter Date of Screening"
+        android:id="@+id/user_dos"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+       />
+
+
     <EditText
         android:layout_width="250dp"
         android:layout_height="wrap_content"
@@ -69,16 +71,8 @@
     <EditText
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:hint="Enter Class"
-        android:id="@+id/user_class"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        />
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Enter Guardian"
-        android:id="@+id/user_guardian"
+        android:hint="Enter Grade"
+        android:id="@+id/user_grade"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         />

@@ -21,15 +21,13 @@ public class TableData {
 
     public static abstract class RegisterInfo implements BaseColumns
     {
-        public static final String USER_FNAME = "FirstName";
-        public static final String USER_LNAME = "LastName";
+        public static final String USER_CNAME = "ChildName";
+        public static final String USER_TNAME = "TeacherName";
         public static final String USER_AGE = "Age";
         public static final String USER_SCHOOL = "School";
-        public static final String USER_CLASS = "Class";
-        public static final String USER_GUARDIAN = "GuardianName";
+        public static final String USER_GRADE = "Grade";
+        public static final String USER_DOS = "Date";
         public static final String TABLE_NAME = "reg_info";
-       // public static final String DATABASE_NAME = "user_info";
-
 
     }
 }

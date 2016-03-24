@@ -116,12 +116,13 @@ public class LoginSuccessActivity extends Activity {
         startActivity(recordIntent);
     }
 
+    public void recordActivity(View view){
+
+
+    }
+
     public void studentListBySchool(View view) {
         Intent filterStudentBySchoolIntent = new Intent(this, FilterStudentBySchoolActivity.class);
-       // TextView textView = (TextView) findViewById(R.id.studentListBySchool);
-        //String user_name = editText.getText().toString();
-        //filterStudentBySchoolIntent.putExtra(STUDENT_FILTER, user_name);
-       // textView.setClickable(true);
         startActivity(filterStudentBySchoolIntent);
     }
 }

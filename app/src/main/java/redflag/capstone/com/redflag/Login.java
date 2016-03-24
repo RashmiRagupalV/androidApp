@@ -55,11 +55,17 @@ public class Login extends Activity {
         String user_pass = editText1.getText().toString();
         dBHelper = new DatabaseOperations(ctxt);
         if(user_name.isEmpty()){
-            Toast.makeText(getBaseContext(), "UserName not entered !", Toast.LENGTH_LONG).show();
+            if(user_pass.isEmpty()) {
+               Toast.makeText(getBaseContext(), "User details not entered !", Toast.LENGTH_LONG).show();
+            }
+            else{
+                Toast.makeText(getBaseContext(), "UserName not entered !", Toast.LENGTH_LONG).show();
+            }
         }
-        if(user_pass.isEmpty()){
-            Toast.makeText(getBaseContext(), "Password not entered !", Toast.LENGTH_LONG).show();
+        else if(user_pass.isEmpty()){
+                Toast.makeText(getBaseContext(), "Password not entered !", Toast.LENGTH_LONG).show();
         }
+
         if(!user_name.isEmpty() && !user_pass.isEmpty()) {
             cursor = dBHelper.isValidUser(dBHelper);
             // looping through all rows and adding to list
