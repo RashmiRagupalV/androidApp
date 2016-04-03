@@ -102,7 +102,7 @@ public class LoginSuccessActivity extends Activity {
     }
 
     public void generateReport(View view) {
-        Intent generateReportIntent = new Intent(this, ReportActivity.class);
+        Intent generateReportIntent = new Intent(this, StudentDetailsActivity.class);
         startActivity(generateReportIntent);
     }
 

@@ -51,7 +51,7 @@ public class Login extends Activity {
     public void validateLogin(View view) {
         EditText editText = (EditText) findViewById(R.id.login_name);
         String user_name = editText.getText().toString().toUpperCase();
-        EditText editText1 = (EditText) findViewById(R.id.password);
+        EditText editText1 = (EditText) findViewById(R.id.login_password);
         String user_pass = editText1.getText().toString();
         dBHelper = new DatabaseOperations(ctxt);
         if(user_name.isEmpty()){

@@ -6,6 +6,21 @@
     tools:context="redflag.capstone.com.redflag.StudentDetailsActivity"
     android:background="@drawable/mainbackground">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Student Detail"
+        android:textStyle="bold"
+        android:textColor="#E06C24"
+        android:textSize="30dp"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinStudent"
+
+        />
+
     <LinearLayout
         android:id="@+id/stdDetailSection"
         android:layout_width="match_parent"
@@ -15,54 +30,31 @@
         android:orientation="vertical"
         android:layout_marginBottom="50dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Student Detail"
-            android:textStyle="bold"
-            android:textColor="#E06C24"
-            android:textSize="30dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_weight="1"
-            android:layout_marginTop="50dp">
+            android:layout_marginTop="10dp">
 
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#372c24"
-                android:text="Student Name"
+                android:text="Child Name"
                 android:layout_marginLeft="60dp"
                 android:layout_marginRight="60dp"/>
 
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#372c24"
-                android:text="Sam Smith"
+                android:text=""
+                android:id="@+id/ChildName"
                 android:paddingLeft="80dp"/>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text="Gender"
-                android:layout_marginLeft="60dp"
-                android:layout_marginRight="110dp"/>
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text="Male"
-                android:paddingLeft="80dp"/>
 
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -78,7 +70,8 @@
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#372c24"
-                android:text="Public"
+                android:text=""
+                android:id="@+id/School"
                 android:paddingLeft="80dp"/>
 
         </LinearLayout>
@@ -91,13 +84,14 @@
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#372c24"
-                android:text="Class"
+                android:text="Grade"
                 android:layout_marginLeft="60dp"
                 android:layout_marginRight="120dp"/>
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#372c24"
-                android:text="2"
+                android:text=""
+                android:id="@+id/Grade"
                 android:paddingLeft="80dp"/>
 
         </LinearLayout>
@@ -116,7 +110,8 @@
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#372c24"
-                android:text="6"
+                android:text=""
+                android:id="@+id/Age"
                 android:paddingLeft="80dp"/>
 
         </LinearLayout>
@@ -129,13 +124,14 @@
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#372c24"
-                android:text="Guardian Name"
+                android:text="Teacher's Name"
                 android:layout_marginLeft="60dp"
                 android:layout_marginRight="50dp"/>
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#372c24"
-                android:text="Jim"
+                android:text=""
+                android:id="@+id/TeacherName"
                 android:paddingLeft="80dp"/>
 
         </LinearLayout>
