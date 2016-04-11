@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/appIcon"
+        android:adjustViewBounds="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_gravity="top"
+        android:scaleType="fitXY"
+        android:src="@drawable/main"/>
+
+    <TextView android:text="Activity 1" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/act_1"
+        android:textSize="25dp"
+        android:layout_marginTop="150dp"
+        android:layout_below="@id/appIcon"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView android:text="Tracking the eyeball" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/title_1"
+        android:layout_below="@id/act_1"
+        android:textSize="25dp"
+        android:layout_marginTop="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView android:text="Horizontal" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/horizontal"
+        android:layout_below="@id/title_1"
+        android:textSize="20dp"
+        android:layout_marginTop="240dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="3"
+        android:id="@+id/rgrp1"
+        android:layout_below="@id/horizontal"
+        android:orientation="horizontal">
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/radiobutton1"
+            android:text="smooth and bumpy"/>
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_weight=".75"
+            android:layout_height="wrap_content"
+
+            android:text="bumpy"
+            android:id="@+id/radiobutton2"
+            android:checked="false" />
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/radiobutton3"
+            android:text="unable to do"/>
+    </RadioGroup>
+
+
+    <TextView android:text="Needed beanbeag on head" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/beanbag"
+        android:layout_below="@id/rgrp1"
+        android:textSize="20dp"
+        android:layout_marginTop="330dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="1"
+        android:id="@+id/rgrp2"
+        android:layout_below="@id/beanbag"
+        android:orientation="horizontal">
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/radiobutton4"
+            android:text="yes"
+            android:checked="false" />
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+
+            android:text="no"
+            android:id="@+id/radiobutton5"/>
+        </RadioGroup>
+
+
+
+    <TextView android:text="Vertical" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vertical"
+        android:layout_below="@id/rgrp2"
+        android:textSize="20dp"
+        android:layout_marginTop="405dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="3"
+        android:id="@+id/rgrp3"
+        android:layout_below="@id/vertical"
+        android:orientation="horizontal">
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/radiobutton6"
+            android:text="smooth and even"/>
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_weight="0.75"
+            android:layout_height="wrap_content"
+            android:text="bumpy"
+            android:id="@+id/radiobutton7"
+            android:checked="false" />
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="unable to do"
+            android:id="@+id/radiobutton8"
+            android:checked="false" />
+
+    </RadioGroup>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Next Activity"
+        android:id="@+id/button4"
+        android:onClick="nextactivity_balancing"
+        android:layout_below="@+id/rgrp3"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/act_1"
+        android:layout_toEndOf="@+id/act_1" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:onClick="savetrackingeyeball"
+        android:id="@+id/button14"
+        android:layout_below="@+id/rgrp3"
+        android:layout_alignRight="@+id/horizontal"
+        android:layout_alignEnd="@+id/horizontal" />
+
+
+</RelativeLayout>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/appIcon"
+        android:adjustViewBounds="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_gravity="top"
+        android:scaleType="fitXY"
+        android:src="@drawable/main"/>
+
+    <TextView android:text="Activity 2" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/act_2"
+        android:textSize="25dp"
+        android:layout_marginTop="150dp"
+        android:layout_below="@id/appIcon"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView android:text="Balancing" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/title_2"
+        android:textSize="25dp"
+        android:layout_below="@+id/act_2"
+        android:layout_toLeftOf="@+id/button3"
+        android:layout_toStartOf="@+id/button3" />
+
+    <TextView android:text="Eye open right foot" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/opr"
+        android:textSize="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView android:text="Eye open left foot" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/opl"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/button3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <TextView android:text="Eye close right foot" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/clr"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/button7"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <TextView android:text="Eye close left foot" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cll"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/button9"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:id="@+id/button1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Prev"
+        android:id="@+id/button2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Start"
+        android:onClick="start_first_clock"
+        android:id="@+id/button3"
+        android:layout_alignTop="@+id/opr"
+        android:layout_toRightOf="@+id/act_2"
+        android:layout_toEndOf="@+id/act_2" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Stop"
+        android:id="@+id/button6"
+        android:layout_alignTop="@+id/button3"
+        android:layout_toRightOf="@+id/button3"
+        android:layout_toEndOf="@+id/button3" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Start"
+        android:id="@+id/button7"
+        android:layout_alignTop="@+id/opl"
+        android:layout_toRightOf="@+id/act_2"
+        android:layout_toEndOf="@+id/act_2" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Stop"
+        android:id="@+id/button8"
+        android:layout_alignTop="@+id/button7"
+        android:layout_toRightOf="@+id/button3"
+        android:layout_toEndOf="@+id/button3" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Start"
+        android:id="@+id/button9"
+        android:layout_alignTop="@+id/clr"
+        android:layout_toRightOf="@+id/title_2"
+        android:layout_toEndOf="@+id/title_2" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Stop"
+        android:id="@+id/button10"
+        android:layout_alignTop="@+id/button9"
+        android:layout_toRightOf="@+id/button7"
+        android:layout_toEndOf="@+id/button7" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Start"
+        android:id="@+id/button11"
+        android:layout_alignTop="@+id/cll"
+        android:layout_alignLeft="@+id/button9"
+        android:layout_alignStart="@+id/button9" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Stop"
+        android:id="@+id/button12"
+        android:layout_alignTop="@+id/button11"
+        android:layout_toRightOf="@+id/button11"
+        android:layout_toEndOf="@+id/button11" />
+
+    <Chronometer
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chronometer"
+
+        android:layout_alignTop="@+id/button3"
+        android:layout_toLeftOf="@+id/button3"
+        android:layout_toStartOf="@+id/button3" />
+
+    <Chronometer
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chronometer2"
+
+        android:layout_alignTop="@+id/opl"
+        android:layout_alignLeft="@+id/chronometer"
+        android:layout_alignStart="@+id/chronometer" />
+
+    <Chronometer
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chronometer3"
+        android:layout_alignTop="@+id/button9"
+        android:layout_toLeftOf="@+id/button9"
+        android:layout_toStartOf="@+id/button9" />
+
+    <Chronometer
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chronometer4"
+        android:layout_toRightOf="@+id/clr"
+        android:layout_alignRight="@+id/chronometer3"
+        android:layout_alignEnd="@+id/chronometer3"
+        android:layout_alignTop="@+id/cll" />
+
+
+</RelativeLayout>
