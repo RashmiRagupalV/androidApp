@@ -2,6 +2,7 @@ package redflag.capstone.com.redflag;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,6 +27,7 @@ public class Login extends Activity {
         dBHelper = new DatabaseOperations(getBaseContext());
         dBHelper.getWritableDatabase();
         setContentView(R.layout.activity_login);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
 
@@ -71,8 +73,8 @@ public class Login extends Activity {
             // looping through all rows and adding to list
             if (cursor.moveToFirst()) {
                 do {
-                    String column1 = cursor.getString(0).toUpperCase();
-                    String column2 = cursor.getString(1);
+                    String column1 = cursor.getString(1).toUpperCase();
+                    String column2 = cursor.getString(2);
                     if (!column1.equals(user_name)) {
                         Toast.makeText(getBaseContext(), "Username is incorrect !", Toast.LENGTH_LONG).show();
                         editText.setText("");

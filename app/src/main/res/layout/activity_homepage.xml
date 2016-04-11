@@ -9,10 +9,14 @@
 
     <ImageView
         android:id="@+id/appIcon"
-        android:layout_width="398dp"
+        android:adjustViewBounds="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
         android:layout_height="150dp"
+        android:layout_width="match_parent"
         android:layout_gravity="top"
         android:scaleType="fitXY"
+
         android:src="@drawable/main"/>
 
 
@@ -20,11 +24,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register"
-        android:layout_centerInParent="true"
         android:onClick="registerStudent"
         android:id="@+id/button"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginTop="50dp" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -51,109 +54,4 @@
 </RelativeLayout>
 
 
-
-<!--
-    <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:id="@+id/home"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-android:background="#C0C0C0"
-android:weightSum="1">
-
-
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="bottom"
-            android:orientation="vertical" >
-
-            <TableRow
-                android:id="@+id/tableRow1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal" >
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:background="#0099CC"
-                    android:orientation="vertical"
-                    android:layout_span="2">
-
-
-                </LinearLayout>
-
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:paddingTop="20dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:background="#9933FF"
-                    android:orientation="vertical" >
-
-                    <ImageButton
-                        android:id="@+id/reportButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:src="@drawable/reports_button"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:paddingLeft="20dp">
-
-                    <ImageButton
-                        android:id="@+id/tutorialButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:src="@drawable/tutorials_button"/>
-
-                </LinearLayout>
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow3"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:paddingTop="20dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:background="#00CC00"
-                    android:orientation="vertical" >
-
-                    <ImageButton
-                        android:id="@+id/cameraButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:src="@drawable/recordtestsession_button"
-                        android:onClick="recordSession"/>
-
-                </LinearLayout>
-            </TableRow>
-        </TableLayout>
-
-    </LinearLayout>-->
 

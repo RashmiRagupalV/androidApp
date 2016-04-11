@@ -50,10 +50,10 @@ public class StudentListActivity extends Activity {
     }
 
     public void loadScreeningHistory(View view) {
-        Intent studentListBySchoolIntent = new Intent(this, ScreeningTestListActivity.class);
-        //SearchView searchText = (SearchView) findViewById(R.id.studentSearch);
-        //String user_name = searchText.getQuery().toString();
-        //studentListBySchoolIntent.putExtra(STUDENT_NAME, user_name);
-        startActivity(studentListBySchoolIntent);
+//        Intent studentListBySchoolIntent = new Intent(this, ScreeningTestListActivity.class);
+//        //SearchView searchText = (SearchView) findViewById(R.id.studentSearch);
+//        //String user_name = searchText.getQuery().toString();
+//        //studentListBySchoolIntent.putExtra(STUDENT_NAME, user_name);
+//        startActivity(studentListBySchoolIntent);
     }
 }

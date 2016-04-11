@@ -1,154 +1,299 @@
 package redflag.capstone.com.redflag;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import android.app.Activity;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.widget.ListView;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.Toast;
 
 
-public class StudentDetailsActivity extends Activity implements AdapterView.OnItemSelectedListener   {
 
+public class StudentDetailsActivity extends Activity {
+
+    private ArrayList<HashMap<String, String>> list;
     private DatabaseOperations dBHelper;
     Context ctxt = this;
     Cursor cursor;
-    Spinner spinStudentDetails;
-    TextView cName, cAge, cGrade,cSchool,cTeacherName;
+    String selectedstudid;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_details);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        TextView columnHeader1 = (TextView) findViewById(R.id.column_header1);
+        TextView columnHeader2 = (TextView) findViewById(R.id.column_header2);
+        TextView columnHeader3 = (TextView) findViewById(R.id.column_header3);
 
-        spinStudentDetails = (Spinner) findViewById(R.id.spinStudent);
+        columnHeader1.setText("Student Name");
+        columnHeader2.setText("School Names");
+        columnHeader3.setText("Grades");
+        ListView listView=(ListView)findViewById(R.id.listView1);
 
-        cName = (TextView) findViewById(R.id.ChildName);
-        cSchool = (TextView) findViewById(R.id.School);
-        cGrade = (TextView) findViewById(R.id.Grade);
-        cAge = (TextView) findViewById(R.id.Age);
-        cTeacherName = (TextView) findViewById(R.id.TeacherName);
+        list=new ArrayList<HashMap<String,String>>();
+        HashMap<String,String> temp=new HashMap<String, String>();
 
-//        spinStudentDetails.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
-//        loadStudent();
+        try {
+            dBHelper = new DatabaseOperations(ctxt);
+            cursor = dBHelper.getData(dBHelper);
 
-        List<Student> students = getAll();
-        spinStudentDetails.setAdapter(new StudentSpinnerAdapter(StudentDetailsActivity.this,R.layout.multiline_spinner_selection, students));
+            if (cursor.moveToFirst()) {
+                do {
+                    temp=new HashMap<String, String>();
+                    temp.put(Student.ZEROETH_COLUMN, cursor.getString(0));
 
-    }
+                    temp.put(Student.FIRST_COLUMN, cursor.getString(1));
+                    temp.put(Student.SECOND_COLUMN, cursor.getString(6));
+                    temp.put(Student.THIRD_COLUMN, cursor.getString(5));
+                    list.add(temp);
 
-//    public void beginScreeningTest(View view)
-//    {
-//        Intent screeningTest = new Intent(this, ScreeningTestListActivity.class);
-//
-//        startActivity(screeningTest);
-//    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.student_details, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    //Retrieve all records and populate into List<String>
-    //Retrieve all records and populate into List<Student>
-    //This method allow you to retrieve more fields/information into List.
-    public List<Student> getAll() {
-        dBHelper = new DatabaseOperations(ctxt);
-        SQLiteDatabase db = dBHelper.getReadableDatabase();
-        String selectQuery = "SELECT  " +
-                Student.USER_CNAME + "," + Student.USER_AGE + "," +
-                Student.USER_GRADE + "," + Student.USER_SCHOOL + "," +
-                Student.USER_TNAME +
-                " FROM " + Student.TABLE_NAME;
-
-        List<Student> studentList = new ArrayList<Student>() ;
-        cursor = db.rawQuery(selectQuery, null);
-
-        // looping through all rows and adding to list
-        if (cursor.moveToFirst()) {
-            do {
-                Student student  = new Student();
-                student.setUser_cname(cursor.getString(cursor.getColumnIndex(Student.USER_CNAME)));
-                student.setUser_age(cursor.getString(cursor.getColumnIndex(Student.USER_AGE)));
-                student.setUser_grade(cursor.getString(cursor.getColumnIndex(Student.USER_GRADE)));
-                student.setUser_school(cursor.getString(cursor.getColumnIndex(Student.USER_SCHOOL)));
-                student.setUser_tname(cursor.getString(cursor.getColumnIndex(Student.USER_TNAME)));
-                studentList.add(student);
-
-            } while (cursor.moveToNext());
+                } while (cursor.moveToNext());
+            }
+            // cursor.close();
+            //dBHelper.close();
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Error encountered.",
+                    Toast.LENGTH_LONG);
         }
 
-        cursor.close();
-        //db.close();
-        return studentList;
+        ListViewAdapter adapter=new ListViewAdapter(this, list);
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, final View view, int position, long id)
+            {
+                int pos=position+1;
+                Toast.makeText(StudentDetailsActivity.this, Integer.toString(pos)+" Clicked", Toast.LENGTH_SHORT).show();
+                //String selectedid = parent.getAdapter().getItem(position).toString().get("");
+                TextView studid = (TextView) view.findViewById(R.id.studid);
+                selectedstudid = studid.getText().toString();
+
+            }
+
+        });
 
     }
 
+    public void Recording(View view){
 
-    @Override
-    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-        if (parentView== findViewById(R.id.spinStudent)){
-            Student selected = (Student) parentView.getItemAtPosition(position);
-            cName.setText(selected.getUser_cname());
-            cSchool.setText(selected.getUser_school());
-            cGrade.setText(selected.getUser_grade());
-            cAge.setText(selected.getUser_age());
-            cTeacherName.setText(selected.getUser_tname());
+        if(selectedstudid != null) {
+            Intent intent = new Intent(this, RecordTrackingEyeball.class);
+            intent.putExtra("SelectedstudId", selectedstudid);
+            startActivity(intent);
+        }
+        else{
+            Toast.makeText(getBaseContext(), "Please select a student!", Toast.LENGTH_LONG).show();
+        }
 
+    }
+
+    private void loadData() {
+        // database handler
+        ArrayList<String> my_array = new ArrayList<String>();
+        try {
+            dBHelper = new DatabaseOperations(ctxt);
+            cursor = dBHelper.getData(dBHelper);
+
+            if (cursor.moveToFirst()) {
+                do {
+
+                    String NAME = cursor.getString(0);
+                    my_array.add(NAME);
+
+                } while (cursor.moveToNext());
+            }
+            // cursor.close();
+            //dBHelper.close();
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Error encountered.",
+                    Toast.LENGTH_LONG);
         }
     }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parentView) {
-        cName.setText( "");
-        cSchool.setText("");
-        cGrade.setText("");
-        cAge.setText("");
-        cTeacherName.setText("");
-    }
-
-
-    private void loadStudent(){
-        StudentSpinnerAdapter  studentAdapter;
-        List<Student> students = getAll();
-        studentAdapter = new StudentSpinnerAdapter(StudentDetailsActivity.this,
-                android.R.layout.simple_spinner_item , students );
-
-        spinStudentDetails.setAdapter(studentAdapter);
-
-        studentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //studentAdapter.setDropDownViewResource(R.layout.multiline_spinner_selection);
-    }
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+//package redflag.capstone.com.redflag;
+//
+//import  java.util.ArrayList;
+//import android.app.Activity;
+//import android.content.Context;
+//import android.content.Intent;
+//import android.database.Cursor;
+//import android.database.sqlite.SQLiteDatabase;
+//import android.os.Bundle;
+//import android.view.View;
+//import android.widget.AdapterView;
+//import android.widget.AdapterView.OnItemSelectedListener;
+//import android.widget.ArrayAdapter;
+//import android.widget.EditText;
+//import android.widget.Spinner;
+//import android.widget.TextView;
+//import android.widget.Toast;
+//
+//
+//public class StudentDetailsActivity extends Activity implements
+//        OnItemSelectedListener
+//{
+//    private DatabaseOperations dBHelper;
+//    Context ctxt = this;
+//    Cursor cursor;
+//    Spinner My_spinner1, My_spinner2;
+//
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_student_details);
+//
+//
+//        My_spinner1 = (Spinner) findViewById(R.id.spinnerstudname);
+//        My_spinner1.setOnItemSelectedListener(this);
+//        loadSpinner1Data();
+//
+//    }
+//
+//    /**
+//     * Function to load the spinner data from SQLite database
+//     * */
+//    private void loadSpinner1Data() {
+//        // database handler
+//        ArrayList<String> my_array = new ArrayList<String>();
+//        try {
+//            dBHelper = new DatabaseOperations(ctxt);
+//            cursor = dBHelper.getData(dBHelper);
+//
+//            if (cursor.moveToFirst()) {
+//                do {
+//
+//                    String NAME = cursor.getString(0);
+//                    my_array.add(NAME);
+//
+//                } while (cursor.moveToNext());
+//            }
+//            // cursor.close();
+//            //dBHelper.close();
+//        } catch (Exception e) {
+//            Toast.makeText(getApplicationContext(), "Error encountered.",
+//                    Toast.LENGTH_LONG);
+//        }
+//
+//        // Creating adapter for spinner
+//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+//                android.R.layout.simple_spinner_item, my_array);
+//
+//        // Drop down layout style - list view with radio button
+//        dataAdapter
+//                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//
+//        // attaching data adapter to spinner
+//        My_spinner1.setAdapter(dataAdapter);
+//    }
+//
+//    @Override
+//    public void onItemSelected(AdapterView<?> parent, View view, int position,
+//                               long id) {
+//        // On selecting a spinner item
+//        String studname = parent.getItemAtPosition(position).toString();
+//        int studnumber = getStudentNumber(studname);
+//        TextView studnum = (TextView) findViewById(R.id.hidden);
+//        studnum.setText(this.getString(studnumber));
+////        ArrayList<String> my_array = new ArrayList<String>();
+////         my_array = loadSpinner2Data(studname);
+////        // Creating adapter for spinner
+////        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+////                android.R.layout.simple_spinner_item, my_array);
+////
+////        // Drop down layout style - list view with radio button
+////        dataAdapter
+////                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+////
+////        // attaching data adapter to spinner
+////        My_spinner2.setAdapter(dataAdapter);
+////
+////
+////
+////        // Showing selected spinner item
+////        Toast.makeText(parent.getContext(), "You selected: " + studname,
+////                Toast.LENGTH_LONG).show();
+//
+//    }
+//
+//
+//    private int getStudentNumber(String studname){
+//
+//        int studnumber = 0;
+//        try {
+//            dBHelper = new DatabaseOperations(ctxt);
+//            cursor = dBHelper.getStudentNumber(dBHelper, studname);
+//
+//            if (cursor.moveToFirst()) {
+//
+//                studnumber = cursor.getInt(0);
+//
+//            }
+//            // cursor.close();
+//            //dBHelper.close();
+//        } catch (Exception e) {
+//            Toast.makeText(getApplicationContext(), "Error encountered.",
+//                    Toast.LENGTH_LONG);
+//        }
+//        return studnumber;
+//    }
+//    /**
+//     * Function to load the spinner data from SQLite database
+//     * */
+//    private ArrayList<String> loadSpinner2Data(String studname) {
+//        // database handler
+//        ArrayList<String> my_array = new ArrayList<String>();
+//        try {
+//            dBHelper = new DatabaseOperations(ctxt);
+//            cursor = dBHelper.getSchoolNames(dBHelper, studname);
+//
+//            if (cursor.moveToFirst()) {
+//                do {
+//
+//                    String schoolname = cursor.getString(0);
+//                    my_array.add(schoolname);
+//
+//                } while (cursor.moveToNext());
+//            }
+//            // cursor.close();
+//            //dBHelper.close();
+//        } catch (Exception e) {
+//            Toast.makeText(getApplicationContext(), "Error encountered.",
+//                    Toast.LENGTH_LONG);
+//        }
+//     return my_array;
+//
+//    }
+//
+//    @Override
+//    public void onNothingSelected(AdapterView<?> arg0) {
+//        // TODO Auto-generated method stub
+//
+//    }
+//
+//    public void startRecording(View view){
+//        Intent trackIntent = new Intent(this, LoginSuccessActivity.class);
+//        startActivity(trackIntent);
+//    }
+//
+//}
+//
+//

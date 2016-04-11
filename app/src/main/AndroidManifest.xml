@@ -38,44 +38,12 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_student_list_by_school" >
         </activity>
-        <activity
-            android:name=".FilterStudentBySchoolActivity"
-            android:screenOrientation="landscape"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:label="@string/title_activity_filter_student_by_school" >
-        </activity>
 
         <activity android:name="AndroidDatabaseManager"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="AndroidDatabaseManager"/>
 
-        <activity
-            android:name=".ScreeningTestListActivity"
-            android:screenOrientation="landscape"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:label="@string/title_screeningtest_list"
-            android:parentActivityName=".StudentListActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="redflag.capstone.com.redflag.StudentListActivity" />
-        </activity>
-        <activity
-            android:name=".ScreeningTestDetailActivity"
-            android:screenOrientation="landscape"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:label="@string/title_screeningtest_detail"
-            android:parentActivityName=".ScreeningTestListActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="redflag.capstone.com.redflag.ScreeningTestListActivity" />
-        </activity>
-        <activity
-            android:name=".StudentSearchAndListActivity"
-            android:screenOrientation="landscape"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:label="@string/title_activity_student_search_and_list" >
-        </activity>
         <activity
             android:name=".RegisterStudentActivity"
             android:screenOrientation="landscape"
@@ -95,28 +63,17 @@
             android:label="@string/title_activity_report" >
         </activity>
         <activity
-            android:name=".TutorialActivity"
+            android:name=".RecordTrackingEyeball"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:label="@string/title_activity_tutorial" >
+            android:label="@string/title_report_tracking" >
         </activity>
+
         <activity
-            android:name=".DummyListActivity"
+            android:name=".RecordBalancing"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:label="@string/title_activity_dummy_list" >
-        </activity>
-        <activity
-            android:name=".EnregistrementVideoStackActivity"
-            android:screenOrientation="landscape"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:label="@string/title_activity_enregistrement_video_stack" >
-        </activity>
-        <activity
-            android:name=".VideoCapture"
-            android:screenOrientation="landscape"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:label="@string/title_activity_video_capture" >
+            android:label="@string/title_report_balancing" >
         </activity>
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
              App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->

@@ -16,6 +16,8 @@ public class TableData {
         public static final String USER_NAME = "UserName";
         public static final String USER_PASS = "Password";
         public static final String USER_TYPE = "UserType";
+        public static final String USER_ID = "UserID";
+
         public static final String TABLE_NAME = "login_user";
     }
 

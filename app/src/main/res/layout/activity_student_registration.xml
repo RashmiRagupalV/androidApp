@@ -7,8 +7,11 @@
 
     <ImageView
         android:id="@+id/appIcon"
-        android:layout_width="398dp"
-        android:layout_height="150dp"
+        android:adjustViewBounds="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:layout_height="100dp"
+        android:layout_width="match_parent"
         android:layout_gravity="top"
         android:scaleType="fitXY"
         android:src="@drawable/main"/>
@@ -18,7 +21,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/register"
         android:textSize="30dp"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="100dp"
         android:layout_alignParentTop="true"
         android:layout_below="@+id/appIcon"
         android:layout_centerHorizontal="true" />
@@ -32,7 +35,7 @@
         android:textColorHighlight="#ff7eff15"
         android:textColorHint="#ffff25e6"
         android:textSize="20dp"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="160dp"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -109,93 +112,3 @@
 
     </RelativeLayout>
 
-
-<!--??<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.easyway2in.mysqlconnect.Register"
-    android:orientation="vertical"
-    android:background="#C0C0C0"
-    >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Registration Form"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        />
-
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Enter Child Name"
-        android:id="@+id/user_cname"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
-        />
-
-    <Gallery
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/gallery" />
-
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Enter Teacher's Name"
-        android:id="@+id/user_tname"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        />
-
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Enter Child's Age"
-        android:id="@+id/user_age"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        />
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Enter Date of Screening"
-        android:id="@+id/user_dos"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-       />
-
-
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Enter School"
-        android:id="@+id/user_school"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        />
-
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Enter Grade"
-        android:id="@+id/user_grade"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        />
-
-    <Button
-        android:id="@+id/user_reg"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:onClick="userReg"
-        />
-</LinearLayout> -->

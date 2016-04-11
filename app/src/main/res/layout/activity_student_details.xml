@@ -1,167 +1,93 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:id = "@+id/mainelement"
     android:orientation="vertical"
-    tools:context="redflag.capstone.com.redflag.StudentDetailsActivity"
-    android:background="@drawable/mainbackground">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Student Detail"
-        android:textStyle="bold"
-        android:textColor="#E06C24"
-        android:textSize="30dp"/>
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#C0C0C0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:weightSum="1">
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinStudent"
+    <LinearLayout android:id="@+id/LinearLayout01"
+    android:orientation="vertical"
+    android:layout_width="373dp"
+    android:layout_height="wrap_content"
+    android:background="#C0C0C0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-        />
-
-    <LinearLayout
-        android:id="@+id/stdDetailSection"
+    <ImageView
+        android:id="@+id/appIcon"
+        android:adjustViewBounds="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:layout_height="150dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#F3F781"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_marginBottom="50dp">
+        android:layout_gravity="top"
+        android:scaleType="fitXY"
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            android:layout_marginTop="10dp">
-
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text="Child Name"
-                android:layout_marginLeft="60dp"
-                android:layout_marginRight="60dp"/>
-
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text=""
-                android:id="@+id/ChildName"
-                android:paddingLeft="80dp"/>
-
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text="School"
-                android:layout_marginLeft="60dp"
-                android:layout_marginRight="110dp"/>
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text=""
-                android:id="@+id/School"
-                android:paddingLeft="80dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text="Grade"
-                android:layout_marginLeft="60dp"
-                android:layout_marginRight="120dp"/>
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text=""
-                android:id="@+id/Grade"
-                android:paddingLeft="80dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text="Age"
-                android:layout_marginLeft="60dp"
-                android:layout_marginRight="130dp"/>
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text=""
-                android:id="@+id/Age"
-                android:paddingLeft="80dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text="Teacher's Name"
-                android:layout_marginLeft="60dp"
-                android:layout_marginRight="50dp"/>
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#372c24"
-                android:text=""
-                android:id="@+id/TeacherName"
-                android:paddingLeft="80dp"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/stdTestHistorySection"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/stdDetailSection"
-        android:background="#F3F781"
-        android:layout_weight="1">
+        android:src="@drawable/main"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Screening History"
-            android:textStyle="bold"
-            android:textColor="#E06C24"
-            android:textSize="30dp"/>
-
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:text="Select student"
+            />
 
     </LinearLayout>
-    <Button
+
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:text="Start New Test"
-        android:textStyle="bold"
-        android:layout_gravity="right"
-        android:layout_marginRight="30dp"
-        android:onClick="beginScreeningTest"/>
+        android:layout_height="126dp"
+        android:orientation="horizontal">
+
+
+            <TextView android:id="@+id/column_header1"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+            <TextView android:id="@+id/column_header2"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+            <TextView android:id="@+id/column_header3"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/listView1"
+            android:layout_width="match_parent"
+            android:layout_height="161dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true">
+        </ListView>
+
+
+        <LinearLayout
+            android:layout_width="374dp"
+            android:layout_height="74dp"
+            android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View Student details"
+            android:id="@+id/button5" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Record Activities"
+            android:id="@+id/button13"
+            android:onClick="Recording"
+            android:layout_gravity="right" />
+
+            </LinearLayout>
 
 </LinearLayout>

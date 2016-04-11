@@ -50,6 +50,9 @@
     <string name="title_activity_register_student">RegisterStudentActivity</string>
     <string name="title_activity_student_details">StudentDetailsActivity</string>
     <string name="title_activity_report">ReportActivity</string>
+    <string name="title_report_tracking">RecordTrackingEyeball</string>
+    <string name="title_report_balancing">RecordBalancing</string>
+
     <string name="title_activity_tutorial">TutorialActivity</string>
 
     <string-array name="stds">
