@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/appIcon"
+        android:adjustViewBounds="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_gravity="top"
+        android:scaleType="fitXY"
+        android:src="@drawable/main"/>
+
+    <TextView android:text="Activity 3" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/act_3"
+        android:textSize="25dp"
+        android:layout_marginTop="150dp"
+        android:layout_below="@id/appIcon"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView android:text="Skipping" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/title_3"
+        android:textSize="25dp"
+        android:layout_below="@+id/act_3"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="3"
+        android:id="@+id/rgrp1"
+        android:layout_below="@id/title_3"
+        android:orientation="horizontal">
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/radiobutton1"
+            android:text="yes"/>
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_weight=".75"
+            android:layout_height="wrap_content"
+
+            android:text="gallop"
+            android:id="@+id/radiobutton2"
+            android:checked="false" />
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/radiobutton3"
+            android:text="mixed"/>
+    </RadioGroup>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Next Activity"
+        android:id="@+id/button1"
+        android:onClick="nextactivity_comments"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/act_3"
+        android:layout_toEndOf="@+id/act_3" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:onClick="saveskippingdetails"
+        android:id="@+id/button2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+
+
+
+
+</RelativeLayout>
