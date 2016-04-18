@@ -52,8 +52,11 @@
     <string name="title_activity_report">ReportActivity</string>
     <string name="title_report_tracking">RecordTrackingEyeball</string>
     <string name="title_report_balancing">RecordBalancing</string>
+    <string name="title_report_skipping">RecordSkipping</string>
+    <string name="title_report_comments">RecordComments</string>
 
     <string name="title_activity_tutorial">TutorialActivity</string>
+    <string name="title_call_webservice">MainMenuActivity</string>
 
     <string-array name="stds">
         <item>Sam Smith</item>

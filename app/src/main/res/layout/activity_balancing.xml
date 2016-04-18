@@ -73,17 +73,20 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="Next"
+        android:text="Next Activity"
         android:id="@+id/button1"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/button11"
+        android:layout_alignStart="@+id/button11"
+        android:onClick="nextactivity_skipping"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="Prev"
+        android:text="Submit"
         android:id="@+id/button2"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
@@ -177,6 +180,7 @@
 
         android:layout_alignTop="@+id/button3"
         android:layout_toLeftOf="@+id/button3"
+        android:layout_marginRight="25dp"
         android:layout_toStartOf="@+id/button3" />
 
     <Chronometer
@@ -184,6 +188,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/chronometer2"
 
+        android:layout_marginRight="25dp"
         android:layout_alignTop="@+id/opl"
         android:layout_alignLeft="@+id/chronometer"
         android:layout_alignStart="@+id/chronometer" />
@@ -192,6 +197,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/chronometer3"
+        android:layout_marginRight="25dp"
         android:layout_alignTop="@+id/button9"
         android:layout_toLeftOf="@+id/button9"
         android:layout_toStartOf="@+id/button9" />
@@ -200,9 +206,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/chronometer4"
-        android:layout_toRightOf="@+id/clr"
-        android:layout_alignRight="@+id/chronometer3"
-        android:layout_alignEnd="@+id/chronometer3"
+        android:layout_toLeftOf="@+id/button11"
+        android:layout_marginRight="25dp"
         android:layout_alignTop="@+id/cll" />
 
 

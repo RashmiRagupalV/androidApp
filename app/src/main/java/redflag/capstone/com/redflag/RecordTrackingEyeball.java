@@ -34,6 +34,7 @@ public class RecordTrackingEyeball extends Activity implements View.OnClickListe
     RadioGroup rgrp1, rgrp2,rgrp3;
     int radioButtonID1, radioButtonID2, radioButtonID3;
     Button save, next;
+    String radioButton1, radioButton2,radioButton3;
 
 
 
@@ -58,7 +59,7 @@ public class RecordTrackingEyeball extends Activity implements View.OnClickListe
                 Intent intent = getIntent();
                 Bundle b = intent.getExtras();
 
-                String studId = (String) b.get("SelectedstudId");
+                final String studId = (String) b.get("SelectedstudId");
 
                 rgrp1 = (RadioGroup) findViewById(R.id.rgrp1);
                 radioButtonID1 = rgrp1.getCheckedRadioButtonId();
@@ -73,22 +74,34 @@ public class RecordTrackingEyeball extends Activity implements View.OnClickListe
                 else {
 
                     RadioButton checkedbutton = (RadioButton) findViewById(radioButtonID1);
-                    String radioButton1 = checkedbutton.getText().toString();
+                    radioButton1 = checkedbutton.getText().toString();
 
                     checkedbutton = (RadioButton) findViewById(radioButtonID2);
-                    String radioButton2 = checkedbutton.getText().toString();
+                    radioButton2 = checkedbutton.getText().toString();
 
                     checkedbutton = (RadioButton) findViewById(radioButtonID3);
-                    String radioButton3 = checkedbutton.getText().toString();
+                    radioButton3 = checkedbutton.getText().toString();
+                    alertDialog.setMessage("Are you sure you want to Submit?");
 
-                        dBHelper.insertStudentTrackingDetails(dBHelper, studId, radioButton1, radioButton2, radioButton3);
-                        alertDialog.setMessage("Are you sure you want to Submit?");
 
                         alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
+                                dBHelper.insertStudentTrackingDetails(dBHelper, studId, radioButton1, radioButton2, radioButton3);
+
                                 next.setEnabled(true);
                                 save.setEnabled(false);
+                                for (int i = 0; i < rgrp1.getChildCount(); i++) {
+                                    rgrp1.getChildAt(i).setEnabled(false);
 
+                                }
+                                for (int i = 0; i < rgrp2.getChildCount(); i++) {
+                                    rgrp2.getChildAt(i).setEnabled(false);
+
+                                }
+                                for (int i = 0; i < rgrp3.getChildCount(); i++) {
+                                    rgrp3.getChildAt(i).setEnabled(false);
+
+                                }
                             }
                         });
                         alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {

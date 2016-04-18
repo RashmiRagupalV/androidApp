@@ -88,9 +88,10 @@ public class Login extends Activity {
                     else if (user_name.equals(column1) && user_pass.equals(column2)) {
                         Intent loginIntent = new Intent(this, LoginSuccessActivity.class);
                         loginIntent.putExtra(EXTRA_MESSAGE, user_name);
-                        cursor.close();
-                        dBHelper.close();
+//                        cursor.close();
+//                        dBHelper.close();
                         startActivity(loginIntent);
+
                     }
                 } while (cursor.moveToNext());
             }
