@@ -12,6 +12,7 @@ import android.database.MatrixCursor;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import android.database.Cursor;
 /**
@@ -105,6 +106,32 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Log.d("Database operations", "One row inserted");
 
     }
+
+
+    public Cursor getStudentDetails(DatabaseOperations dop, String selectedstudId)
+    {
+        String query = null;
+        query = "SELECT * FROM " + Student.TABLE_NAME + " where " + Student.USER_StudID + " = '" + selectedstudId + "' ;";
+
+        SQLiteDatabase SQ = dop.getReadableDatabase();
+        Cursor cr = SQ.rawQuery(query, null);
+        Log.d("Database operations", "rows retrieved");
+        return cr;
+
+    }
+
+    public Cursor getStudentTracking(DatabaseOperations dop, String selectedstudId)
+    {
+        String query = null;
+        query = "SELECT * FROM " + TrackingEyeball.TABLE_NAME + " where " + TrackingEyeball.USER_StudID + " = '" + selectedstudId + "' ;";
+
+        SQLiteDatabase SQ = dop.getReadableDatabase();
+        Cursor cr = SQ.rawQuery(query, null);
+        Log.d("Database operations", "rows retrieved");
+        return cr;
+
+    }
+
 
     public void insertStudentTrackingDetails(DatabaseOperations dop, String studId,String radioButton1,String radioButton2,String radioButton3)
     {
@@ -225,6 +252,33 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Cursor cr = SQ.rawQuery(query, null);
         Log.d("Database operations", "rows retrieved");
         return cr;
+
+    }
+
+    public List<String> getAllSchoolNames(DatabaseOperations dop){
+        List<String> labels = new ArrayList<String>();
+
+        // Select All Query
+        String selectQuery = "SELECT DISTINCT " + Student.USER_SCHOOL + " FROM " + Student.TABLE_NAME + " ;";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+
+        // closing connection
+//        cursor.close();
+//        db.close();
+
+        // returning lables
+
+        labels.add("Other");
+        return labels;
 
     }
 

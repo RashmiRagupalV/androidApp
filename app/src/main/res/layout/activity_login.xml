@@ -1,208 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+
+    android:fillViewport="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical" >
 
 
-<!--I ADDED-->
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-        android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:background="#C0C0C0"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Login">
+        android:layout_height="match_parent"
+        android:background="@drawable/button_effect"
+        android:fitsSystemWindows="true"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+         tools:context=".Login">
 
 
     <TextView android:text="Login" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/welcome"
-        android:textSize="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-
+        android:textSize="60dp"
+        android:textColor="#F0F0F0"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="60dp"
+        android:layout_below="@+id/appName"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Red Flags App"
+        android:textStyle="bold"
         android:id="@+id/appName"
-        android:layout_below="@+id/welcome"
+        android:textColor="#F0F0F0"
+        android:textSize="70dp"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/appIcon"
         android:layout_centerHorizontal="true"
-        android:textColor="#8B8B00"
-        android:textSize="40dp" />
-
-
+        android:layout_marginTop="50dp" />
 
     <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView"
-            android:src="@drawable/main"
-            android:layout_below="@+id/appName"
-            android:layout_centerHorizontal="true" />
-
+        android:id="@+id/appIcon"
+        android:adjustViewBounds="true"
+        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_gravity="top"
+        android:scaleType="fitXY"
+        android:src="@drawable/main_background"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:id="@+id/login_name"
-        android:hint="Enter Name"
+        android:hint="@string/hint1"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
         android:focusable="true"
-        android:textColorHighlight="#ff7eff15"
-        android:textColorHint="#ffff25e6"
-        android:textSize="20dp"
-        android:layout_marginTop="100dp"
-        android:layout_below="@+id/imageView"
+        android:nextFocusForward="@+id/login_password"
+        android:textColorHighlight="#E0E0E0"
+        android:textColorHint="#7EB6FF"
+        android:textColor="#E0E0E0"
+        android:textSize="30dp"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/welcome"
         android:layout_centerHorizontal="true" />
 
-
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:id="@+id/login_password"
-        android:hint="Password"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
         android:focusable="true"
-        android:textColorHighlight="#ff7eff15"
-        android:textColorHint="#ffff25e6"
-        android:textSize="20dp"
-        android:layout_marginTop="10dp"
+        android:hint="@string/hint2"
+        android:nextFocusForward="@+id/button_login"
+        android:textColorHighlight="#E0E0E0"
+        android:textColorHint="#7EB6FF"
+        android:textColor="#E0E0E0"
+        android:textSize="30dp"
+        android:fontFamily="sans-serif"
         android:layout_below="@+id/login_name"
-        android:layout_centerHorizontal="true" />
-
-
+        android:layout_alignLeft="@+id/login_name"
+        android:layout_alignStart="@+id/login_name"
+         />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:text="login"
+        android:text="LOGIN"
+        android:background="@drawable/button_states"
         android:id="@+id/button_login"
         android:onClick="validateLogin"
-        android:layout_marginTop="30dp"
+        android:focusable="true"
+        android:textColor="#E0E0E0"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="40dp"
+        android:layout_marginTop="40dp"
         android:layout_below="@+id/login_password"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"/>
 
-    </RelativeLayout>
-
-    <!-- ????<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:paddingLeft="@dimen/activity_horizontal_margin"
-  android:paddingRight="@dimen/activity_horizontal_margin"
-  android:paddingTop="@dimen/activity_vertical_margin"
-  android:paddingBottom="@dimen/activity_vertical_margin"
-  android:screenOrientation="sensorLandscape"
-  tools:context=".Login"
-  android:background="@drawable/mainbackground"> -->
-
-    <!--??<RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-    </RelativeLayout>
--->
-
-    <!--??
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Login"
-                android:id="@+id/welcome"
-                android:background="#ffffff"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentTop="true"
-                android:textSize="35dp"
-                android:textAlignment="center"
-                android:layout_above="@+id/login_id"/>
-    -->
-
-    <!--??<TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Red Flags App"
-             android:id="@+id/appName"
-             android:textColor="#ff7aff24"
-             android:textSize="35dp"
-             android:layout_alignBaseline="@+id/login_name"
-             android:layout_alignBottom="@+id/login_name"
-             android:layout_centerHorizontal="true" /> -->
-
-    <!--??  <RelativeLayout
-      android:layout_width="wrap_content"
-      android:layout_height="387dp"
-      android:background="#ffffff"
-      android:layout_gravity="right"
-      android:paddingTop="50dp"
-      android:layout_margin="@dimen/activity_horizontal_margin"
-      style="@style/AppTheme"
-      android:elevation="@dimen/activity_vertical_margin"> -->
-
-
-
-    <!--??<EditText android:id="@+id/login_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Enter user name"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/login_id"
-        android:layout_alignBottom="@+id/login_id"
-        android:layout_below="@+id/welcome"
-        android:layout_toRightOf="@+id/login_id" /> -->
-
-
-    <!--??<TextView android:id="@+id/login_id"
-            style="?android:attr/textAppearanceLarge"
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="@string/login_name"
-            android:layout_above="@+id/login_password"
-            android:layout_alignLeft="@+id/welcome"
-            android:layout_alignStart="@+id/welcome" /> -->
-
-
-<!--??
-        <TextView android:id="@+id/login_password"
-            style="?android:attr/textAppearanceLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="@string/password"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />-->
-
-       <!--?? <EditText android:id="@+id/password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Enter password"
-            android:inputType="textPassword"
-            android:layout_alignBottom="@+id/login_password"
+            android:id="@+id/imageView"
+            android:layout_above="@+id/appName"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_toEndOf="@+id/login_id"
-            android:layout_below="@+id/login_name"
-            android:layout_toRightOf="@+id/login_id"
-            android:password="false"
-           /> -->
+            android:layout_marginRight="96dp"
+            android:layout_marginEnd="96dp" />
 
-<!--??
-    <Button android:id="@+id/button_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_login"
-            android:onClick="validateLogin"
-            android:layout_below="@+id/login_password"
-            android:layout_alignRight="@+id/welcome"
-            android:layout_alignEnd="@+id/welcome" /> -->
-
-
-
-
-
-
-
-   <!--?? </RelativeLayout>
- </LinearLayout>-->
+    </RelativeLayout>
+</ScrollView>

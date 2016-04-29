@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
 
 
 public class StudentDetailsActivity extends Activity {
@@ -27,6 +28,7 @@ public class StudentDetailsActivity extends Activity {
     String selectedstudid;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,10 +37,12 @@ public class StudentDetailsActivity extends Activity {
         TextView columnHeader1 = (TextView) findViewById(R.id.column_header1);
         TextView columnHeader2 = (TextView) findViewById(R.id.column_header2);
         TextView columnHeader3 = (TextView) findViewById(R.id.column_header3);
+        TextView columnHeader4 = (TextView) findViewById(R.id.column_header4);
 
-        columnHeader1.setText("Student Name");
-        columnHeader2.setText("School Names");
-        columnHeader3.setText("Grades");
+        columnHeader1.setText("ID");
+        columnHeader2.setText("Student Name");
+        columnHeader3.setText("School");
+        columnHeader4.setText("Grade");
         ListView listView=(ListView)findViewById(R.id.listView1);
 
         list=new ArrayList<HashMap<String,String>>();
@@ -100,7 +104,7 @@ public class StudentDetailsActivity extends Activity {
 
     }
 
-    private void loadData() {
+    /*private void loadData() {
         // database handler
         ArrayList<String> my_array = new ArrayList<String>();
         try {
@@ -121,7 +125,7 @@ public class StudentDetailsActivity extends Activity {
             Toast.makeText(getApplicationContext(), "Error encountered.",
                     Toast.LENGTH_LONG);
         }
-    }
+    } */
 }
 
 

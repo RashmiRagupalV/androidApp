@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView android:id="@+id/text_main_seen" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_marginLeft="5px"
+        android:layout_marginTop="2px"
+        android:padding="3px"  android:textColor="#0022ee"
+        android:textSize="22px" android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button15"
+        android:onClick="callweb"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/text_main_seen"
+        android:layout_toEndOf="@+id/text_main_seen" />
+
+
+</RelativeLayout>
+<!--
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="3dip" >
+
+    <TextView
+        android:id="@+id/uname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </TextView>
+
+    <TextView
+        android:id="@+id/uschool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </TextView>
+
+    <TextView
+        android:id="@+id/ugrade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </TextView>
+
+</LinearLayout>
+-->

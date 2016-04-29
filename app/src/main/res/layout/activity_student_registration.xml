@@ -1,114 +1,306 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+
+    android:fillViewport="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical" >
+
 <RelativeLayout android:id="@+id/RelativeLayout01"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#C0C0C0"
+    android:background="@drawable/color_background"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ImageView
         android:id="@+id/appIcon"
         android:adjustViewBounds="true"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:layout_height="100dp"
+        android:layout_height="150dp"
         android:layout_width="match_parent"
         android:layout_gravity="top"
         android:scaleType="fitXY"
-        android:src="@drawable/main"/>
-
+        android:src="@drawable/main_background"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView android:text="Registration Form" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/register"
-        android:textSize="30dp"
-        android:layout_marginTop="100dp"
-        android:layout_alignParentTop="true"
+        android:textSize="60dp"
+        android:textColor="#F0F0F0"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/appIcon"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"/>
+
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:id="@+id/user_cname"
-        android:hint="Enter Student's Name"
+        android:hint="@string/hint3"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
         android:focusable="true"
-        android:textColorHighlight="#ff7eff15"
-        android:textColorHint="#ffff25e6"
-        android:textSize="20dp"
-        android:layout_marginTop="160dp"
-        android:layout_centerHorizontal="true" />
+        android:nextFocusForward="@+id/user_tname"
+        android:textColorHighlight="#E0E0E0"
+        android:textColorHint="#7EB6FF"
+        android:textColor="#E0E0E0"
+        android:textSize="30dp"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/register"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
+
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:id="@+id/user_tname"
-        android:hint="Enter Teacher's Name"
+        android:hint="@string/hint4"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
         android:focusable="true"
-        android:textColorHighlight="#ff7eff15"
-        android:textColorHint="#ffff25e6"
-        android:textSize="20dp"
+        android:nextFocusForward="@+id/user_age"
+        android:textColorHighlight="#E0E0E0"
+        android:textColorHint="#7EB6FF"
+        android:textColor="#E0E0E0"
+        android:textSize="30dp"
+        android:fontFamily="sans-serif"
         android:layout_below="@+id/user_cname"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/user_cname"
+        android:layout_alignStart="@+id/user_cname"/>
+
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:id="@+id/user_age"
-        android:hint="Enter Student's Age"
+        android:hint="@string/hint5"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
+        android:inputType="number"
+        android:maxLength="2"
         android:focusable="true"
-        android:textColorHighlight="#ff7eff15"
-        android:textColorHint="#ffff25e6"
-        android:textSize="20dp"
+        android:nextFocusForward="@+id/autoCompleteTextView1"
+        android:textColorHighlight="#E0E0E0"
+        android:textColorHint="#7EB6FF"
+        android:textColor="#E0E0E0"
+        android:textSize="30dp"
+        android:fontFamily="sans-serif"
         android:layout_below="@+id/user_tname"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/user_cname"
+        android:layout_alignStart="@+id/user_cname"/>
+
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:id="@+id/user_dos"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
         android:focusable="true"
-        android:textColorHighlight="#ff7eff15"
-        android:textColorHint="#ffff25e6"
-        android:textSize="20dp"
+        android:nextFocusForward="@+id/autoCompleteTextView1"
+        android:textColorHighlight="#B3B3B3"
+        android:textColor="#8C8C8C"
+        android:textSize="30dp"
+        android:fontFamily="sans-serif"
         android:layout_below="@+id/user_age"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/user_age"
+        android:layout_alignStart="@+id/user_age"
+        android:layout_toLeftOf="@+id/user_logout"
+        android:layout_toStartOf="@+id/user_logout" />
 
-    <EditText
-        android:layout_width="wrap_content"
+    <!--<EditText
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:id="@+id/user_school"
-        android:hint="Enter School"
+        android:hint="@string/hint6"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
         android:focusable="true"
-        android:textColorHighlight="#ff7eff15"
-        android:textColorHint="#ffff25e6"
-        android:textSize="20dp"
+        android:nextFocusForward="@+id/user_grade"
+        android:textColorHighlight="#E0E0E0"
+        android:textColor="#E0E0E0"
+        android:textColorHint="#7EB6FF"
+        android:textSize="30dp"
+        android:fontFamily="sans-serif"
         android:layout_below="@+id/user_dos"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/user_cname"
+        android:layout_alignStart="@+id/user_cname"/>-->
 
+    <!-- Spinner Dropdown -->
+
+    <!--
+    <Spinner
+        android:id="@+id/spinnerschool"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textColorHighlight="#E0E0E0"
+        android:textColorHint="#7EB6FF"
+        android:textColor="#E0E0E0"
+        android:textSize="30dp"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/user_dos"
+        android:layout_alignLeft="@+id/user_school"
+        android:layout_alignStart="@+id/user_school" />
+
+   <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/school"
+        android:text="Select School"
+        android:textStyle="italic"
+        android:textColorHighlight="#E0E0E0"
+        android:textColor="#7EB6FF"
+        android:textColorHint="#7EB6FF"
+        android:textSize="30dp"
+        android:fontFamily="sans-serif"
+        android:layout_alignBottom="@+id/spinnerschool"
+        android:layout_toLeftOf="@+id/user_reset"
+        android:layout_toStartOf="@+id/user_reset" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/other"
+        android:text="Other"
+        android:textStyle="italic"
+        android:textColorHighlight="#E0E0E0"
+        android:textColor="#7EB6FF"
+        android:textColorHint="#7EB6FF"
+        android:textSize="30dp"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/school"
+        android:layout_alignRight="@+id/school"
+        android:layout_alignEnd="@+id/school" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/user_school"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
+        android:focusable="true"
+        android:textColorHighlight="#B3B3B3"
+        android:textColor="#8C8C8C"
+        android:textSize="30dp"
+        android:fontFamily="sans-serif"
+        android:layout_alignTop="@+id/other"
+        android:layout_alignRight="@+id/user_reset"
+        android:layout_alignEnd="@+id/user_reset" /> -->
+
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView1"
+        android:hint="@string/hint6"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:nextFocusForward="@+id/user_grade"
+        android:textColorHighlight="#E0E0E0"
+        android:textColorHint="#7EB6FF"
+        android:textColor="#E0E0E0"
+        android:textSize="30dp"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/user_dos"
+        android:layout_alignLeft="@+id/user_grade"
+        android:layout_alignStart="@+id/user_grade" />
+
+    <EditText
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:id="@+id/user_grade"
-        android:hint="Enter Grade"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
+        android:inputType="number"
+        android:hint="@string/hint7"
+        android:maxLength="2"
         android:focusable="true"
-        android:textColorHighlight="#ff7eff15"
-        android:textColorHint="#ffff25e6"
-        android:textSize="20dp"
-        android:layout_below="@+id/user_school"
-        android:layout_centerHorizontal="true" />
+        android:nextFocusForward="@+id/user_reg"
+        android:textColorHighlight="#E0E0E0"
+        android:textColorHint="#7EB6FF"
+        android:textColor="#E0E0E0"
+        android:textSize="30dp"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/autoCompleteTextView1"
+        android:layout_alignLeft="@+id/user_cname"
+        android:layout_alignStart="@+id/user_cname"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:text="Register"
-        android:layout_centerInParent="true"
-        android:onClick="registerStudent"
-        android:id="@+id/user_reg"
+        android:text="CANCEL"
+        android:background="@drawable/button_states"
+        android:id="@+id/user_cancel"
+        android:focusable="true"
+        android:textColor="#E0E0E0"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="40dp"
+        android:onClick="cancelRegistration"
+        android:layout_marginTop="40dp"
         android:layout_below="@+id/user_grade"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-         />
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"/>
+
+    <Button
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="RESET"
+        android:background="@drawable/button_states"
+        android:id="@+id/user_reset"
+        android:focusable="true"
+        android:textColor="#E0E0E0"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="40dp"
+        android:onClick="resetForm"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/user_grade"
+        android:layout_toRightOf="@+id/user_cancel"
+        android:layout_marginLeft="115dp"
+        />
+
+    <Button
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="REGISTER"
+        android:background="@drawable/button_states"
+        android:id="@+id/user_reg"
+        android:focusable="true"
+        android:textColor="#E0E0E0"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="40dp"
+        android:onClick="registerStudent"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/user_cancel"
+        android:layout_alignLeft="@+id/user_cancel"
+        />
+
+    <Button
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="LOGOUT"
+        android:background="@drawable/button_states"
+        android:id="@+id/user_logout"
+        android:focusable="true"
+        android:textColor="#E0E0E0"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/user_reset"
+        android:layout_alignLeft="@id/user_reset"
+        />
 
 
-    </RelativeLayout>
 
+</RelativeLayout>
+
+</ScrollView>

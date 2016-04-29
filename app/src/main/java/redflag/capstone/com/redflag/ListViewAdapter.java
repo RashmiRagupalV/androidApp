@@ -52,7 +52,6 @@ public class ListViewAdapter extends BaseAdapter{
         // TODO Auto-generated method stub
 
 
-
         LayoutInflater inflater=activity.getLayoutInflater();
 
         if(convertView == null){

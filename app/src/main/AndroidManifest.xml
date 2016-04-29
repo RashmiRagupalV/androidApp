@@ -19,9 +19,9 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".Login"
-            android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -30,71 +30,68 @@
         </activity>
         <activity
             android:name=".LoginSuccessActivity"
-            android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_login_success" >
         </activity>
         <activity
             android:name=".StudentListActivity"
-            android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_student_list_by_school" >
         </activity>
 
         <activity android:name="AndroidDatabaseManager"
-            android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="AndroidDatabaseManager"/>
 
         <activity
             android:name=".RegisterStudentActivity"
-            android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:label="@string/title_activity_register_student" >
         </activity>
         <activity
             android:name=".StudentDetailsActivity"
-            android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_student_details" >
         </activity>
         <activity
             android:name=".ReportActivity"
-            android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_report" >
         </activity>
         <activity
             android:name=".RecordTrackingEyeball"
-            android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/title_report_tracking" >
         </activity>
 
         <activity
             android:name=".RecordBalancing"
-            android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/title_report_balancing" >
         </activity>
 
         <activity
             android:name=".RecordSkipping"
-            android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/title_report_skipping" >
         </activity>
 
         <activity
             android:name=".RecordComments"
-            android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/title_report_comments" >
         </activity>
 
         <activity
+            android:name=".ViewAllDetailsStudent"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="@string/title_view_all" >
+        </activity>
+
+
+        <activity
             android:name=".MenuMainActivity"
-            android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/title_call_webservice" >
         </activity>
