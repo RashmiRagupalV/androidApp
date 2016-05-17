@@ -5,7 +5,7 @@ package redflag.capstone.com.redflag;
  */
 public class Student {
 
-    public static final String USER_StudID = "StudentID";
+    public static final String USER_StudID = "Student_ID";
     public static final String USER_CNAME = "ChildName";
     public static final String USER_TNAME = "TeacherName";
     public static final String USER_AGE = "Age";
@@ -13,6 +13,8 @@ public class Student {
     public static final String USER_GRADE = "Grade";
     public static final String USER_DOS = "Date";
     public static final String TABLE_NAME = "reg_info";
+
+    public static final String TIMESTAMP = "Timestamp";
 
     public static final String ZEROETH_COLUMN = "Zero";
     public static final String FIRST_COLUMN="First";

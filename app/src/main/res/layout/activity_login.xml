@@ -11,10 +11,11 @@
 
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/button_effect"
+        xmlns:tools="http://schemas.android.com/tools"
         android:fitsSystemWindows="true"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/color_background"
         android:paddingBottom="@dimen/activity_vertical_margin"
          tools:context=".Login">
 
@@ -25,7 +26,7 @@
         android:textSize="60dp"
         android:textColor="#F0F0F0"
         android:fontFamily="sans-serif"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/appName"
         android:layout_centerHorizontal="true"/>
 
@@ -40,7 +41,7 @@
         android:fontFamily="sans-serif"
         android:layout_below="@+id/appIcon"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="30dp" />
 
     <ImageView
         android:id="@+id/appIcon"
@@ -53,7 +54,28 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <EditText
+        <EditText
+            android:layout_width="250dp"
+            android:maxLength="40"
+            android:layout_height="wrap_content"
+            android:id="@+id/yourname"
+            android:hint="@string/hint9"
+            android:singleLine="false"
+            android:imeOptions="actionNext"
+            android:focusable="true"
+            android:nextFocusForward="@+id/login_name"
+            android:textColorHighlight="#E0E0E0"
+            android:textColorHint="#7EB6FF"
+            android:textColor="#E0E0E0"
+            android:textSize="30dp"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/welcome"
+            android:layout_centerHorizontal="true"
+            />
+
+
+        <EditText
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:id="@+id/login_name"
@@ -67,8 +89,8 @@
         android:textColor="#E0E0E0"
         android:textSize="30dp"
         android:fontFamily="sans-serif"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/welcome"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/yourname"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -117,5 +139,7 @@
             android:layout_marginRight="96dp"
             android:layout_marginEnd="96dp" />
 
-    </RelativeLayout>
+
+</RelativeLayout>
 </ScrollView>
+

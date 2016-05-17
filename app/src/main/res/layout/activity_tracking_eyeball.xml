@@ -1,85 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+
+    android:fillViewport="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical" >
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/color_background_trackingeyeball"
+        android:fitsSystemWindows="true"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        >
+
 
     <ImageView
         android:id="@+id/appIcon"
         android:adjustViewBounds="true"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
         android:layout_height="150dp"
         android:layout_width="match_parent"
         android:layout_gravity="top"
         android:scaleType="fitXY"
-        android:src="@drawable/main"/>
+        android:src="@drawable/main_background"
+        />
 
-    <TextView android:text="Activity 1" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/act_1"
-        android:textSize="25dp"
-        android:layout_marginTop="150dp"
-        android:layout_below="@id/appIcon"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        <TextView android:text="Tracking the eyeball" android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/title_1"
+            android:textSize="50dp"
+            android:textColor="#F0F0F0"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/appIcon"
+            android:layout_marginLeft="25dp"/>
 
-    <TextView android:text="Tracking the eyeball" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/title_1"
-        android:layout_below="@id/act_1"
-        android:textSize="25dp"
-        android:layout_marginTop="200dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tracking_border"
+            android:text="Horizontal: Watch the eyes while moving eyeball at a foot in front of him/her. Use a beanbag if child moves his/her head. Bumpy-eyes jiggle. Unable-eyes do not follow the eyeball. Vertical: Watch the eyes while moving the eyeball up and down in front of him/her"
+            android:textSize="25dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textact1"
+            android:textColorHighlight="#E0E0E0"
+            android:textColorHint="#7EB6FF"
+            android:textColor="#E0E0E0"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/title_1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textStyle="italic"
+             />
 
     <TextView android:text="Horizontal" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/horizontal"
-        android:layout_below="@id/title_1"
-        android:textSize="20dp"
-        android:layout_marginTop="240dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:textStyle="bold"
+        android:layout_below="@id/textact1"
+        android:textSize="30dp"
+        android:textColor="#F0F0F0"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="40dp"/>
 
     <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="90dp"
         android:weightSum="3"
         android:id="@+id/rgrp1"
         android:layout_below="@id/horizontal"
-        android:orientation="horizontal">
+        android:layout_marginLeft="40dp"
+        android:orientation="horizontal"
+        android:layout_alignRight="@+id/textact1"
+        android:layout_alignEnd="@+id/textact1">
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:id="@+id/radiobutton1"
-            android:text="smooth and bumpy"/>
+            android:text="smooth and even"
+            android:textColor="#F0F0F0"
+            android:checked="false"
+            android:textSize="30dp"/>
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight=".75"
             android:layout_height="wrap_content"
-
             android:text="bumpy"
+            android:textSize="30dp"
             android:id="@+id/radiobutton2"
+            android:textColor="#F0F0F0"
             android:checked="false" />
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:id="@+id/radiobutton3"
-            android:text="unable to do"/>
+            android:textSize="30dp"
+            android:checked="false"
+            android:textColor="#F0F0F0"
+            android:text="unable to do"
+            />
+
     </RadioGroup>
+
 
 
     <TextView android:text="Needed beanbeag on head" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/beanbag"
         android:layout_below="@id/rgrp1"
-        android:textSize="20dp"
-        android:layout_marginTop="330dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:textSize="30dp"
+        android:textColor="#F0F0F0"
+        android:layout_marginTop="15dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="40dp" />
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -87,66 +126,81 @@
         android:weightSum="1"
         android:id="@+id/rgrp2"
         android:layout_below="@id/beanbag"
-        android:orientation="horizontal">
+        android:layout_marginLeft="40dp"
+        android:orientation="horizontal"
+        android:layout_alignRight="@+id/rgrp1"
+        android:layout_alignEnd="@+id/rgrp1">
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight="0.3"
             android:layout_height="wrap_content"
             android:id="@+id/radiobutton4"
+            android:textColor="#F0F0F0"
             android:text="yes"
-            android:checked="false" />
+            android:checked="false"
+            android:textSize="30dp"/>
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight="0.5"
             android:layout_height="wrap_content"
-
+            android:textSize="30dp"
             android:text="no"
+            android:checked="false"
+            android:textColor="#F0F0F0"
             android:id="@+id/radiobutton5"/>
         </RadioGroup>
-
 
 
     <TextView android:text="Vertical" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/vertical"
         android:layout_below="@id/rgrp2"
-        android:textSize="20dp"
-        android:layout_marginTop="405dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="40dp"
+        android:textColor="#F0F0F0"/>
 
     <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="90dp"
         android:weightSum="3"
         android:id="@+id/rgrp3"
         android:layout_below="@id/vertical"
+
+        android:layout_marginLeft="40dp"
         android:orientation="horizontal">
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:id="@+id/radiobutton6"
-            android:text="smooth and even"/>
+            android:text="smooth and even"
+            android:checked="false"
+            android:textColor="#F0F0F0"
+            android:textSize="30dp"/>
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight="0.75"
             android:layout_height="wrap_content"
             android:text="bumpy"
             android:id="@+id/radiobutton7"
-            android:checked="false" />
+            android:checked="false"
+            android:textColor="#F0F0F0"
+            android:textSize="30dp"/>
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="unable to do"
             android:id="@+id/radiobutton8"
-            android:checked="false" />
+            android:checked="false"
+            android:textColor="#F0F0F0"
+            android:textSize="30dp"/>
 
     </RadioGroup>
 
-    <Button
+   <!-- <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
@@ -157,17 +211,85 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_toRightOf="@+id/act_1"
-        android:layout_toEndOf="@+id/act_1" />
+        android:layout_toEndOf="@+id/act_1" /> -->
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        android:onClick="savetrackingeyeball"
-        android:id="@+id/button14"
-        android:layout_below="@+id/rgrp3"
-        android:layout_alignRight="@+id/horizontal"
-        android:layout_alignEnd="@+id/horizontal" />
+        <Button
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:text="NEXT"
+            android:background="@drawable/button_states"
+            android:id="@+id/button4"
+            android:onClick="nextactivity_balancing"
+            android:focusable="true"
+            android:textColor="#E0E0E0"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:textSize="40dp"
+            android:layout_below="@+id/rgrp3"
+            android:layout_alignRight="@+id/textact1"
+            android:layout_alignEnd="@+id/textact1" />
 
 
-</RelativeLayout>
+        <Button
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:text="HOME"
+            android:background="@drawable/button_states"
+            android:id="@+id/user_cancel"
+            android:focusable="true"
+            android:textColor="#E0E0E0"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:textSize="40dp"
+            android:onClick="cancelRegistration"
+            android:layout_below="@+id/rgrp3"
+            android:layout_alignLeft="@+id/textact1"
+            android:layout_alignStart="@+id/textact1" />
+
+        <Button
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:text="BACK"
+            android:background="@drawable/button_states"
+            android:id="@+id/button5"
+            android:onClick="backscreen"
+            android:focusable="true"
+            android:textColor="#E0E0E0"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:textSize="40dp"
+            android:layout_below="@+id/rgrp3"
+            android:layout_marginLeft="160dp" />
+
+        <Button
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:text="SKIP"
+            android:background="@drawable/button_states"
+            android:id="@+id/button6"
+            android:focusable="true"
+            android:textColor="#E0E0E0"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:textSize="40dp"
+            android:layout_alignTop="@+id/button4"
+            android:layout_marginLeft="305dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:layout_toRightOf="@+id/title_1"
+            android:adjustViewBounds="true"
+            android:layout_gravity="top"
+            android:scaleType="fitXY"
+            android:src="@drawable/trackingball"
+
+            android:layout_above="@+id/textact1"
+            android:layout_alignRight="@+id/textact1"
+            android:layout_alignEnd="@+id/textact1"
+            android:layout_below="@+id/appIcon"
+            android:layout_marginLeft="25dp"/>
+
+    </RelativeLayout>
+    </ScrollView>

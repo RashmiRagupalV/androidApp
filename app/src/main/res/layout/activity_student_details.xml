@@ -1,95 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout android:id = "@+id/mainelement"
-    android:orientation="vertical"
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#C0C0C0"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:weightSum="1">
-
-    <LinearLayout android:id="@+id/LinearLayout01"
+    android:background="@drawable/color_background"
+    android:fitsSystemWindows="true"
+    android:paddingBottom="16dp"
     android:orientation="vertical"
-    android:layout_width="373dp"
-    android:layout_height="wrap_content"
-    android:background="#C0C0C0"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:weightSum="1">
 
     <ImageView
         android:id="@+id/appIcon"
         android:adjustViewBounds="true"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
         android:layout_height="150dp"
         android:layout_width="match_parent"
         android:layout_gravity="top"
         android:scaleType="fitXY"
+        android:src="@drawable/main_background"
+        />
 
-        android:src="@drawable/main"/>
+    <TextView android:text="Student Directory" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/studDir"
+        android:textSize="50dp"
+        android:textColor="#F0F0F0"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/appIcon"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="20dp"
-            android:text="Select student"
-            />
+        />
 
-    </LinearLayout>
+    <TextView android:text="Please select a student to start recording..." android:layout_width="wrap_content"
+        android:textStyle="italic"
+        android:layout_height="wrap_content"
+        android:id="@+id/studrec"
+        android:textSize="30dp"
+        android:textColor="#F0F0F0"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/studDir"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+
+        />
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+       >
+    </ListView>
+
+    <ListView
+        android:id="@+id/listView2"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:choiceMode="singleChoice"
+
+        android:fastScrollEnabled="true"
+        android:listSelector="@drawable/listview_row_selected"
+       >
+    </ListView>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="HOME"
+        android:background="@drawable/button_states"
+        android:id="@+id/user_cancel"
+        android:focusable="true"
+        android:textColor="#E0E0E0"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="40dp"
+        android:onClick="cancelRegistration"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+       android:layout_below="@+id/listView2"/>
 
+    <Button
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:text="START RECORDING"
+        android:background="@drawable/button_states"
+        android:id="@+id/button_start"
+        android:onClick="startrecording"
+        android:focusable="true"
+        android:textColor="#E0E0E0"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="30dp"
 
-            <TextView android:id="@+id/column_header1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                />
-            <TextView android:id="@+id/column_header2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                />
-            <TextView android:id="@+id/column_header3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                />
-        <TextView android:id="@+id/column_header4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            />
-        </LinearLayout>
+       />
 
-        <ListView
-            android:id="@+id/listView1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-        </ListView>
+    </LinearLayout>
 
+    <!--<Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOGOUT"
+        android:background="@drawable/button_states"
+        android:id="@+id/user_logout"
+        android:focusable="true"
+        android:textColor="#E0E0E0"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/button_start"
+        android:layout_marginLeft="400dp"/>-->
 
-        <LinearLayout
-            android:layout_width="374dp"
-            android:layout_height="74dp"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Record Activities"
-
-            android:id="@+id/button13"
-            android:onClick="Recording"
-
-            />
-
-            </LinearLayout>
 
 </LinearLayout>
+

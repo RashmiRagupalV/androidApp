@@ -1,27 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:layout_gravity="bottom"
+
+    android:fillViewport="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/color_background_comments"
+    android:fitsSystemWindows="true"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    >
+
 
     <ImageView
         android:id="@+id/appIcon"
         android:adjustViewBounds="true"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
         android:layout_height="150dp"
         android:layout_width="match_parent"
         android:layout_gravity="top"
         android:scaleType="fitXY"
-        android:src="@drawable/main"/>
+        android:src="@drawable/main_background"
+        />
 
     <TextView android:text="Comments" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/act_2"
-        android:textSize="25dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="180dp"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/title_7"
+        android:textSize="40dp"
+        android:textColor="#F0F0F0"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/appIcon"
+        android:layout_centerHorizontal="true"/>
 
     <EditText
         android:id="@+id/editText1"
@@ -35,39 +49,102 @@
         android:hint="Limit your characters to 100"
         android:lineSpacingMultiplier="1.8"
         android:inputType="textMultiLine|textCapSentences"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
     </EditText>
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="100dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/editText1" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        android:id="@+id/button2"
-        android:onClick="saveskipping"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home Screen"
-        android:id="@+id/button1"
-        android:onClick="nextgoto_homescreen"
-        android:layout_gravity="right"
         android:layout_below="@+id/editText1"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="43dp" />
+        />
+
+
+    <Button
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:text="SAVE"
+        android:background="@drawable/button_states"
+        android:id="@+id/button2"
+        android:onClick="savetodatabaase"
+        android:focusable="true"
+        android:textColor="#E0E0E0"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="40dp"
+        android:layout_alignTop="@+id/buttonkskip"
+        android:layout_alignRight="@+id/editText1"
+        android:layout_alignEnd="@+id/editText1" />
+
+
+
+    <Button
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:text="HOME"
+        android:background="@drawable/button_states"
+        android:id="@+id/user_cancel"
+        android:focusable="true"
+        android:textColor="#E0E0E0"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="40dp"
+        android:onClick="cancelRegistration"
+        android:layout_below="@+id/editText1"
+        android:layout_marginTop="420dp"
+        android:layout_alignLeft="@+id/editText1"
+        android:layout_alignStart="@+id/editText1" />
+
+    <Button
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:text="SKIP"
+        android:background="@drawable/button_states"
+        android:id="@+id/buttonkskip"
+        android:focusable="true"
+        android:textColor="#E0E0E0"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="40dp"
+        android:layout_alignTop="@+id/button3"
+        android:layout_marginLeft="305dp"/>
+
+
+   <!-- <Button
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:text="SAVE"
+        android:background="@drawable/button_states"
+        android:id="@+id/button4"
+        android:onClick="nextactivity_crawling"
+        android:focusable="true"
+        android:textColor="#E0E0E0"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="40dp"
+        android:layout_alignTop="@+id/buttonkskip"
+        android:layout_alignRight="@+id/editText1"
+        android:layout_alignEnd="@+id/editText1" /> -->
+
+
+    <Button
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:text="PREV"
+        android:background="@drawable/button_states"
+        android:id="@+id/button3"
+        android:onClick="prevactivity_crawling"
+        android:focusable="true"
+        android:textColor="#E0E0E0"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="40dp"
+        android:layout_marginLeft="160dp"
+        android:layout_alignTop="@+id/user_cancel"/>
+
+
 
 </RelativeLayout>
+    </ScrollView>

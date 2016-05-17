@@ -10,4 +10,6 @@ public class TrackingEyeball {
     public static final String NEED_BEANBAG = "NeedBeanBag";
     public static final String RECORD_DATE = "RecordDate";
     public static final String TABLE_NAME = "tracking_eyeball";
+    public static final String TIMESTAMP = "Timestamp";
+
 }

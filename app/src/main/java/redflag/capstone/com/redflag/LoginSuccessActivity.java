@@ -102,7 +102,7 @@ public class LoginSuccessActivity extends Activity {
     }
 
     public void generateReport(View view) {
-        Intent generateReportIntent = new Intent(this, ReportActivity.class);
+        Intent generateReportIntent = new Intent(this, ReportType.class);
         startActivity(generateReportIntent);
     }
 
@@ -120,6 +120,12 @@ public class LoginSuccessActivity extends Activity {
 
         Intent record = new Intent(this, StudentDetailsActivity.class);
         startActivity(record);
+    }
+
+    public void display(View view){
+        Intent record = new Intent(this, Graph.class);
+        startActivity(record);
+
     }
 
 

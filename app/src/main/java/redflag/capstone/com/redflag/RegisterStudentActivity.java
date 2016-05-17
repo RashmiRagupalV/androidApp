@@ -55,6 +55,7 @@ public class RegisterStudentActivity extends Activity implements OnClickListener
     String selectedlabel;
     Spinner spinner;
     AutoCompleteTextView actv;
+    Button CLEAR;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -81,6 +82,8 @@ public class RegisterStudentActivity extends Activity implements OnClickListener
 //        others.setBackgroundColor(Color.parseColor("BLUE"));
 //        loadSpinnerData();
 
+        final AlertDialog.Builder alertDialog=new AlertDialog.Builder(this);
+
 
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMM d, yyyy");
@@ -98,12 +101,26 @@ public class RegisterStudentActivity extends Activity implements OnClickListener
         user_grade = (EditText) findViewById(R.id.user_grade);
 
 
+        CLEAR = (Button)findViewById(R.id.user_reset);
+        CLEAR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                user_cname.setText("");
+                user_tname.setText("");
+                user_age.setText("");
+                actv.setText("");
+                user_grade.setText("");
+                user_cname.requestFocus();
+
+            }
+
+        });
+
         REG = (Button) findViewById(R.id.user_reg);
         LOGOUT = (Button) findViewById(R.id.user_logout);
 
 
        // final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-        final AlertDialog.Builder alertDialog=new AlertDialog.Builder(this);
 
         LOGOUT.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,12 +196,12 @@ public class RegisterStudentActivity extends Activity implements OnClickListener
                     int i = Integer.valueOf(struser_age);
                     int j = Integer.valueOf(struser_grade);
 
-                    if (((i <= 0) || (i > 20)) || ((j<=0) || (j>8))) {
-                        if ((i <= 0) || (i > 20)) {
+                    if (((i <= 0) || (i > 12)) || ((j<=0) || (j>7))) {
+                        if ((i <= 0) || (i > 12)) {
                             user_age.setError("Age not in valid range (1-20) !");
                             Toast.makeText(getBaseContext(), "Please correct all errors !", Toast.LENGTH_LONG).show();
                         }
-                        if ((j<=0) || (j>8)) {
+                        if ((j<=0) || (j>7)) {
                             user_grade.setError("Grade not in valid range (1-8) !");
                             Toast.makeText(getBaseContext(), "Please correct all errors !", Toast.LENGTH_LONG).show();
                         }
@@ -325,14 +342,15 @@ public class RegisterStudentActivity extends Activity implements OnClickListener
     }
 
     public void resetForm(View view) {
-        struser_cname = user_cname.getText().toString();
-        struser_tname = user_tname.getText().toString();
-        struser_age = user_age.getText().toString();
-        struser_dos = user_dos.getText().toString();
-        struser_school = user_school.getText().toString();
-        struser_grade = user_grade.getText().toString();
-        Intent registrationIntent = new Intent(getBaseContext(), RegisterStudentActivity.class);
-        startActivity(registrationIntent);
+      //  if
+//        struser_cname = user_cname.getText().toString();
+//        struser_tname = user_tname.getText().toString();
+//        struser_age = user_age.getText().toString();
+//        struser_dos = user_dos.getText().toString();
+//        struser_school = user_school.getText().toString();
+//        struser_grade = user_grade.getText().toString();
+//        Intent registrationIntent = new Intent(getBaseContext(), RegisterStudentActivity.class);
+        //  startActivity(registrationIntent);
     }
 
     @Override

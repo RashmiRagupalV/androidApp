@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/color_background"
+    android:paddingBottom="@dimen/activity_vertical_margin">
+
+    <ImageView
+        android:id="@+id/appIcon"
+        android:adjustViewBounds="true"
+        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_gravity="top"
+        android:scaleType="fitXY"
+        android:src="@drawable/main_background"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView android:text="Generate Report" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/welcome"
+        android:textSize="50dp"
+        android:textColor="#F0F0F0"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/appIcon"
+        android:layout_centerHorizontal="true"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:weightSum="2"
+        android:id="@+id/rgrp1"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/welcome">
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="Email daily report"
+        android:id="@+id/radiobtnreport"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/rgrp1"
+        android:textColor="#F0F0F0"
+        android:buttonTint="#F0F0F0"
+        android:textSize="30dp"
+        android:checked="false"
+        android:layout_marginLeft="10dp"
+
+         />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="View latest report"
+            android:id="@+id/radioButtonstudent"
+            android:textColor="#F0F0F0"
+            android:layout_marginTop="10dp"
+            android:buttonTint="#F0F0F0"
+            android:layout_below="@+id/radiobtnreport"
+            android:textSize="30dp"
+            android:checked="false"
+            android:layout_marginLeft="10dp"
+            />
+    </RadioGroup>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#cccccc"
+        android:layout_below="@id/rgrp1"
+        android:layout_marginTop="2dp" />
+
+    <TextView android:text="Select date" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/date"
+        android:textSize="30dp"
+        android:textColor="#F0F0F0"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="55dp"
+        android:layout_below="@id/rgrp1"
+        android:layout_alignStart="@id/rgrp1"
+        android:layout_alignLeft="@id/rgrp1"
+        android:layout_marginLeft="60dp"/>
+
+
+    <Spinner
+    android:id="@+id/spinner"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/date"
+        android:layout_marginLeft="40dp"
+        android:textColor="#F0F0F0"
+        android:textSize="100dp"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="55dp"
+        android:layout_below="@id/rgrp1"
+        android:popupBackground="#104E8B"
+
+        />
+
+    <Button
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:text="Generate daily report spreadsheet"
+        android:background="@drawable/button_states"
+        android:onClick="generateexcel"
+        android:focusable="true"
+        android:textColor="#E0E0E0"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:id="@+id/excel"
+        android:textSize="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/spinner"
+        android:layout_centerHorizontal="true" />
+
+
+
+
+
+    <Button
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:text="Send daily report as email"
+        android:background="@drawable/button_states"
+        android:onClick="sendemail"
+        android:focusable="true"
+        android:textColor="#E0E0E0"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:id="@+id/button_sendmail"
+        android:textSize="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/excel"
+        android:layout_centerHorizontal="true" />
+
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="HOMESCREEN"
+        android:background="@drawable/button_states"
+        android:onClick="gohome"
+        android:focusable="true"
+        android:textColor="#E0E0E0"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:id="@+id/home"
+        android:textSize="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/viewreport"
+        android:layout_centerHorizontal="true" />
+
+    <TextView android:text="Select Student" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/selectstud"
+        android:textSize="30dp"
+        android:textColor="#F0F0F0"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/rgrp1"
+        android:layout_centerHorizontal="true"/>
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@id/selectstud"
+        >
+    </ListView>
+
+    <ListView
+        android:id="@+id/listView2"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_marginLeft="20dp"
+        android:choiceMode="singleChoice"
+
+        android:fastScrollEnabled="true"
+        android:listSelector="@drawable/listview_row_selected"
+        android:layout_below="@+id/listView1"
+        android:layout_alignRight="@+id/listView1"
+        android:layout_alignEnd="@+id/listView1"
+        >
+    </ListView>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="View report"
+        android:background="@drawable/button_states"
+        android:onClick="viewreport"
+        android:focusable="true"
+        android:textColor="#E0E0E0"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:id="@+id/viewreport"
+        android:textSize="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/listView2"
+        android:layout_centerHorizontal="true" />
+
+
+
+
+</RelativeLayout>

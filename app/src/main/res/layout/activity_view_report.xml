@@ -1,118 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="578dp"
-        android:layout_height="wrap_content">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Student name: "
-            android:id="@+id/textView1" />
+    android:fillViewport="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:id="@+id/textStudName" />
 
-    </LinearLayout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/color_background"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-    <LinearLayout
-        android:layout_width="578dp"
-        android:layout_height="wrap_content">
+    <TextView android:text="Student Report" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/title_studrep"
+        android:textSize="50dp"
+        android:textColor="#F0F0F0"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/appIcon"
+        android:layout_centerHorizontal="true"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Student ID: "
-            android:id="@+id/textView2" />
+    <ImageView
+        android:id="@+id/appIcon"
+        android:adjustViewBounds="true"
+        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_gravity="top"
+        android:scaleType="fitXY"
+        android:src="@drawable/main_background"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/imageViewid"
+        android:adjustViewBounds="true"
+        android:layout_gravity="top"
+        android:scaleType="fitXY"
+        android:src="@drawable/report"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:id="@+id/textStudId" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="578dp"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Student Age: "
-            android:id="@+id/textView3" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:id="@+id/textStudAge" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="578dp"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="School: "
-            android:id="@+id/textView4" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:id="@+id/textSchoolName" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="578dp"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Teacher's Name: "
-            android:id="@+id/textView5" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:id="@+id/textTeachName" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="578dp"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Grade: "
-            android:id="@+id/textView6" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:id="@+id/textStudGrade" />
-
-    </LinearLayout>
+        android:layout_alignTop="@+id/title_studrep"
+        android:layout_alignRight="@+id/relativeLayout"
+        android:layout_alignEnd="@+id/relativeLayout" />
 
     <RelativeLayout
         android:layout_width="585dp"
-        android:layout_height="517dp">
+        android:layout_height="400dp"
+        android:id="@+id/relativeLayout"
+        android:background="@drawable/white"
+
+        android:layout_below="@+id/textView5"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp">
 
 
         <TextView
@@ -122,16 +69,19 @@
             android:id="@+id/textView"
             android:layout_above="@+id/textView9"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:textSize="15dp"
+            android:textColor="#00007f"
+            android:layout_marginLeft="10dp"/>
 
         <TextView
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Horizontal"
             android:id="@+id/textView7"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/textView"
-            android:layout_marginLeft="10dp"/>
+            android:textSize="15dp"
+            android:textColor="#000000"
+            android:layout_marginLeft="220dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -139,10 +89,10 @@
             android:text="Need a beanbag on head"
             android:id="@+id/textView8"
             android:layout_below="@+id/textView7"
-            android:layout_toRightOf="@+id/textView"
-            android:layout_toEndOf="@+id/textView"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="220dp"
+            android:textSize="15dp"
+            android:textColor="#000000"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -152,8 +102,10 @@
             android:layout_below="@+id/textView8"
             android:layout_alignLeft="@+id/textView8"
             android:layout_alignStart="@+id/textView8"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="0dp"/>
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="0dp"
+            android:textSize="15dp"
+            android:textColor="#000000"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -161,45 +113,61 @@
             android:id="@+id/textView10"
             android:layout_toRightOf="@+id/textView7"
             android:layout_alignParentTop="true"
-            android:layout_above="@+id/textView" />
+            android:textSize="15dp"
+            android:layout_marginLeft="15dp"
+            android:textColor="#000000" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView11"
-            android:layout_alignTop="@+id/textView9"
-            android:layout_alignLeft="@+id/textView12"
-            android:layout_alignStart="@+id/textView12" />
+            android:id="@+id/textViewbeandata"
+            android:textSize="15dp"
+            android:textColor="#000000"
+            android:layout_alignTop="@+id/textView8"
+            android:layout_alignLeft="@+id/textView10"
+            android:layout_alignStart="@+id/textView10" />
+
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView12"
-            android:layout_below="@+id/textView10"
-            android:layout_alignLeft="@+id/textView10"
-            android:layout_alignStart="@+id/textView10"
-            android:layout_alignRight="@+id/textView10"
-            android:layout_alignEnd="@+id/textView10" />
+            android:textSize="15dp"
+            android:textColor="#000000"
+            android:layout_alignTop="@+id/textView9"
+            android:layout_alignLeft="@+id/textViewbeandata"
+            android:layout_alignStart="@+id/textViewbeandata" />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#cccccc"
+            android:layout_below="@id/textView12"
+            android:layout_marginTop="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Balance"
             android:id="@+id/textView13"
-            android:layout_alignBaseline="@+id/textView16"
-            android:layout_alignBottom="@+id/textView16"
+            android:textSize="15dp"
+            android:textColor="#00007f"
+            android:layout_above="@+id/textView20"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Eye open right foot"
             android:id="@+id/textView14"
+            android:layout_marginTop="10dp"
+            android:textSize="15dp"
+            android:textColor="#000000"
             android:layout_below="@+id/textView9"
-            android:layout_toRightOf="@+id/textView"
-            android:layout_toEndOf="@+id/textView"
-            android:layout_marginTop="30dp"/>
+            android:layout_alignLeft="@+id/textView9"
+            android:layout_alignStart="@+id/textView9" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -209,7 +177,9 @@
             android:layout_below="@+id/textView14"
             android:layout_alignLeft="@+id/textView14"
             android:layout_alignStart="@+id/textView14"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="5dp"
+            android:textSize="15dp"
+            android:textColor="#000000"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -219,7 +189,9 @@
             android:layout_below="@+id/textView15"
             android:layout_alignLeft="@+id/textView15"
             android:layout_alignStart="@+id/textView15"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="5dp"
+            android:textSize="15dp"
+            android:textColor="#000000"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -229,15 +201,23 @@
             android:layout_below="@+id/textView16"
             android:layout_alignLeft="@+id/textView16"
             android:layout_alignStart="@+id/textView16"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="5dp"
+            android:textSize="15dp"
+            android:textColor="#000000"/>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#cccccc"
+            android:layout_below="@id/textView17"
+            android:layout_marginTop="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView18"
             android:layout_alignTop="@+id/textView14"
-            android:layout_alignLeft="@+id/textView11"
-            android:layout_alignStart="@+id/textView11"
+            android:layout_alignLeft="@+id/textViewbeandata"
+            android:layout_alignStart="@+id/textViewbeandata"
             android:layout_above="@+id/textView15" />
 
         <TextView
@@ -269,31 +249,88 @@
             android:layout_height="wrap_content"
             android:text="Teaming with pencil eraser"
             android:id="@+id/textView22"
-            android:layout_below="@+id/textView17"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="58dp"
-            android:layout_toStartOf="@+id/textView17"
-            android:layout_toLeftOf="@+id/textView17" />
+            android:textSize="15dp"
+            android:textColor="#00007f"
+            android:layout_below="@+id/textViewrnd1"
+            android:layout_alignLeft="@+id/textView24"
+            android:layout_alignStart="@+id/textView24" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Round1"
+            android:id="@+id/textViewrnd1"
+            android:textSize="15dp"
+            android:textColor="#000000"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/textView17"
+            android:layout_alignLeft="@+id/textView17"
+            android:layout_alignStart="@+id/textView17"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Round2"
+            android:id="@+id/textViewrnd2"
+            android:textSize="15dp"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/textViewrnd1"
+            android:layout_alignLeft="@+id/textView17"
+            android:layout_alignStart="@+id/textView17"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#cccccc"
+            android:layout_below="@id/textViewrnd2"
+            android:layout_marginTop="5dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewrnd1text"
+            android:layout_alignTop="@+id/textViewrnd1"
+            android:layout_alignLeft="@+id/textView19"
+            android:layout_alignStart="@+id/textView19"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView23"
-            android:layout_alignBaseline="@+id/textView22"
-            android:layout_alignBottom="@+id/textView22"
-            android:layout_alignLeft="@+id/textView21"
-            android:layout_alignStart="@+id/textView21" />
+            android:layout_alignTop="@+id/textViewrnd2"
+            android:layout_alignLeft="@+id/textView19"
+            android:layout_alignStart="@+id/textView19" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Skipping"
             android:id="@+id/textView24"
-            android:layout_below="@+id/textView22"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="42dp" />
+            android:textSize="15dp"
+            android:textColor="#00007f"
+            android:layout_alignTop="@+id/textViewskp"
+            android:layout_alignLeft="@+id/textView26"
+            android:layout_alignStart="@+id/textView26" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Parameter"
+            android:id="@+id/textViewskp"
+            android:textSize="15dp"
+            android:textColor="#000000"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/textViewrnd2"
+            android:layout_alignLeft="@+id/textViewrnd2"
+            android:layout_alignStart="@+id/textViewrnd2" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#cccccc"
+            android:layout_below="@id/textViewskp"
+            android:layout_marginTop="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -308,10 +345,33 @@
             android:layout_height="wrap_content"
             android:text="Visual Discrimination"
             android:id="@+id/textView26"
-            android:layout_below="@+id/textView24"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="42dp" />
+            android:textSize="15dp"
+            android:textColor="#00007f"
+            android:layout_alignTop="@+id/textViewvd"
+            android:layout_alignLeft="@+id/textView28"
+            android:layout_alignStart="@+id/textView28" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Parameter"
+            android:id="@+id/textViewvd"
+            android:textSize="15dp"
+            android:textColor="#000000"
+            android:layout_below="@+id/textViewskp"
+            android:layout_marginTop="10dp"
+            android:layout_alignLeft="@+id/textViewrnd2"
+            android:layout_alignStart="@+id/textViewrnd2"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#cccccc"
+            android:layout_below="@id/textViewvd"
+            android:layout_marginTop="5dp" />
+
+
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -326,10 +386,32 @@
             android:layout_height="wrap_content"
             android:text="Tummy crawl"
             android:id="@+id/textView28"
-            android:layout_marginTop="30dp"
-            android:layout_below="@+id/textView26"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:textSize="15dp"
+            android:textColor="#00007f"
+            android:layout_alignTop="@+id/textViewcrawl"
+            android:layout_alignLeft="@+id/textViewcomments"
+            android:layout_alignStart="@+id/textViewcomments" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Parameter"
+            android:id="@+id/textViewcrawl"
+            android:textSize="15dp"
+            android:textColor="#000000"
+            android:layout_below="@id/textViewvd"
+            android:layout_marginTop="10dp"
+            android:layout_alignLeft="@+id/textViewrnd2"
+            android:layout_alignStart="@+id/textViewrnd2" />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#cccccc"
+            android:layout_below="@id/textViewcrawl"
+            android:layout_marginTop="5dp" />
+
+
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -343,14 +425,215 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView30"
-            android:layout_alignTop="@+id/textView17"
-            android:layout_toRightOf="@+id/textView9"
-            android:layout_toEndOf="@+id/textView9" />
+            android:id="@+id/textViewcomments"
+            android:text="Comments"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/textViewcrawl"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textSize="15dp"
+            android:textColor="#00007f"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textStyle="italic"
+            android:id="@+id/textViewcmnts"
+            android:textSize="15dp"
+            android:textColor="#000000"
+            android:layout_below="@+id/textViewcrawl"
+            android:layout_marginTop="10dp"
+            android:layout_alignLeft="@+id/textViewrnd2"
+            android:layout_alignStart="@+id/textViewrnd2"
+            />
+
 
     </RelativeLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView30"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Grade: "
+        android:id="@+id/textView6"
+        android:textSize="20dp"
+        android:textColor="#F0F0F0"
+
+        android:layout_alignTop="@+id/textStudGrade"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/textStudGrade"
+        android:textColor="#F0F0F0"
+        android:textSize="20dp"
+        android:layout_toRightOf="@+id/textView6"
+        android:layout_marginLeft="20dp"
+        android:layout_alignTop="@+id/textSchoolName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Teacher's Name: "
+        android:id="@+id/textView5"
+        android:textSize="20dp"
+        android:textColor="#F0F0F0"
+        android:layout_below="@+id/textView4"
+        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/textTeachName"
+        android:textColor="#F0F0F0"
+        android:textSize="20dp"
+        android:layout_toRightOf="@+id/textView5"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/textView4"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="School: "
+        android:id="@+id/textView4"
+        android:textSize="20dp"
+        android:textColor="#F0F0F0"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignStart="@+id/textView1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/textSchoolName"
+        android:textColor="#F0F0F0"
+        android:textSize="20dp"
+        android:layout_toRightOf="@+id/textView4"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/textView3"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Student Age: "
+        android:id="@+id/textView3"
+        android:textSize="20dp"
+        android:textColor="#F0F0F0"
+        android:layout_alignTop="@+id/textStudId"
+        android:layout_alignRight="@+id/title_studrep"
+        android:layout_alignEnd="@+id/title_studrep" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/textStudAge"
+        android:layout_marginLeft="20dp"
+        android:textColor="#F0F0F0"
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_toRightOf="@+id/textView3"
+         />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Student ID: "
+        android:id="@+id/textView2"
+        android:textColor="#F0F0F0"
+        android:textSize="20dp"
+
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignStart="@+id/textView1"
+        />
+       <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/textStudId"
+           android:textColor="#F0F0F0"
+           android:textSize="20dp"
+           android:layout_toRightOf="@+id/textView2"
+           android:layout_marginLeft="20dp"
+           android:layout_marginTop="10dp"
+           android:layout_below="@id/textView1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Student name: "
+        android:id="@+id/textView1"
+        android:textColor="#F0F0F0"
+        android:textSize="20dp"
+        android:layout_below="@id/title_studrep"
+        android:layout_marginLeft="20dp"
+         />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/textStudName"
+            android:textColor="#F0F0F0"
+            android:textSize="20dp"
+            android:layout_toRightOf="@+id/textView1"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@id/title_studrep"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="BACK"
+        android:background="@drawable/button_states"
+        android:id="@+id/user_cancel"
+        android:focusable="true"
+        android:textColor="#E0E0E0"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="40dp"
+        android:onClick="backpage"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/relativeLayout"
+
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="HOME"
+        android:background="@drawable/button_states"
+        android:id="@+id/back"
+        android:focusable="true"
+        android:textColor="#E0E0E0"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="40dp"
+        android:onClick="cancelRegistration"
+        android:layout_alignTop="@+id/user_cancel"
+        android:layout_alignRight="@+id/imageViewid"
+        android:layout_alignEnd="@+id/imageViewid" />
 
 
 
-</LinearLayout>
+</RelativeLayout>
+    </ScrollView>

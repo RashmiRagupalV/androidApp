@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET" />
 
 
@@ -62,18 +63,21 @@
         <activity
             android:name=".RecordTrackingEyeball"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:label="@string/title_report_tracking" >
         </activity>
 
         <activity
             android:name=".RecordBalancing"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:label="@string/title_report_balancing" >
         </activity>
 
         <activity
             android:name=".RecordSkipping"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:label="@string/title_report_skipping" >
         </activity>
 
@@ -88,6 +92,35 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/title_view_all" >
         </activity>
+
+        <activity
+            android:name=".RecordTeaming"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:label="@string/title_report_teaming" >
+        </activity>
+        <activity
+            android:name=".ReportType"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="@string/title_report_type" >
+        </activity>
+
+        <activity
+            android:name=".RecordVisualDiscrimination"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:label="@string/title_report_visualdiscrimination" >
+        </activity>
+
+        <activity
+            android:name=".RecordCrawling"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:label="@string/title_report_crawling" >
+        </activity>
+
+
+
 
 
         <activity

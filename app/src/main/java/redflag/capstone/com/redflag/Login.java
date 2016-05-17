@@ -2,11 +2,16 @@ package redflag.capstone.com.redflag;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,15 +21,31 @@ import android.widget.EditText;
 import android.content.Intent;
 import android.widget.Toast;
 import android.content.Context;
+import android.content.SharedPreferences;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import au.com.bytecode.opencsv.CSVWriter;
 
 public class Login extends Activity {
 
+
     public final static String EXTRA_MESSAGE = "com.Capstone.RedFlag2.MESSAGE";
+    public static final String MyPREFERENCES = "MyPrefs" ;
+
     private DatabaseOperations dBHelper;
     Context ctxt = this;
-    EditText edittxt1,edittxt2;
+    EditText edittxt1,edittxt2,edittxtname;
     Button button1;
     Cursor cursor;
+    SharedPreferences sharedpreferences;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +56,12 @@ public class Login extends Activity {
         setUpView();
         setUpFocus();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        edittxt1=(EditText)findViewById(R.id.login_name);
-        edittxt2=(EditText)findViewById(R.id.login_password);
-        button1=(Button)findViewById(R.id.button_login);
+        edittxt1 = (EditText) findViewById(R.id.login_name);
+        edittxt2 = (EditText) findViewById(R.id.login_password);
+        edittxtname = (EditText)findViewById(R.id.yourname);
+        button1 = (Button) findViewById(R.id.button_login);
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
 
         edittxt1.addTextChangedListener(new TextWatcher() {
 
@@ -95,6 +119,10 @@ public class Login extends Activity {
         return true;
     }
 
+    public void onClick(){
+
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -108,7 +136,10 @@ public class Login extends Activity {
     }
 
     public void validateLogin(View view) {
+
         //EditText editText = (EditText) findViewById(R.id.login_name);
+
+        String yourname = edittxtname.getText().toString();
         String user_name = edittxt1.getText().toString().toUpperCase();
         //EditText editText1 = (EditText) findViewById(R.id.login_password);
         String user_pass = edittxt2.getText().toString();
@@ -118,54 +149,59 @@ public class Login extends Activity {
 //
 //        if( edittxt2.getText().toString().length() == 0 )
 //            edittxt2.setError("Password cannot be empty !");
-
-        if(user_name.isEmpty()){
-            if(user_pass.isEmpty()) {
-                //edittxt1.requestFocus();
-               Toast.makeText(getBaseContext(), "Please fill up all details !", Toast.LENGTH_LONG).show();
-            }
-            else{
-                //edittxt1.requestFocus();
-                Toast.makeText(getBaseContext(), "UserName is required to login !", Toast.LENGTH_LONG).show();
-            }
-        }
-        else if(user_pass.isEmpty()){
-           // edittxt2.requestFocus();
+        if(!(yourname.isEmpty())) {
+            if (user_name.isEmpty()) {
+                if (user_pass.isEmpty()) {
+                    //edittxt1.requestFocus();
+                    Toast.makeText(getBaseContext(), "Please fill up all details !", Toast.LENGTH_LONG).show();
+                } else {
+                    //edittxt1.requestFocus();
+                    Toast.makeText(getBaseContext(), "UserName is required to login !", Toast.LENGTH_LONG).show();
+                }
+            } else if (user_pass.isEmpty()) {
+                // edittxt2.requestFocus();
                 Toast.makeText(getBaseContext(), "Please enter password !", Toast.LENGTH_LONG).show();
-        }
-
-        if(!user_name.isEmpty() && !user_pass.isEmpty()) {
-            cursor = dBHelper.isValidUser(dBHelper);
-            // looping through all rows and adding to list
-            if (cursor.moveToFirst()) {
-                do {
-                    String column1 = cursor.getString(1).toUpperCase();
-                    String column2 = cursor.getString(2);
-                    if (!column1.equals(user_name)) {
-                        Toast.makeText(getBaseContext(), "Username is incorrect !", Toast.LENGTH_LONG).show();
-                        //edittxt1.requestFocus();
-                       // edittxt1.setError("UserName is incorrect !" );
-                        edittxt1.requestFocus();
-                        edittxt1.setText("");
-                        edittxt2.setText("");
-                    }
-                    else if (!column2.equals(user_pass)) {
-                        Toast.makeText(getBaseContext(), "Password is incorrect !", Toast.LENGTH_LONG).show();
-                       // edittxt2.requestFocus();
-                      //  edittxt2.setError("Password is incorrect !" );
-                       // edittxt1.setText("");
-                        edittxt2.setText("");
-                    }
-                    else if (user_name.equals(column1) && user_pass.equals(column2)) {
-                        Intent loginIntent = new Intent(this, LoginSuccessActivity.class);
-                        loginIntent.putExtra(EXTRA_MESSAGE, user_name);
-//                        cursor.close();
-//                        dBHelper.close();
-                        startActivity(loginIntent);
-
-                    }
-                } while (cursor.moveToNext());
             }
+
+            if (!user_name.isEmpty() && !user_pass.isEmpty()) {
+                cursor = dBHelper.isValidUser(dBHelper);
+                // looping through all rows and adding to list
+                if (cursor.moveToFirst()) {
+                    do {
+                        String column1 = cursor.getString(1).toUpperCase();
+                        String column2 = cursor.getString(2);
+                        if (!column1.equals(user_name)) {
+                            Toast.makeText(getBaseContext(), "Username is incorrect !", Toast.LENGTH_LONG).show();
+                            //edittxt1.requestFocus();
+                            // edittxt1.setError("UserName is incorrect !" );
+                            edittxt1.requestFocus();
+                            edittxt1.setText("");
+                            edittxt2.setText("");
+                        } else if (!column2.equals(user_pass)) {
+                            Toast.makeText(getBaseContext(), "Password is incorrect !", Toast.LENGTH_LONG).show();
+                            // edittxt2.requestFocus();
+                            //  edittxt2.setError("Password is incorrect !" );
+                            // edittxt1.setText("");
+                            edittxt2.setText("");
+                        } else if (user_name.equals(column1) && user_pass.equals(column2)) {
+                            SharedPreferences.Editor editor = sharedpreferences.edit();
+                            editor.clear();
+                            editor.commit();
+
+                            editor.putString("TesterName", yourname);
+                            editor.commit();
+
+                            Intent loginIntent = new Intent(this, LoginSuccessActivity.class);
+                            loginIntent.putExtra(EXTRA_MESSAGE, user_name);
+                            startActivity(loginIntent);
+
+                        }
+                    } while (cursor.moveToNext());
+                }
+            }
+        }
+        else{
+            Toast.makeText(getBaseContext(), "Please fill up all details !", Toast.LENGTH_LONG).show();
         }
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">RedFlag</string>
+    <string name="app_name">RedFlags</string>
     <string name="login_name">User Name</string>
     <string name="password">Password</string>
     <string name="button_login">Login</string>
@@ -55,6 +55,12 @@
     <string name="title_report_skipping">RecordSkipping</string>
     <string name="title_report_comments">RecordComments</string>
     <string name="title_view_all">ViewAllDetailsStudent</string>
+    <string name="title_report_teaming">RecordTeaming</string>
+    <string name="title_report_visualdiscrimination">RecordVisualDiscrimination</string>
+    <string name="title_report_crawling">RecordCrawling</string>
+    <string name="title_excel_sheet">ExcelSheet</string>
+    <string name="title_report_type">ReportType</string>
+
 
     <string name="title_activity_tutorial">TutorialActivity</string>
     <string name="title_call_webservice">MainMenuActivity</string>
@@ -63,9 +69,13 @@
     <string name="hint2"><i>Password</i></string>
     <string name="hint3"><i>Enter Student Name</i></string>
     <string name="hint4"><i>Enter Teacher Name</i></string>
-    <string name="hint5"><i>Enter Age (1-20)</i></string>
+    <string name="hint5"><i>Enter Student Age (1-12)</i></string>
     <string name="hint6"><i>Enter School</i></string>
-    <string name="hint7"><i>Enter Grade (1-8)</i></string>
+    <string name="hint7"><i>Enter Grade (1-7)</i></string>
+    <string name="hint8"><i>Enter date</i></string>
+    <string name="hint9"><i>Enter your name</i></string>
+
+
 
     <string-array name="stds">
         <item>Sam Smith</item>
