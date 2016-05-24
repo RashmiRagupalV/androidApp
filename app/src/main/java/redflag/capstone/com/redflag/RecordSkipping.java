@@ -36,6 +36,9 @@ public class RecordSkipping extends Activity implements View.OnClickListener, Ad
     Button SKIP;
     boolean skip_pressed;
     TextView txt1;
+    String Studname;
+    String user_name;
+    TextView studnm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,11 @@ public class RecordSkipping extends Activity implements View.OnClickListener, Ad
         setContentView(R.layout.activity_skipping);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        Studname = sharedpreferences.getString("Studname","");
+        studnm = (TextView)findViewById(R.id.studname);
+        studnm.setText("Student: " + Studname);
+        Bundle bundle = getIntent().getExtras();
+        user_name = bundle.getString("TesterName");
         SKIP = (Button)findViewById(R.id.buttonkskip);
 
         final AlertDialog.Builder alertDialog=new AlertDialog.Builder(this);
@@ -133,6 +141,7 @@ public class RecordSkipping extends Activity implements View.OnClickListener, Ad
             editor.commit();
             Intent intent = new Intent(this, RecordBalancing.class);
             intent.putExtra("activity", "prevbalancing");
+            intent.putExtra("TesterName",user_name);
             startActivity(intent);
         }
         else {
@@ -147,6 +156,7 @@ public class RecordSkipping extends Activity implements View.OnClickListener, Ad
                 editor.commit();
                 Intent intent = new Intent(this, RecordBalancing.class);
                 intent.putExtra("activity", "prevbalancing");
+            intent.putExtra("TesterName",user_name);
                 startActivity(intent);
         //    }
         }
@@ -155,6 +165,7 @@ public class RecordSkipping extends Activity implements View.OnClickListener, Ad
     public void cancelRegistration(View view) {
         clearall();
         Intent intent = new Intent(this, LoginSuccessActivity.class);
+        intent.putExtra("TesterName",user_name);
         startActivity(intent);
     }
 
@@ -167,20 +178,24 @@ public class RecordSkipping extends Activity implements View.OnClickListener, Ad
 
     public void saveskippingdetails(View view) {
         Intent intent = new Intent(this, RecordSkipping.class);
+        intent.putExtra("TesterName",user_name);
         startActivity(intent);
     }
 
     public void nextactivity_teaming(View view){
         rgrp1 = (RadioGroup) findViewById(R.id.rgrpskipping1);
         radioButtonID1 = rgrp1.getCheckedRadioButtonId();
+        int skippingid = 0;
         if (!skip_pressed) {
-            if (rgrp1.getCheckedRadioButtonId() <= 0)
-                Toast.makeText(getBaseContext(), "Please select one option !", Toast.LENGTH_LONG).show();
+            if (rgrp1.getCheckedRadioButtonId() <= 0){
+            //    Toast.makeText(getBaseContext(), "Please select one option !", Toast.LENGTH_LONG).show();
+             radioButton1 = "NA";
+            }
             else {
                 RadioButton checkedbutton = (RadioButton) findViewById(radioButtonID1);
                 radioButton1 = checkedbutton.getText().toString();
-                int skippingid = rgrp1.getCheckedRadioButtonId();
-
+                skippingid = rgrp1.getCheckedRadioButtonId();
+            }
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                 editor.putString("Radiobuttonskipping", radioButton1);
                 editor.putString("SkippingSkipped", "notskipped");
@@ -188,9 +203,10 @@ public class RecordSkipping extends Activity implements View.OnClickListener, Ad
                 editor.commit();
                 skip_pressed = false;
                 Intent intent = new Intent(this, RecordTeaming.class);
+            intent.putExtra("TesterName",user_name);
                 intent.putExtra("activity", "nextteaming");
                 startActivity(intent);
-            }
+        //    }
         }
         else{
             SharedPreferences.Editor editor = sharedpreferences.edit();
@@ -200,6 +216,7 @@ public class RecordSkipping extends Activity implements View.OnClickListener, Ad
             skip_pressed = true;
             Intent intent = new Intent(this, RecordTeaming.class);
             intent.putExtra("activity", "nextteaming");
+            intent.putExtra("TesterName",user_name);
             startActivity(intent);
         }
     }

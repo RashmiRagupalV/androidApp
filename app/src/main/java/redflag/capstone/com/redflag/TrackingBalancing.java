@@ -13,6 +13,8 @@ public class TrackingBalancing {
     public static final String RECORD_DATE = "RecordDate";
     public static final String TABLE_NAME = "balancing";
     public static final String TIMESTAMP = "Timestamp";
+    public static final String TESTER = "TesterName";
+
 }
 
 

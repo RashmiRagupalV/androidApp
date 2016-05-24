@@ -12,6 +12,8 @@ public class Student {
     public static final String USER_SCHOOL = "School";
     public static final String USER_GRADE = "Grade";
     public static final String USER_DOS = "Date";
+    public static final String TESTER = "TesterName";
+
     public static final String TABLE_NAME = "reg_info";
 
     public static final String TIMESTAMP = "Timestamp";

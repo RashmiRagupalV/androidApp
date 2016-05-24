@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="bottom"
@@ -139,7 +140,345 @@
             android:layout_marginRight="96dp"
             android:layout_marginEnd="96dp" />
 
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
 
 </RelativeLayout>
-</ScrollView>
+</ScrollView> -->
 
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+
+    android:fillViewport="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical" >
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:fitsSystemWindows="true"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/color_background"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context=".Login">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vision Screening tool"
+            android:textStyle="bold"
+            android:id="@+id/appName"
+            android:textColor="#F0F0F0"
+            android:textSize="55dp"
+            android:fontFamily="sans-serif"
+            android:layout_below="@+id/appIcon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp" />
+
+        <ImageView
+            android:id="@+id/appIcon"
+            android:adjustViewBounds="true"
+            android:layout_height="150dp"
+            android:layout_width="match_parent"
+            android:layout_gravity="top"
+            android:scaleType="fitXY"
+            android:src="@drawable/main_background"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <ImageView
+            android:id="@+id/google_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/desc_google_icon"
+            android:src="@drawable/googleg_color"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/status"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="180dp"/>
+
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please sign in..."
+            android:textColor="@android:color/white"
+            android:textSize="26dp"
+            android:textStyle="bold"
+            android:layout_marginTop="240dp"
+            android:layout_below="@+id/appName"
+            android:layout_centerHorizontal="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="@drawable/background_signedinuser"/>
+        <TextView
+            android:id="@+id/googlesignin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_text"
+            android:textColor="@android:color/white"
+            android:textSize="25dp"
+            android:layout_marginLeft="240dp"
+            android:layout_marginTop="40dp"
+            android:layout_below="@+id/status"/>
+
+
+       <!-- <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:visibility="visible"
+            android:layout_below="@+id/google_icon"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="160dp" /> -->
+
+        <Button
+            android:id="@+id/sign_in_button"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:visibility="visible"
+            android:text="Sign in"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_below="@+id/google_icon"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="155dp"
+            android:background="@drawable/button_states_options"/>
+
+        <Button
+            android:id="@+id/no_account"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:text="No gmail account?"
+            android:visibility="visible"
+            android:onClick="showadmin"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_below="@+id/google_icon"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="300dp"
+            android:background="@drawable/button_states_options"/>
+
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/imageView"
+            android:background="@drawable/trackingball"
+            android:layout_below="@+id/appName"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="140dp"
+             />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/imageView2"
+            android:background="@drawable/balance"
+            android:layout_below="@+id/appName"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="250dp"
+
+             />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/imageView3"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/skipping"
+            android:layout_below="@id/imageView2"
+            android:layout_alignLeft="@id/imageView2"
+            android:layout_alignStart="@id/imageView2"/>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/imageView4"
+            android:background="@drawable/teaming"
+            android:layout_below="@id/imageView"
+            android:layout_marginTop="10dp"
+            android:layout_alignStart="@id/imageView"
+            android:layout_alignLeft="@id/imageView"/>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/imageView5"
+            android:background="@drawable/crawling"
+            android:layout_below="@+id/appName"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="360dp"
+             />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/imageView6"
+            android:background="@drawable/vd"
+            android:layout_alignTop="@+id/imageView3"
+            android:layout_alignStart="@+id/imageView5"
+            android:layout_alignLeft="@+id/imageView5" />
+
+       <!-- <EditText
+            android:layout_width="250dp"
+            android:maxLength="40"
+            android:layout_height="wrap_content"
+            android:id="@+id/yourname"
+            android:hint="@string/hint9"
+            android:singleLine="false"
+            android:imeOptions="actionNext"
+            android:focusable="true"
+            android:nextFocusForward="@+id/login_name"
+            android:textColorHighlight="#E0E0E0"
+            android:textColorHint="#7EB6FF"
+            android:textColor="#E0E0E0"
+            android:textSize="30dp"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/welcome"
+            android:layout_centerHorizontal="true"
+            /> -->
+
+        <ImageView
+            android:id="@+id/admin"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/admin"
+            android:layout_below="@+id/sign_in_button"
+            android:layout_alignRight="@+id/google_icon"
+            android:layout_alignEnd="@+id/google_icon"
+            android:layout_marginTop="30dp"
+            />
+
+        <TextView
+            android:id="@+id/title_textadmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_textadmin"
+            android:textColor="@android:color/white"
+            android:textSize="25dp"
+            android:layout_below="@+id/sign_in_button"
+            android:layout_marginTop="35dp"
+            android:layout_alignLeft="@id/googlesignin"
+            android:layout_alignStart="@id/googlesignin" />
+
+        <EditText
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/login_name"
+            android:hint="@string/hint1"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
+            android:focusable="true"
+            android:nextFocusForward="@+id/login_password"
+            android:textColorHighlight="#E0E0E0"
+            android:textColorHint="#7EB6FF"
+            android:textColor="#E0E0E0"
+            android:textSize="25dp"
+            android:fontFamily="sans-serif"
+            android:layout_below="@id/admin"
+
+            android:layout_marginLeft="50dp"/>
+
+        <EditText
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:id="@+id/login_password"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
+            android:focusable="true"
+            android:hint="@string/hint2"
+            android:nextFocusForward="@+id/button_login"
+            android:textColorHighlight="#E0E0E0"
+            android:textColorHint="#7EB6FF"
+            android:textColor="#E0E0E0"
+            android:textSize="25dp"
+            android:fontFamily="sans-serif"
+            android:layout_below="@+id/admin"
+           android:layout_marginLeft="210dp" />
+
+        <Button
+            android:id="@+id/button_login"
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:text="Sign in"
+            android:textStyle="bold"
+            android:visibility="visible"
+            android:textSize="16dp"
+            android:onClick="validateLogin"
+            android:layout_toRightOf="@+id/login_password"
+            android:layout_marginLeft="10dp"
+            android:layout_alignBottom="@+id/login_password"
+            android:background="@drawable/button_states_options"/>
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="70dp"
+            android:text="PROCEED"
+            android:background="@drawable/button_states"
+            android:id="@+id/button_proceed"
+            android:focusable="true"
+            android:textColor="#E0E0E0"
+            android:onClick="nextscreen"
+            android:textStyle="bold"
+            android:padding="10dp"
+
+            android:textSize="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/status"
+            android:layout_marginTop="280dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/copy"
+            android:text="Copyright"
+            android:textSize="15dp"
+            android:textColor="@drawable/black"
+            android:layout_alignTop="@+id/katie"
+            android:layout_toRightOf="@+id/imageView4"
+            android:layout_toEndOf="@+id/imageView4"
+            android:layout_marginLeft="-55dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/button_proceed"
+            android:layout_toRightOf="@id/copy"
+            android:layout_marginLeft="8dp"
+            android:id="@+id/katie"
+
+
+            android:textSize="15dp"/>
+
+
+        <!-- <Button
+             android:id="@+id/disconnect_button"
+             android:layout_width="100dp"
+             android:layout_height="match_parent"
+             android:text="Disconnect"
+             android:background="@drawable/white"
+             android:layout_alignParentBottom="true"
+             android:layout_toEndOf="@+id/appName"
+             android:layout_below="@+id/sign_out_button"
+             android:layout_toRightOf="@+id/appName" /> -->
+
+        <!--<Button-->
+            <!--android:id="@+id/sign_out_button"-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="Sign Out"-->
+            <!--android:layout_alignBottom="@+id/sign_in_button"-->
+            <!--android:layout_alignRight="@+id/title_text"-->
+            <!--android:layout_alignEnd="@+id/title_text" />-->
+
+    </RelativeLayout>
+
+</ScrollView>

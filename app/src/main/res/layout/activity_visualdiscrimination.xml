@@ -21,11 +21,27 @@
         android:id="@+id/appIcon"
         android:adjustViewBounds="true"
         android:layout_height="150dp"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_gravity="top"
         android:scaleType="fitXY"
-        android:src="@drawable/main_background"
-        />
+        android:src="@drawable/vd"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"/>
+    <TextView
+        android:id="@+id/studname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:layout_toRightOf="@id/appIcon"
+        android:layout_marginLeft="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/gray"
+        android:layout_marginRight="50dp"
+        android:singleLine="false"/>
 
     <TextView android:text="Visual Discrimination" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,9 +51,9 @@
         android:fontFamily="sans-serif"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/appIcon"
-        android:layout_marginLeft="30dp"/>
+       android:layout_centerHorizontal="true"/>
 
-    <ImageView
+    <!--<ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageViewvd"
@@ -51,14 +67,14 @@
         android:layout_alignEnd="@+id/textact5"
         android:layout_below="@+id/appIcon"
         android:layout_toEndOf="@+id/title_5"
-        android:layout_toRightOf="@+id/title_5" />
+        android:layout_toRightOf="@+id/title_5" /> -->
 
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/tracking_vd"
-        android:text="Hold a sheet and ask the child to find two similar pictures and two dissimilar pictures"
+        android:text="Hold a sheet and ask the child to find similar pictures in this row as the first picture. Similarly, ask the child to find picture not similar to the first picture"
         android:textSize="25dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/textact5"
@@ -100,7 +116,8 @@
             android:textColor="#F0F0F0"
             android:buttonTint="#F0F0F0"
             android:checked="false"
-            android:textSize="30dp"/>
+            android:textSize="30dp"
+            android:button="@drawable/radiobutton"/>
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight=".8"
@@ -110,7 +127,8 @@
             android:textSize="30dp"
             android:id="@+id/radiobutton2"
             android:buttonTint="#F0F0F0"
-            android:checked="false" />
+            android:checked="false"
+            android:button="@drawable/radiobutton"/>
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight="1.36"
@@ -120,7 +138,8 @@
             android:buttonTint="#F0F0F0"
             android:checked="false"
             android:text="uses fingers to track"
-            android:textColor="#F0F0F0"/>
+            android:textColor="#F0F0F0"
+            android:button="@drawable/radiobutton"/>
 
     </RadioGroup>
 
@@ -138,7 +157,7 @@
         android:textSize="40dp"
         android:onClick="cancelRegistration"
         android:layout_below="@+id/rgrp1"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="310dp"
         android:layout_alignLeft="@+id/textact5"
         android:layout_alignStart="@+id/textact5" />
 

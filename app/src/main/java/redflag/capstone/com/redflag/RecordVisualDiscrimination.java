@@ -36,6 +36,11 @@ public class RecordVisualDiscrimination extends Activity implements View.OnClick
     Button SKIP;
     boolean skip_pressed;
     TextView vd;
+    String Studname;
+
+    TextView studnm;
+    String user_name;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +50,11 @@ public class RecordVisualDiscrimination extends Activity implements View.OnClick
         setContentView(R.layout.activity_visualdiscrimination);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-
-
+        Studname = sharedpreferences.getString("Studname","");
+        studnm = (TextView)findViewById(R.id.studname);
+        studnm.setText("Student: " + Studname);
+        Bundle bundle = getIntent().getExtras();
+        user_name = bundle.getString("TesterName");
 //        final AlertDialog.Builder alertDialog=new AlertDialog.Builder(this);
         //save = (Button) findViewById(R.id.button2);
         next = (Button) findViewById(R.id.button4);
@@ -134,6 +142,7 @@ public class RecordVisualDiscrimination extends Activity implements View.OnClick
             editor.commit();
             Intent intent = new Intent(this, RecordTeaming.class);
             intent.putExtra("activity", "prevteaming");
+            intent.putExtra("TesterName",user_name);
             startActivity(intent);
         }else {
             rgrp1 = (RadioGroup) findViewById(R.id.rgrp1);
@@ -147,6 +156,7 @@ public class RecordVisualDiscrimination extends Activity implements View.OnClick
                 editor.commit();
                 Intent intent = new Intent(this, RecordTeaming.class);
                 intent.putExtra("activity", "prevteaming");
+            intent.putExtra("TesterName",user_name);
                 startActivity(intent);
            // }
         }
@@ -157,13 +167,16 @@ public class RecordVisualDiscrimination extends Activity implements View.OnClick
         rgrp1 = (RadioGroup) findViewById(R.id.rgrp1);
         radioButtonID1 = rgrp1.getCheckedRadioButtonId();
         if (!skip_pressed) {
-            if (radioButtonID1 <= 0)
-                Toast.makeText(getBaseContext(), "Please select one option !", Toast.LENGTH_LONG).show();
+            if (radioButtonID1 <= 0) {
+             //   Toast.makeText(getBaseContext(), "Please select one option !", Toast.LENGTH_LONG).show();
+                radioButton1 = "NA";
+                radioButtonID1 = 0;
+            }
             else {
                 RadioButton checkedbutton = (RadioButton) findViewById(radioButtonID1);
                 radioButton1 = checkedbutton.getText().toString();
                 int vdid = rgrp1.getCheckedRadioButtonId();
-
+            }
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                 editor.putString("Radiobuttonvd", radioButton1);
                 editor.putInt("vdid", radioButtonID1);
@@ -172,8 +185,9 @@ public class RecordVisualDiscrimination extends Activity implements View.OnClick
                 skip_pressed = false;
                 Intent intent = new Intent(this, RecordCrawling.class);
                 intent.putExtra("activity", "nextcrawling");
+            intent.putExtra("TesterName",user_name);
                 startActivity(intent);
-            }
+        //    }
         }
         else{
             SharedPreferences.Editor editor = sharedpreferences.edit();
@@ -182,6 +196,7 @@ public class RecordVisualDiscrimination extends Activity implements View.OnClick
             editor.commit();
             Intent intent = new Intent(this, RecordCrawling.class);
             intent.putExtra("activity", "nextcrawling");
+            intent.putExtra("TesterName",user_name);
             startActivity(intent);
         }
     }
@@ -189,6 +204,7 @@ public class RecordVisualDiscrimination extends Activity implements View.OnClick
     public void cancelRegistration(View view) {
         clearall();
         Intent intent = new Intent(this, LoginSuccessActivity.class);
+        intent.putExtra("TesterName",user_name);
         startActivity(intent);
     }
 

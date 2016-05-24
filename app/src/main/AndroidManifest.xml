@@ -15,8 +15,8 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/main_background"
+        android:label="@string/app_name_text"
         android:theme="@style/AppTheme" >
         <activity
             android:name=".Login"
@@ -32,12 +32,12 @@
         <activity
             android:name=".LoginSuccessActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:label="@string/title_activity_login_success" >
+            android:label="@string/app_name_homepage" >
         </activity>
         <activity
             android:name=".StudentListActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:label="@string/title_activity_student_list_by_school" >
+            android:label="@string/title_studdb" >
         </activity>
 
         <activity android:name="AndroidDatabaseManager"
@@ -53,25 +53,20 @@
         <activity
             android:name=".StudentDetailsActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:label="@string/title_activity_student_details" >
-        </activity>
-        <activity
-            android:name=".ReportActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:label="@string/title_activity_report" >
+            android:label="@string/title_studdb" >
         </activity>
         <activity
             android:name=".RecordTrackingEyeball"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="adjustResize|stateHidden"
-            android:label="@string/title_report_tracking" >
+            android:label="@string/title_recording" >
         </activity>
 
         <activity
             android:name=".RecordBalancing"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="adjustResize|stateHidden"
-            android:label="@string/title_report_balancing" >
+            android:label="@string/title_recording" >
         </activity>
 
         <activity
@@ -84,20 +79,20 @@
         <activity
             android:name=".RecordComments"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:label="@string/title_report_comments" >
+            android:label="@string/title_recording" >
         </activity>
 
         <activity
             android:name=".ViewAllDetailsStudent"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:label="@string/title_view_all" >
+            android:label="@string/title_report_type" >
         </activity>
 
         <activity
             android:name=".RecordTeaming"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="adjustResize|stateHidden"
-            android:label="@string/title_report_teaming" >
+            android:label="@string/title_recording" >
         </activity>
         <activity
             android:name=".ReportType"
@@ -109,19 +104,15 @@
             android:name=".RecordVisualDiscrimination"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="adjustResize|stateHidden"
-            android:label="@string/title_report_visualdiscrimination" >
+            android:label="@string/title_recording" >
         </activity>
 
         <activity
             android:name=".RecordCrawling"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="adjustResize|stateHidden"
-            android:label="@string/title_report_crawling" >
+            android:label="@string/title_recording" >
         </activity>
-
-
-
-
 
         <activity
             android:name=".MenuMainActivity"

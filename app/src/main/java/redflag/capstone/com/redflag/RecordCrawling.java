@@ -36,6 +36,10 @@ public class RecordCrawling extends Activity implements View.OnClickListener, Ad
     Button SKIP;
     boolean skip_pressed;
     TextView tc;
+    String Studname;
+
+    TextView studnm;
+    String user_name;
 
 
     @Override
@@ -46,8 +50,11 @@ public class RecordCrawling extends Activity implements View.OnClickListener, Ad
         setContentView(R.layout.activity_crawling);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-
-
+        Studname = sharedpreferences.getString("Studname","");
+        studnm = (TextView)findViewById(R.id.studname);
+        studnm.setText("Student: " + Studname);
+        Bundle bundle = getIntent().getExtras();
+        user_name = bundle.getString("TesterName");
 //        final AlertDialog.Builder alertDialog=new AlertDialog.Builder(this);
         //save = (Button) findViewById(R.id.button2);
         //next = (Button) findViewById(R.id.button1);
@@ -138,6 +145,7 @@ public class RecordCrawling extends Activity implements View.OnClickListener, Ad
             editor.commit();
             Intent intent = new Intent(this, RecordVisualDiscrimination.class);
             intent.putExtra("activity", "prevvisualdiscrimination");
+            intent.putExtra("TesterName",user_name);
             startActivity(intent);
         }else {
             rgrp1 = (RadioGroup) findViewById(R.id.rgrp1);
@@ -150,6 +158,7 @@ public class RecordCrawling extends Activity implements View.OnClickListener, Ad
                 editor.commit();
                 Intent intent = new Intent(this, RecordVisualDiscrimination.class);
                 intent.putExtra("activity", "prevvisualdiscrimination");
+                intent.putExtra("TesterName",user_name);
                 startActivity(intent);
            // }
         }
@@ -159,15 +168,18 @@ public class RecordCrawling extends Activity implements View.OnClickListener, Ad
     public void nextactivity_comments(View view){
         rgrp1 = (RadioGroup) findViewById(R.id.rgrp1);
         radioButtonID1 = rgrp1.getCheckedRadioButtonId();
+        int crawlingid = 0;
         if (!skip_pressed) {
 
-            if (radioButtonID1 <= 0)
-                Toast.makeText(getBaseContext(), "Please select one option !", Toast.LENGTH_LONG).show();
+            if (radioButtonID1 <= 0) {
+             //   Toast.makeText(getBaseContext(), "Please select one option !", Toast.LENGTH_LONG).show();
+                radioButton1 = "NA";
+            }
             else {
                 RadioButton checkedbutton = (RadioButton) findViewById(radioButtonID1);
                 radioButton1 = checkedbutton.getText().toString();
-                int crawlingid = rgrp1.getCheckedRadioButtonId();
-
+                crawlingid = rgrp1.getCheckedRadioButtonId();
+            }
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                 editor.putString("Crawlingtext", radioButton1);
                 editor.putString("CrawlingSkipped", "notskipped");
@@ -176,8 +188,9 @@ public class RecordCrawling extends Activity implements View.OnClickListener, Ad
 
                 Intent intent = new Intent(this, RecordComments.class);
                 intent.putExtra("activity", "nextcomments");
+                intent.putExtra("TesterName",user_name);
                 startActivity(intent);
-            }
+       //     }
         }else{
             SharedPreferences.Editor editor = sharedpreferences.edit();
             editor.putString("Crawlingtext", "NA");
@@ -185,6 +198,7 @@ public class RecordCrawling extends Activity implements View.OnClickListener, Ad
             editor.commit();
             Intent intent = new Intent(this, RecordComments.class);
             intent.putExtra("activity", "nextcrawling");
+            intent.putExtra("TesterName",user_name);
             startActivity(intent);
         }
     }
@@ -204,5 +218,20 @@ public class RecordCrawling extends Activity implements View.OnClickListener, Ad
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    public void clearall(){
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.clear();
+        editor.commit();
+
+        // editor.clear();
+
+    }
+    public void cancelRegistration(View view) {
+        clearall();
+        Intent intent = new Intent(this, LoginSuccessActivity.class);
+        intent.putExtra("TesterName",user_name);
+        startActivity(intent);
     }
 }

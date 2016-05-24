@@ -34,6 +34,7 @@ public class ViewAllDetailsStudent extends Activity {
     TextView rnd1,rnd2;
     TextView skipping,vd,crawl,comments;
     TextView norecords;
+    String user_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,8 @@ public class ViewAllDetailsStudent extends Activity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Intent intent = getIntent();
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-
+        Bundle bundle = getIntent().getExtras();
+        user_name = bundle.getString("TesterName");
         studId = sharedpreferences.getString("StudId", "");
 
         try {
@@ -256,12 +258,14 @@ public class ViewAllDetailsStudent extends Activity {
     public void backpage(View view) {
         clearall();
         Intent intent = new Intent(this, ReportType.class);
+        intent.putExtra("TesterName",user_name);
         startActivity(intent);
     }
 
     public void cancelRegistration(View view) {
         clearall();
         Intent intent = new Intent(this, LoginSuccessActivity.class);
+        intent.putExtra("TesterName",user_name);
         startActivity(intent);
     }
 

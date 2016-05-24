@@ -42,7 +42,7 @@
         android:id="@+id/three"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:paddingLeft="5dp"
+        android:paddingLeft="1dp"
         android:textColor="@android:color/white"
         android:textSize="20dp"
         android:singleLine="false"

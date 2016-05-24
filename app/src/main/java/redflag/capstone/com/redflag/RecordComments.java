@@ -49,6 +49,13 @@ public class RecordComments extends Activity implements View.OnClickListener, Ad
     SharedPreferences sharedpreferences;
     Button SKIP;
     boolean skip_pressed;
+    String Studname;
+
+    TextView studnm;
+
+    String TesterName;
+
+    String user_name;
 
 
 
@@ -60,7 +67,16 @@ public class RecordComments extends Activity implements View.OnClickListener, Ad
         setContentView(R.layout.activity_comments);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        Studname = sharedpreferences.getString("Studname", "");
+        studnm = (TextView)findViewById(R.id.studname);
+        studnm.setText("Student: " + Studname);
+        Bundle bundle = getIntent().getExtras();
+        user_name =  bundle.getString("TesterName");
+        if((user_name == null) || (user_name == ""))
+            user_name = "Admin";
+        TesterName = sharedpreferences.getString("TesterName","Admin");
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        final AlertDialog.Builder alertDialogsave = new AlertDialog.Builder(this);
         save = (Button) findViewById(R.id.button2);
         prev = (Button) findViewById(R.id.button3);
 //       next = (Button) findViewById(R.id.button4);
@@ -140,9 +156,9 @@ public class RecordComments extends Activity implements View.OnClickListener, Ad
                     InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(ecomments.getWindowToken(), 0);
 
-                    alertDialog.setMessage("Are you sure you want to Submit?");
+                    alertDialog.setMessage("Do you want to review the activities before saving ?");
 
-                    alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    alertDialog.setPositiveButton("SAVE", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             SharedPreferences.Editor editor = sharedpreferences.edit();
                             String studId, radioButton1, radioButton2, radioButton3;
@@ -150,7 +166,7 @@ public class RecordComments extends Activity implements View.OnClickListener, Ad
                             radioButton1 = sharedpreferences.getString("Radiobutton1", "");
                             radioButton2 = sharedpreferences.getString("Radiobutton2", "");
                             radioButton3 = sharedpreferences.getString("Radiobutton3", "");
-                            dBHelper.insertStudentTrackingDetails(dBHelper, studId, radioButton1, radioButton2, radioButton3);
+                            dBHelper.insertStudentTrackingDetails(dBHelper, studId, radioButton1, radioButton2, radioButton3,user_name);
 
 
                             String time1, time2, time3, time4;
@@ -158,28 +174,28 @@ public class RecordComments extends Activity implements View.OnClickListener, Ad
                             time2 = sharedpreferences.getString("time2", "");
                             time3 = sharedpreferences.getString("time3", "");
                             time4 = sharedpreferences.getString("time4", "");
-                            dBHelper.insertStudentBalancingDetails(dBHelper, studId, time1, time2, time3, time4);
+                            dBHelper.insertStudentBalancingDetails(dBHelper, studId, time1, time2, time3, time4,user_name);
 
 
                             String Radiobuttonskipping;
                             Radiobuttonskipping = sharedpreferences.getString("Radiobuttonskipping", "");
-                            dBHelper.insertStudentSkippingDetails(dBHelper, studId, Radiobuttonskipping);
+                            dBHelper.insertStudentSkippingDetails(dBHelper, studId, Radiobuttonskipping,user_name);
 
                             String Radiobuttonteaming1, Radiobuttonteaming2;
                             Radiobuttonteaming1 = sharedpreferences.getString("Radiobuttonteaming1", "");
-                            Radiobuttonteaming2 = sharedpreferences.getString("Radiobuttonteaming1", "");
-                            dBHelper.insertStudentTeamingDetails(dBHelper, studId, Radiobuttonteaming1, Radiobuttonteaming2);
+                            Radiobuttonteaming2 = sharedpreferences.getString("Radiobuttonteaming2", "");
+                            dBHelper.insertStudentTeamingDetails(dBHelper, studId, Radiobuttonteaming1, Radiobuttonteaming2,user_name);
 
                             String Radiobuttonvd;
                             Radiobuttonvd = sharedpreferences.getString("Radiobuttonvd", "");
-                            dBHelper.insertStudentVDDetails(dBHelper, studId, Radiobuttonvd);
+                            dBHelper.insertStudentVDDetails(dBHelper, studId, Radiobuttonvd,user_name);
 
                             String Crawlingtext;
                             Crawlingtext = sharedpreferences.getString("Crawlingtext", "");
-                            dBHelper.insertStudentCrawlingDetails(dBHelper, studId, Crawlingtext);
+                            dBHelper.insertStudentCrawlingDetails(dBHelper, studId, Crawlingtext,user_name);
 
-                            dBHelper.insertStudentComments(dBHelper, studId, scomments);
-
+                            dBHelper.insertStudentComments(dBHelper, studId, scomments, user_name);
+                            Toast.makeText(getBaseContext(), "Activities have been successfully recorded !", Toast.LENGTH_LONG).show();
                             save.setEnabled(false);
                             prev.setEnabled(false);
                             SKIP.setEnabled(false);
@@ -201,7 +217,7 @@ public class RecordComments extends Activity implements View.OnClickListener, Ad
                             editor.commit();
                         }
                     });
-                    alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    alertDialog.setNegativeButton("REVIEW ACTIVITIES ", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
 
 
@@ -214,10 +230,10 @@ public class RecordComments extends Activity implements View.OnClickListener, Ad
                     if (scomments.isEmpty()) {
                         Toast.makeText(getBaseContext(), "Please enter some comments !", Toast.LENGTH_LONG).show();
                     } else {
-                        alertDialog.setMessage("Are you sure you want to Submit?");
+                        alertDialog.setMessage("Do you want to review the activities before saving ?");
 
 
-                        alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        alertDialog.setPositiveButton("SAVE", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 SharedPreferences.Editor editor = sharedpreferences.edit();
                                 String studId, radioButton1, radioButton2, radioButton3;
@@ -225,7 +241,7 @@ public class RecordComments extends Activity implements View.OnClickListener, Ad
                                 radioButton1 = sharedpreferences.getString("Radiobutton1", "");
                                 radioButton2 = sharedpreferences.getString("Radiobutton2", "");
                                 radioButton3 = sharedpreferences.getString("Radiobutton3", "");
-                                dBHelper.insertStudentTrackingDetails(dBHelper, studId, radioButton1, radioButton2, radioButton3);
+                                dBHelper.insertStudentTrackingDetails(dBHelper, studId, radioButton1, radioButton2, radioButton3,user_name);
 
 
                                 String time1, time2, time3, time4;
@@ -233,27 +249,28 @@ public class RecordComments extends Activity implements View.OnClickListener, Ad
                                 time2 = sharedpreferences.getString("time2", "");
                                 time3 = sharedpreferences.getString("time3", "");
                                 time4 = sharedpreferences.getString("time4", "");
-                                dBHelper.insertStudentBalancingDetails(dBHelper, studId, time1, time2, time3, time4);
+                                dBHelper.insertStudentBalancingDetails(dBHelper, studId, time1, time2, time3, time4,user_name);
 
 
                                 String Radiobuttonskipping;
                                 Radiobuttonskipping = sharedpreferences.getString("Radiobuttonskipping", "");
-                                dBHelper.insertStudentSkippingDetails(dBHelper, studId, Radiobuttonskipping);
+                                dBHelper.insertStudentSkippingDetails(dBHelper, studId, Radiobuttonskipping,user_name);
 
                                 String Radiobuttonteaming1, Radiobuttonteaming2;
                                 Radiobuttonteaming1 = sharedpreferences.getString("Radiobuttonteaming1", "");
-                                Radiobuttonteaming2 = sharedpreferences.getString("Radiobuttonteaming1", "");
-                                dBHelper.insertStudentTeamingDetails(dBHelper, studId, Radiobuttonteaming1, Radiobuttonteaming2);
+                                Radiobuttonteaming2 = sharedpreferences.getString("Radiobuttonteaming2", "");
+                                dBHelper.insertStudentTeamingDetails(dBHelper, studId, Radiobuttonteaming1, Radiobuttonteaming2,user_name);
 
                                 String Radiobuttonvd;
                                 Radiobuttonvd = sharedpreferences.getString("Radiobuttonvd", "");
-                                dBHelper.insertStudentVDDetails(dBHelper, studId, Radiobuttonvd);
+                                dBHelper.insertStudentVDDetails(dBHelper, studId, Radiobuttonvd,user_name);
 
                                 String Crawlingtext;
                                 Crawlingtext = sharedpreferences.getString("Crawlingtext", "");
-                                dBHelper.insertStudentCrawlingDetails(dBHelper, studId, Crawlingtext);
+                                dBHelper.insertStudentCrawlingDetails(dBHelper, studId, Crawlingtext,user_name);
 
-                                dBHelper.insertStudentComments(dBHelper, studId, scomments);
+                                dBHelper.insertStudentComments(dBHelper, studId, scomments, user_name);
+                                Toast.makeText(getBaseContext(), "Activities have been successfully recorded !", Toast.LENGTH_LONG).show();
 
                                 save.setEnabled(false);
                                 prev.setEnabled(false);
@@ -278,7 +295,7 @@ public class RecordComments extends Activity implements View.OnClickListener, Ad
                                 editor.commit();
                             }
                         });
-                        alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        alertDialog.setNegativeButton("REVIEW ACTIVITIES", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
 
@@ -330,12 +347,14 @@ public class RecordComments extends Activity implements View.OnClickListener, Ad
             editor.putString("CommentsSkipped", "skipped");
             editor.commit();
             Intent intent = new Intent(this, RecordCrawling.class);
+            intent.putExtra("TesterName",user_name);
             intent.putExtra("activity", "prevcrawling");
             startActivity(intent);
         }else{
             String comments = ecomments.getText().toString();
             if ((comments == null) || (comments.length() == 0)) {
                 Intent intent = new Intent(this, RecordCrawling.class);
+                intent.putExtra("TesterName",user_name);
                 intent.putExtra("activity", "prevcrawling");
                 startActivity(intent);
             } else {
@@ -345,6 +364,7 @@ public class RecordComments extends Activity implements View.OnClickListener, Ad
                 editor.commit();
                 Intent intent = new Intent(this, RecordCrawling.class);
                 intent.putExtra("activity", "prevcrawling");
+                intent.putExtra("TesterName",user_name);
                 startActivity(intent);
             }
         }
@@ -376,6 +396,7 @@ public class RecordComments extends Activity implements View.OnClickListener, Ad
     public void cancelRegistration(View view) {
         clearall();
         Intent intent = new Intent(this, LoginSuccessActivity.class);
+        intent.putExtra("TesterName",user_name);
         startActivity(intent);
     }
 

@@ -21,12 +21,12 @@
         android:id="@+id/appIcon"
         android:adjustViewBounds="true"
         android:layout_height="150dp"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_gravity="top"
         android:scaleType="fitXY"
-        android:src="@drawable/main_background"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:src="@drawable/registration"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"/>
 
     <TextView android:text="Registration Form" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
         android:textSize="60dp"
         android:textColor="#F0F0F0"
         android:fontFamily="sans-serif"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/appIcon"
         android:layout_centerHorizontal="true"/>
 
@@ -110,15 +110,14 @@
         android:imeOptions="actionNext"
         android:focusable="true"
         android:nextFocusForward="@+id/autoCompleteTextView1"
-        android:textColorHighlight="#B3B3B3"
-        android:textColor="#8C8C8C"
+        android:textColorHighlight="@drawable/darkgray"
+        android:textColor="@drawable/darkgray"
         android:textSize="30dp"
         android:fontFamily="sans-serif"
         android:layout_below="@+id/user_age"
         android:layout_alignLeft="@+id/user_age"
         android:layout_alignStart="@+id/user_age"
-        android:layout_toLeftOf="@+id/user_logout"
-        android:layout_toStartOf="@+id/user_logout" />
+         />
 
     <!--<EditText
         android:layout_width="300dp"
@@ -283,10 +282,10 @@
         android:onClick="registerStudent"
         android:layout_marginTop="40dp"
         android:layout_below="@+id/user_cancel"
-        android:layout_alignLeft="@+id/user_cancel"
+        android:layout_centerHorizontal="true"
         />
 
-    <Button
+    <!--<Button
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:text="LOGOUT"
@@ -300,7 +299,7 @@
         android:layout_marginTop="40dp"
         android:layout_below="@+id/user_reset"
         android:layout_alignLeft="@id/user_reset"
-        />
+        />-->
 
 
 

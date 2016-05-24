@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "272885760849",
+    "project_id": "redflag2-be079"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272885760849:android:2993505d219233b8",
+        "android_client_info": {
+          "package_name": "redflag.capstone.com.redflag"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272885760849-vpp4s1dcdiblgg26586l6lki79ephmd8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "redflag.capstone.com.redflag",
+            "certificate_hash": "9208B7B2BA86DDF37D5BA53726FE8E37FD889A0A"
+          }
+        },
+        {
+          "client_id": "272885760849-7892mv197fvud9fp3020ka4h2qgcg8b0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH1Ya5nQb9Je2nyb3q6fdPIDSGdp5OIuQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

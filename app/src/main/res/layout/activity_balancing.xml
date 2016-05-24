@@ -22,17 +22,34 @@
             android:id="@+id/appIcon"
             android:adjustViewBounds="true"
             android:layout_height="150dp"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_gravity="top"
             android:scaleType="fitXY"
-            android:src="@drawable/main_background"
-            />
+            android:src="@drawable/balance"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="10dp"/>
+
+        <TextView
+            android:id="@+id/studname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@android:color/black"
+            android:textSize="15dp"
+            android:layout_toRightOf="@id/appIcon"
+            android:layout_marginLeft="20dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="50dp"
+            android:singleLine="false"
+            android:background="@drawable/gray"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/balancing_border"
-            android:text="Ask the child to fold his/her arms across the chest and stand on each foot alternately. Count the seconds for bothe feet: both eyes open and both eyes closed  "
+            android:text="Ask the child to fold his/her arms across the chest and stand on each foot alternately. Count the seconds for both feet: both eyes open and both eyes closed  "
             android:textSize="25dp"
             android:layout_centerHorizontal="true"
             android:id="@+id/textact2"
@@ -58,9 +75,9 @@
             android:layout_below="@+id/appIcon"
             android:layout_centerHorizontal="true"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+       <!-- <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:id="@+id/imageViewbalancing"
             android:adjustViewBounds="true"
             android:layout_gravity="top"
@@ -72,11 +89,11 @@
             android:layout_alignEnd="@+id/textact2"
             android:layout_below="@+id/appIcon"
             android:layout_alignLeft="@+id/button3"
-            android:layout_alignStart="@+id/button3" />
+            android:layout_alignStart="@+id/button3" /> -->
 
 
 
-        <TextView android:text="Eye open right foot" android:layout_width="wrap_content"
+        <TextView android:text="Eyes open right foot" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/opr"
         android:textSize="35dp"
@@ -87,7 +104,7 @@
         android:layout_marginLeft="30dp"
         />
 
-    <TextView android:text="Eye open left foot" android:layout_width="wrap_content"
+    <TextView android:text="Eyes open left foot" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/opl"
         android:textSize="35dp"
@@ -99,7 +116,7 @@
         android:layout_alignParentStart="true" />
 
 
-    <TextView android:text="Eye close right foot" android:layout_width="wrap_content"
+    <TextView android:text="Eyes close right foot" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/clr"
         android:textSize="35dp"
@@ -111,7 +128,7 @@
         android:layout_alignParentStart="true" />
 
 
-    <TextView android:text="Eye close left foot" android:layout_width="wrap_content"
+    <TextView android:text="Eyes close left foot" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cll"
         android:textSize="35dp"
@@ -131,7 +148,7 @@
             android:id="@+id/chronometer"
             android:layout_below="@id/textact2"
             android:layout_marginTop="35dp"
-            android:layout_marginLeft="340dp"
+            android:layout_marginLeft="360dp"
             android:textSize="30dp"
             android:textColor="#F0F0F0"
             android:format="00:00:00"
@@ -142,7 +159,6 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:text="Start"
-            android:onClick="start_first_clock"
             android:id="@+id/button3"
             android:layout_marginTop="27dp"
             android:layout_below="@+id/textact2"
@@ -302,8 +318,8 @@
             android:padding="10dp"
             android:textSize="40dp"
             android:layout_alignTop="@+id/buttonkskip"
-            android:layout_toRightOf="@+id/chronometer"
-            android:layout_toEndOf="@+id/chronometer" />
+            android:layout_alignRight="@+id/textact2"
+            android:layout_alignEnd="@+id/textact2"/>
 
 
         <Button
@@ -319,7 +335,7 @@
             android:textSize="40dp"
             android:onClick="cancelRegistration"
             android:layout_below="@+id/cll"
-            android:layout_marginTop="130dp"
+            android:layout_marginTop="160dp"
             android:layout_alignLeft="@+id/textact2"
             android:layout_alignStart="@+id/textact2" />
 

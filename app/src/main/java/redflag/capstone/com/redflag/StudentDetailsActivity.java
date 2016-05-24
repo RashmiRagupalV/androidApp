@@ -40,14 +40,19 @@ public class StudentDetailsActivity extends Activity {
     Cursor cursor;
     String selectedstudid;
     String Sid;
-  //  Button LOGOUT;
+    String Studname;
+    Button button_start;
+
+    TextView studentrec;
 
     ListView listcontent,list_head;
     ArrayList<HashMap<String, String>> mylist, mylist_title;
     ListAdapter adapter_title, adapter;
     HashMap<String, String> map1, map2;
+    String user_name;
 
     SharedPreferences sharedpreferences;
+    Button START;
 
 
     @Override
@@ -56,40 +61,62 @@ public class StudentDetailsActivity extends Activity {
         setContentView(R.layout.activity_student_details);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        button_start = (Button)findViewById(R.id.button_start);
+        studentrec = (TextView)findViewById(R.id.studrec);
+        Bundle bundle = getIntent().getExtras();
+        user_name =bundle.getString("TesterName");
+        START = (Button)findViewById(R.id.button_start);
 
-//        LOGOUT = (Button)findViewById(R.id.user_logout);
-//        final AlertDialog.Builder alertDialog=new AlertDialog.Builder(this);
-//
-//
-//        LOGOUT.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                alertDialog.setMessage("Are you sure you want to log off ?");
-//
-//                alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        //do this on logout button click
-////                            final String LOG_OUT = "event_logout";
-////                            Intent intent = new Intent(LOG_OUT);
-////                            //send the broadcast to all activities who are listening
-////                            LocalBroadcastManager.getInstance(getBaseContext()).sendBroadcast(intent);
-//                        Intent loginscreen = new Intent(getBaseContext(), Login.class);
-//                        startActivity(loginscreen);
-//
-//                    }
-//                });
-//                alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int which) {
-////                            Intent loginintent = new Intent(getBaseContext(), LoginSuccessActivity.class);
-////                            startActivity(loginintent);
-//                    }
-//                });
-//                alertDialog.show();
-//
-//            }
-//
-//        });
-//
+
+        final AlertDialog.Builder alertDialog=new AlertDialog.Builder(this);
+
+
+        START.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Sid != null) {
+                    try {
+                        dBHelper = new DatabaseOperations(ctxt);
+                        cursor = dBHelper.checkifRecordedToday(dBHelper, Sid);
+                        if (cursor.moveToFirst()) {
+                            alertDialog.setMessage("The student's activities for today's date have been recorded ! Do you want to record again? ");
+                            alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                                    editor.putString(StudId, Sid);
+                                    editor.putString("Studname", Studname);
+                                    editor.commit();
+                                    Intent intent = new Intent(getBaseContext(), RecordTrackingEyeball.class);
+                                    intent.putExtra("TesterName", user_name);
+                                    startActivity(intent);
+                                }
+                            });
+                            alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+                            alertDialog.show();
+                        }else{
+                            SharedPreferences.Editor editor = sharedpreferences.edit();
+                            editor.putString(StudId, Sid);
+                            editor.putString("Studname", Studname);
+                            editor.commit();
+                            Intent intent = new Intent(getBaseContext(), RecordTrackingEyeball.class);
+                            intent.putExtra("TesterName", user_name);
+                            startActivity(intent);
+                        }
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(), "Error encountered.",
+                                Toast.LENGTH_LONG);
+                    }
+                }else{
+                    Toast.makeText(getBaseContext(), "Please select a student!", Toast.LENGTH_LONG).show();
+                }
+            }
+
+        });
+
 
         listcontent = (ListView) findViewById(R.id.listView2);
         list_head = (ListView) findViewById(R.id.listView1);
@@ -147,15 +174,16 @@ public class StudentDetailsActivity extends Activity {
                     map2.put("three", cursor.getString(5));
                     map2.put("hiddenid", cursor.getString(0));
                     mylist.add(map2);
+               } while (cursor.moveToNext());
+                button_start.setVisibility(View.VISIBLE);
+                list_head.setVisibility(View.VISIBLE);
 
-                 //   temp.put(Student.ZEROETH_COLUMN, cursor.getString(0));
-
-//                    temp.put(Student.FIRST_COLUMN, cursor.getString(1));
-//                    temp.put(Student.SECOND_COLUMN, cursor.getString(6));
-//                    temp.put(Student.THIRD_COLUMN, cursor.getString(5));
-//                    list.add(temp);
-                } while (cursor.moveToNext());
+            }else{
+                studentrec.setText("No Student registered !");
+                button_start.setVisibility(View.INVISIBLE);
+                list_head.setVisibility(View.INVISIBLE);
             }
+
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Error encountered.",
                     Toast.LENGTH_LONG);
@@ -197,6 +225,7 @@ public class StudentDetailsActivity extends Activity {
              //   Toast.makeText(StudentDetailsActivity.this, Integer.toString(pos) + " Clicked", Toast.LENGTH_SHORT).show();
                 HashMap<String, String> selectedstudid = (HashMap)parent.getAdapter().getItem(position);
                 Sid = selectedstudid.get("hiddenid");
+                Studname = selectedstudid.get("one");
                 view.setSelected(true);
 //                view.getFocusables(position);
 //                view.setSelected(true);
@@ -207,24 +236,45 @@ public class StudentDetailsActivity extends Activity {
 
     }
 
-    public void startrecording(View view) {
+ //   public void startrecording(View view) {
 
-        if (Sid != null) {
-            SharedPreferences.Editor editor = sharedpreferences.edit();
-            editor.putString(StudId,Sid );
-            editor.commit();
-            Intent intent = new Intent(this, RecordTrackingEyeball.class);
-            //intent.putExtra("SelectedstudId", Sid);
-            startActivity(intent);
-        } else {
-            Toast.makeText(getBaseContext(), "Please select a student!", Toast.LENGTH_LONG).show();
-        }
+//        if (Sid != null) {
+//            try {
+//                int i = 0;
+//
+//                dBHelper = new DatabaseOperations(ctxt);
+//                cursor = dBHelper.checkifRecordedToday(dBHelper);
+//                if (cursor.moveToFirst())
+//                }else{
+//                    studentrec.setText("No Student registered !");
+//                    button_start.setVisibility(View.INVISIBLE);
+//                    list_head.setVisibility(View.INVISIBLE);
+//                }
+//
+//            } catch (Exception e) {
+//                Toast.makeText(getApplicationContext(), "Error encountered.",
+//                        Toast.LENGTH_LONG);
+//            }
+//            else
+//
+//
+//            SharedPreferences.Editor editor = sharedpreferences.edit();
+//            editor.putString(StudId,Sid );
+//            editor.putString("Studname",Studname);
+//            editor.commit();
+//            Intent intent = new Intent(this, RecordTrackingEyeball.class);
+//            intent.putExtra("TesterName", user_name);
+//            startActivity(intent);
+//        } else {
+//            Toast.makeText(getBaseContext(), "Please select a student!", Toast.LENGTH_LONG).show();
+//        }
 
-    }
+  //  }
 
     public void cancelRegistration(View view) {
         clearall();
         Intent intent = new Intent(this, LoginSuccessActivity.class);
+        intent.putExtra("TesterName",user_name);
         startActivity(intent);
     }
 

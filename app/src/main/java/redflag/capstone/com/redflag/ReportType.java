@@ -76,6 +76,8 @@ public class ReportType extends Activity {
 
     SharedPreferences sharedpreferences;
 
+    String user_name;
+
 
 
 
@@ -87,7 +89,8 @@ public class ReportType extends Activity {
         setContentView(R.layout.create_report);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-
+        Bundle bundle = getIntent().getExtras();
+        user_name = bundle.getString("TesterName");
         button1 = (Button)findViewById(R.id.excel);
         button1.setVisibility(View.INVISIBLE);
 
@@ -319,17 +322,17 @@ public class ReportType extends Activity {
                     dBHelper = new DatabaseOperations(ctxt);
                     cursor = dBHelper.getAllData(dBHelper, spinnervalue);
                     SharedPreferences.Editor editor = sharedpreferences.edit();
-                    String testername = sharedpreferences.getString("TesterName", "admin");
+                   // String testername = sharedpreferences.getString("TesterName", "Admin");
                     if (cursor.moveToFirst()) {
                         do {
-                            String s[] = {testername,spinnervalue, cursor.getString(1), cursor.getString(2),cursor.getString(3),cursor.getString(6),cursor.getString(5),
-                                    cursor.getString(9), cursor.getString(11),cursor.getString(10),
-                                    cursor.getString(14), cursor.getString(15),cursor.getString(16),cursor.getString(17),
-                                    cursor.getString(20),
+                            String s[] = {cursor.getString(13),spinnervalue, cursor.getString(1), cursor.getString(2),cursor.getString(3),cursor.getString(6),cursor.getString(5),
+                                    cursor.getString(10), cursor.getString(12),cursor.getString(11),
+                                    cursor.getString(16), cursor.getString(17),cursor.getString(18),cursor.getString(19),
                                     cursor.getString(23),
-                                    cursor.getString(26), cursor.getString(27),
-                                    cursor.getString(30),
-                                    cursor.getString(33)
+                                    cursor.getString(27),
+                                    cursor.getString(31), cursor.getString(32),
+                                    cursor.getString(36),
+                                    cursor.getString(40)
                                     };
                                     csvWrite.writeNext(s);
                         } while (cursor.moveToNext());
@@ -354,7 +357,7 @@ public class ReportType extends Activity {
                 Toast.makeText(ctxt, "Report_" + spinnervalue + " created !", Toast.LENGTH_LONG).show();
             }
             else{
-                Toast.makeText(ctxt, "Report_" + spinnervalue + "creation created ! Please try again", Toast.LENGTH_LONG).show();
+                Toast.makeText(ctxt, "Report_" + spinnervalue + "creation failed ! Please try again", Toast.LENGTH_LONG).show();
             }
 
         }
@@ -386,6 +389,7 @@ public class ReportType extends Activity {
 
     public void gohome(View view){
         Intent intent = new Intent(this, LoginSuccessActivity.class);
+        intent.putExtra("TesterName",user_name);
         startActivity(intent);
     }
 
@@ -508,9 +512,10 @@ public class ReportType extends Activity {
             editor.commit();
             Intent intent = new Intent(this, ViewAllDetailsStudent.class);
             //intent.putExtra("SelectedstudId", Sid);
+            intent.putExtra("TesterName",user_name);
             startActivity(intent);
         } else {
-            Toast.makeText(getBaseContext(), "Please select a student!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(), "Please select a student !", Toast.LENGTH_LONG).show();
         }
 
     }

@@ -22,11 +22,27 @@
         android:id="@+id/appIcon"
         android:adjustViewBounds="true"
         android:layout_height="150dp"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_gravity="top"
         android:scaleType="fitXY"
-        android:src="@drawable/main_background"
-        />
+        android:src="@drawable/crawling"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"/>
+    <TextView
+        android:id="@+id/studname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:layout_toRightOf="@id/appIcon"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="50dp"
+        android:singleLine="false"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/gray"/>
 
     <TextView android:text="Tummy crawl" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,11 +52,11 @@
         android:fontFamily="sans-serif"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/appIcon"
-        android:layout_marginLeft="100dp"/>
+       android:layout_centerHorizontal="true"/>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+   <!-- <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/imageViewcrawling"
         android:adjustViewBounds="true"
         android:layout_gravity="top"
@@ -52,7 +68,7 @@
         android:layout_alignEnd="@+id/textact6"
         android:layout_below="@+id/appIcon"
         android:layout_toRightOf="@+id/buttonkskip"
-        android:layout_toEndOf="@+id/buttonkskip" />
+        android:layout_toEndOf="@+id/buttonkskip" /> -->
 
     <EditText
         android:layout_width="match_parent"
@@ -100,37 +116,41 @@
             android:textColor="#F0F0F0"
             android:buttonTint="#F0F0F0"
             android:checked="false"
-            android:textSize="30dp"/>
+            android:textSize="25dp"
+            android:button="@drawable/radiobutton"/>
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:textColor="#F0F0F0"
-            android:text="drag L or R leg"
-            android:textSize="30dp"
+            android:text="drag L/R leg"
+            android:textSize="25dp"
             android:id="@+id/radiobutton2"
             android:buttonTint="#F0F0F0"
-            android:checked="false" />
+            android:checked="false"
+            android:button="@drawable/radiobutton"/>
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:id="@+id/radiobutton3"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:buttonTint="#F0F0F0"
             android:checked="false"
             android:text="no legs"
-            android:textColor="#F0F0F0"/>
+            android:textColor="#F0F0F0"
+            android:button="@drawable/radiobutton"/>
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:id="@+id/radiobutton4"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:buttonTint="#F0F0F0"
             android:checked="false"
             android:text="on side"
-            android:textColor="#F0F0F0"/>
+            android:textColor="#F0F0F0"
+            android:button="@drawable/radiobutton"/>
 
     </RadioGroup>
 

@@ -40,6 +40,11 @@ public class RecordBalancing extends Activity implements View.OnClickListener, A
     Button SKIP;
     TextView txt1,txt2,txt3,txt4;
     boolean skip_pressed;
+    String Studname;
+
+    TextView studnm;
+    String user_name;
+
 
     SharedPreferences sharedpreferences;
 
@@ -52,6 +57,11 @@ public class RecordBalancing extends Activity implements View.OnClickListener, A
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
+        Studname = sharedpreferences.getString("Studname","");
+        studnm = (TextView)findViewById(R.id.studname);
+        studnm.setText("Student: " + Studname);
+        Bundle bundle = getIntent().getExtras();
+        user_name = bundle.getString("TesterName");
        // editor.remove("BalancingSkipped");
         txt1 = (TextView)findViewById(R.id.opr);
         txt2 = (TextView)findViewById(R.id.opl);
@@ -87,6 +97,7 @@ public class RecordBalancing extends Activity implements View.OnClickListener, A
 
 
         Intent intent = getIntent();
+        intent.putExtra("TesterName",user_name);
         String activity = intent.getStringExtra("activity");
         if (activity == null || activity.length()==0){
             chronometer.setText("00:00:00");
@@ -323,6 +334,7 @@ public class RecordBalancing extends Activity implements View.OnClickListener, A
 
     public void savebalancingeyeball(View view) {
         Intent intent = new Intent(this, RecordBalancing.class);
+        intent.putExtra("TesterName",user_name);
         startActivity(intent);
     }
 
@@ -350,6 +362,7 @@ public class RecordBalancing extends Activity implements View.OnClickListener, A
                 skip_pressed = false;
                 Intent intent = new Intent(this, RecordSkipping.class);
                 intent.putExtra("activity", "nextskipping");
+                intent.putExtra("TesterName",user_name);
                 startActivity(intent);
             }
         }
@@ -364,6 +377,7 @@ public class RecordBalancing extends Activity implements View.OnClickListener, A
             skip_pressed = true;
             Intent intent = new Intent(this, RecordSkipping.class);
             intent.putExtra("activity", "nextskipping");
+            intent.putExtra("TesterName",user_name);
             startActivity(intent);
         }
     }
@@ -387,6 +401,7 @@ public class RecordBalancing extends Activity implements View.OnClickListener, A
             editor.commit();
             Intent intent = new Intent(this, RecordTrackingEyeball.class);
             intent.putExtra("activity", "prevtracking");
+            intent.putExtra("TesterName",user_name);
             startActivity(intent);
             }
     }
@@ -417,6 +432,7 @@ public class RecordBalancing extends Activity implements View.OnClickListener, A
     public void cancelRegistration(View view) {
         clearall();
         Intent intent = new Intent(this, LoginSuccessActivity.class);
+        intent.putExtra("TesterName",user_name);
         startActivity(intent);
     }
 

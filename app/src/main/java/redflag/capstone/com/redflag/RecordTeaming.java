@@ -38,6 +38,12 @@ public class RecordTeaming extends Activity implements View.OnClickListener, Ada
     Button SKIP;
     TextView txt1,txt2;
     boolean skip_pressed;
+    String Studname;
+    String user_name;
+    TextView studnm;
+
+
+
 
 
     @Override
@@ -48,9 +54,12 @@ public class RecordTeaming extends Activity implements View.OnClickListener, Ada
         setContentView(R.layout.activity_teaming);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-
+        Studname = sharedpreferences.getString("Studname","");
+        studnm = (TextView)findViewById(R.id.studname);
+        studnm.setText("Student: " + Studname);
         next = (Button) findViewById(R.id.button4);
-
+        Bundle bundle = getIntent().getExtras();
+        user_name = bundle.getString("TesterName");
         SKIP = (Button)findViewById(R.id.buttonkskip);
 
         final AlertDialog.Builder alertDialog=new AlertDialog.Builder(this);
@@ -155,18 +164,33 @@ public class RecordTeaming extends Activity implements View.OnClickListener, Ada
         radioButtonID1 = rgrp1.getCheckedRadioButtonId();
         rgrp2 = (RadioGroup) findViewById(R.id.rgrp2);
         radioButtonID2 = rgrp2.getCheckedRadioButtonId();
+        int radioId1 =0;
+        int radioId2 =0;
         if (!skip_pressed) {
-            if (radioButtonID1 <= 0 || radioButtonID2 <= 0)
-                Toast.makeText(getBaseContext(), "Please select one option from each type !", Toast.LENGTH_LONG).show();
-            else {
+//            if (radioButtonID1 <= 0 || radioButtonID2 <= 0) {
+//                // Toast.makeText(getBaseContext(), "Please select one option from each type !", Toast.LENGTH_LONG).show();
+//                if(radioButtonID1 <= 0)
+//                    radioButton1 = "NA";
+//                if(radioButtonID2 <= 0)
+//                     radioButton2 ="NA";
+//            }
+//            else {
                 RadioButton checkedbutton = (RadioButton) findViewById(radioButtonID1);
-                int radioId1 = rgrp1.getCheckedRadioButtonId();
-                radioButton1 = checkedbutton.getText().toString();
+                radioId1 = rgrp1.getCheckedRadioButtonId();
+                 if(radioId1 <= 0)
+                   radioButton1 = "NA";
+                 else
+                     radioButton1 = checkedbutton.getText().toString();
 
-                checkedbutton = (RadioButton) findViewById(radioButtonID2);
-                radioButton2 = checkedbutton.getText().toString();
-                int radioId2 = rgrp2.getCheckedRadioButtonId();
+                 RadioButton checkedbutton1 = (RadioButton) findViewById(radioButtonID2);
+                radioId2 = rgrp2.getCheckedRadioButtonId();
 
+                if(radioId2 <= 0)
+                    radioButton2 = "NA";
+                else
+                    radioButton2 = checkedbutton1.getText().toString();
+
+       //     }
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                 editor.putString("Radiobuttonteaming1", radioButton1);
                 editor.putString("Radiobuttonteaming2", radioButton2);
@@ -176,9 +200,10 @@ public class RecordTeaming extends Activity implements View.OnClickListener, Ada
                 editor.commit();
                 Intent intent = new Intent(this, RecordVisualDiscrimination.class);
                 intent.putExtra("activity", "nextvisualdiscrimination");
+            intent.putExtra("TesterName",user_name);
                 startActivity(intent);
 
-            }
+        //    }
         }else{
             SharedPreferences.Editor editor = sharedpreferences.edit();
             editor.putString("Radiobuttonteaming1", "NA");
@@ -187,6 +212,7 @@ public class RecordTeaming extends Activity implements View.OnClickListener, Ada
             editor.commit();
             Intent intent = new Intent(this, RecordVisualDiscrimination.class);
             intent.putExtra("activity", "nextvisualdiscrimination");
+            intent.putExtra("TesterName",user_name);
             startActivity(intent);
 
         }
@@ -202,6 +228,7 @@ public class RecordTeaming extends Activity implements View.OnClickListener, Ada
             editor.commit();
             Intent intent = new Intent(this, RecordSkipping.class);
             intent.putExtra("activity", "prevskipping");
+            intent.putExtra("TesterName",user_name);
             startActivity(intent);
         }
         else {
@@ -220,6 +247,7 @@ public class RecordTeaming extends Activity implements View.OnClickListener, Ada
                 editor.commit();
                 Intent intent = new Intent(this, RecordSkipping.class);
                 intent.putExtra("activity", "prevskipping");
+            intent.putExtra("TesterName",user_name);
                 startActivity(intent);
             //}
         }
@@ -228,6 +256,7 @@ public class RecordTeaming extends Activity implements View.OnClickListener, Ada
     public void cancelRegistration(View view) {
         clearall();
         Intent intent = new Intent(this, LoginSuccessActivity.class);
+        intent.putExtra("TesterName",user_name);
         startActivity(intent);
     }
 

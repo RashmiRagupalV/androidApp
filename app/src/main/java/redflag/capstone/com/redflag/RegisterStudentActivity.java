@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.net.Uri;
@@ -53,9 +54,14 @@ public class RegisterStudentActivity extends Activity implements OnClickListener
     Cursor cursor;
     EditText others;
     String selectedlabel;
+    SharedPreferences sharedpreferences;
     Spinner spinner;
     AutoCompleteTextView actv;
     Button CLEAR;
+    String TesterName;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+
+    String user_name;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -70,8 +76,10 @@ public class RegisterStudentActivity extends Activity implements OnClickListener
         actv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView1);
         loadData();
         actv.setThreshold(1);
-
-
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        Bundle bundle = getIntent().getExtras();
+        user_name = bundle.getString("TesterName");
+        TesterName = sharedpreferences.getString("TesterName","Admin");
 
         // Spinner element
        // spinner = (Spinner) findViewById(R.id.spinnerschool);
@@ -117,40 +125,35 @@ public class RegisterStudentActivity extends Activity implements OnClickListener
         });
 
         REG = (Button) findViewById(R.id.user_reg);
-        LOGOUT = (Button) findViewById(R.id.user_logout);
+      //  LOGOUT = (Button) findViewById(R.id.user_logout);
 
 
        // final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 
-        LOGOUT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.setMessage("Are you sure you want to log off ?");
-
-                alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        //do this on logout button click
-//                            final String LOG_OUT = "event_logout";
-//                            Intent intent = new Intent(LOG_OUT);
-//                            //send the broadcast to all activities who are listening
-//                            LocalBroadcastManager.getInstance(getBaseContext()).sendBroadcast(intent);
-                        Intent loginscreen = new Intent(getBaseContext(), Login.class);
-                        startActivity(loginscreen);
-
-                    }
-                });
-                alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-//                            Intent loginintent = new Intent(getBaseContext(), LoginSuccessActivity.class);
-//                            startActivity(loginintent);
-                    }
-                });
-                alertDialog.show();
-
-            }
-
-        });
-
+//        LOGOUT.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                alertDialog.setMessage("Are you sure you want to log off ?");
+//
+//                alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        Intent loginscreen = new Intent(getBaseContext(), Login.class);
+//                        startActivity(loginscreen);
+//
+//                    }
+//                });
+//                alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int which) {
+////                            Intent loginintent = new Intent(getBaseContext(), LoginSuccessActivity.class);
+////                            startActivity(loginintent);
+//                    }
+//                });
+//                alertDialog.show();
+//
+//            }
+//
+//        });
+//
         REG.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -198,22 +201,23 @@ public class RegisterStudentActivity extends Activity implements OnClickListener
 
                     if (((i <= 0) || (i > 12)) || ((j<=0) || (j>7))) {
                         if ((i <= 0) || (i > 12)) {
-                            user_age.setError("Age not in valid range (1-20) !");
+                            user_age.setError("Age not in valid range (1-12) !");
                             Toast.makeText(getBaseContext(), "Please correct all errors !", Toast.LENGTH_LONG).show();
                         }
                         if ((j<=0) || (j>7)) {
-                            user_grade.setError("Grade not in valid range (1-8) !");
+                            user_grade.setError("Grade not in valid range (1-7) !");
                             Toast.makeText(getBaseContext(), "Please correct all errors !", Toast.LENGTH_LONG).show();
                         }
                     }
                     else {
                         dBHelper = new DatabaseOperations(ctxt);
-                        dBHelper.register_student(dBHelper, struser_cname, struser_tname, struser_age, struser_dos, selectedlabel, struser_grade);
+                        dBHelper.register_student(dBHelper, struser_cname, struser_tname, struser_age, struser_dos, selectedlabel, struser_grade,TesterName);
                         alertDialog.setMessage("Registration Success ! Do you want to Register more students ?");
 
                         alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent registrationIntent = new Intent(getBaseContext(), RegisterStudentActivity.class);
+                                registrationIntent.putExtra("TesterName",user_name);
                                 startActivity(registrationIntent);
 
                             }
@@ -221,6 +225,7 @@ public class RegisterStudentActivity extends Activity implements OnClickListener
                         alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent loginintent = new Intent(getBaseContext(), LoginSuccessActivity.class);
+                                loginintent.putExtra("TesterName",user_name);
                                 startActivity(loginintent);
                             }
                         });
@@ -338,6 +343,7 @@ public class RegisterStudentActivity extends Activity implements OnClickListener
 
     public void cancelRegistration(View view) {
         Intent intent = new Intent(this, LoginSuccessActivity.class);
+        intent.putExtra("TesterName",user_name);
         startActivity(intent);
     }
 

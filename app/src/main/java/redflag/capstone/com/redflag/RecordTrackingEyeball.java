@@ -28,6 +28,8 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 
+import org.w3c.dom.Text;
+
 /**
  * Created by rashm on 4/6/2016.
  */
@@ -46,6 +48,10 @@ public class RecordTrackingEyeball extends Activity implements View.OnClickListe
     SharedPreferences sharedpreferences;
     Button SKIP;
     boolean skip_pressed;
+    String Studname;
+
+    TextView studnm;
+    String user_name;
 
 
     @Override
@@ -58,7 +64,11 @@ public class RecordTrackingEyeball extends Activity implements View.OnClickListe
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
 //        editor.putString("TrackingEyeballSkipped", "notskipped");
-
+        Bundle bundle = getIntent().getExtras();
+        user_name = bundle.getString("TesterName");
+        Studname = sharedpreferences.getString("Studname","");
+        studnm = (TextView)findViewById(R.id.studname);
+        studnm.setText("Student: " + Studname);
         next = (Button) findViewById(R.id.button4);
         SKIP = (Button)findViewById(R.id.button6);
         rgrp1 = (RadioGroup)findViewById(R.id.rgrp1);
@@ -182,12 +192,14 @@ public class RecordTrackingEyeball extends Activity implements View.OnClickListe
 
     public void savetrackingeyeball(View view) {
         Intent intent = new Intent(this, RecordTrackingEyeball.class);
+
         startActivity(intent);
     }
 
     public void cancelRegistration(View view) {
         clearall();
         Intent intent = new Intent(this, LoginSuccessActivity.class);
+        intent.putExtra("TesterName",user_name);
         startActivity(intent);
     }
 
@@ -209,6 +221,7 @@ public class RecordTrackingEyeball extends Activity implements View.OnClickListe
     public void backscreen(View view) {
         clearall();
         Intent intent = new Intent(this, StudentDetailsActivity.class);
+        intent.putExtra("TesterName",user_name);
         startActivity(intent);
     }
 
@@ -220,24 +233,49 @@ public class RecordTrackingEyeball extends Activity implements View.OnClickListe
         radioButtonID2 = rgrp2.getCheckedRadioButtonId();
         rgrp3 = (RadioGroup) findViewById(R.id.rgrp3);
         radioButtonID3 = rgrp3.getCheckedRadioButtonId();
-
+        int radioId1 = 0;
+        int radioId2 = 0;
+        int radioId3 = 0;
         if (!skip_pressed) {
-            if ((rgrp1.getCheckedRadioButtonId() <= 0) || (rgrp2.getCheckedRadioButtonId() <= 0) || (rgrp3.getCheckedRadioButtonId() <= 0)) {
-                Toast.makeText(getBaseContext(), "Please select one option from each type !", Toast.LENGTH_LONG).show();
-            } else {
+//            if ((rgrp1.getCheckedRadioButtonId() <= 0) || (rgrp2.getCheckedRadioButtonId() <= 0) || (rgrp3.getCheckedRadioButtonId() <= 0)) {
+//                //Toast.makeText(getBaseContext(), "Please select one option from each type !", Toast.LENGTH_LONG).show();
+//                if(rgrp1.getCheckedRadioButtonId() <= 0)
+//                    radioButton1 = "NA";
+//                if(rgrp2.getCheckedRadioButtonId() <= 0)
+//                    radioButton2 = "NA";
+//                if(rgrp3.getCheckedRadioButtonId() <= 0)
+//                    radioButton3 = "NA";
+//
+//            } else {
 
                 RadioButton checkedbutton = (RadioButton) findViewById(radioButtonID1);
-                int radioId1 = rgrp1.getCheckedRadioButtonId();
-                radioButton1 = checkedbutton.getText().toString();
+                radioId1 = rgrp1.getCheckedRadioButtonId();
+                if(rgrp1.getCheckedRadioButtonId() <= 0)
+                    radioButton1 = "NA";
+                else
+                    radioButton1 = checkedbutton.getText().toString();
 
                 checkedbutton = (RadioButton) findViewById(radioButtonID2);
-                radioButton2 = checkedbutton.getText().toString();
-                int radioId2 = rgrp2.getCheckedRadioButtonId();
+            //    radioButton2 = checkedbutton.getText().toString();
+                radioId2 = rgrp2.getCheckedRadioButtonId();
+
+                 if(rgrp2.getCheckedRadioButtonId() <= 0)
+                    radioButton2 = "NA";
+                else
+                    radioButton2 = checkedbutton.getText().toString();
 
                 checkedbutton = (RadioButton) findViewById(radioButtonID3);
-                radioButton3 = checkedbutton.getText().toString();
-                int radioId3 = rgrp3.getCheckedRadioButtonId();
+           //     radioButton3 = checkedbutton.getText().toString();
+                radioId3 = rgrp3.getCheckedRadioButtonId();
 
+                if(rgrp3.getCheckedRadioButtonId() <= 0)
+                    radioButton3 = "NA";
+                else
+                    radioButton3 = checkedbutton.getText().toString();
+
+
+
+         //   }
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                 editor.putString("Radiobutton1", radioButton1);
                 editor.putString("Radiobutton2", radioButton2);
@@ -248,10 +286,12 @@ public class RecordTrackingEyeball extends Activity implements View.OnClickListe
                 editor.putString("TrackingEyeballSkipped", "notskipped");
                 editor.commit();
                 skip_pressed = false;
+
                 Intent intent = new Intent(this, RecordBalancing.class);
                 intent.putExtra("activity", "nextbalancing");
+                  intent.putExtra("TesterName",user_name);
                 startActivity(intent);
-            }
+       //     }
 
         }
         else{
@@ -264,6 +304,7 @@ public class RecordTrackingEyeball extends Activity implements View.OnClickListe
             skip_pressed = true;
             Intent intent = new Intent(this, RecordBalancing.class);
             intent.putExtra("activity", "nextbalancing");
+            intent.putExtra("TesterName",user_name);
             startActivity(intent);
 
         }

@@ -10,4 +10,6 @@ public class TrackingSkipping {
     public static final String RECORD_DATE = "RecordDate";
     public static final String TABLE_NAME = "tracking_skipping";
     public static final String TIMESTAMP = "Timestamp";
+    public static final String TESTER = "TesterName";
+
 }

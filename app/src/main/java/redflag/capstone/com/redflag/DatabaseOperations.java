@@ -21,21 +21,15 @@ import android.database.Cursor;
  */
 public class DatabaseOperations extends SQLiteOpenHelper {
 
-  //  SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-    //String currentDateTimeString = dateFormat.getDateTimeInstance().format(new Date());
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-    Date date = new Date();
-    String currentDateTimeString = dateFormat.format(date);
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    String currentDateTimeString = dateFormat.format(new Date());
 
-//    private String getDateTime() {
-//        SimpleDateFormat dateFormat = new SimpleDateFormat(
-//                "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-//        Date date = new Date();
-//        return dateFormat.format(date);
-//    }
+//    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+//    Date date = new Date();
+//    String currentDateTimeString = dateFormat.format(date);
+//
 
-
-    public static final int database_version = 24;
+    public static final int database_version = 34;
     public String CREATE_QUERY_LOGIN = "CREATE TABLE " + TableData.TableInfo.TABLE_NAME +
             "(" + TableData.TableInfo.USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," + TableData.TableInfo.USER_NAME + " TEXT," +
             TableData.TableInfo.USER_PASS + " TEXT," +
@@ -46,13 +40,15 @@ public class DatabaseOperations extends SQLiteOpenHelper {
             Student.USER_TNAME + " TEXT," +
             Student.USER_AGE + " TEXT," +
             Student.USER_DOS + " TEXT, " +
-            Student.USER_GRADE + " TEXT NOT NULL," +
-            Student.USER_SCHOOL + " TEXT NOT NULL," +
+            Student.USER_GRADE + " TEXT," +
+            Student.USER_SCHOOL + " TEXT," +
+            Student.TESTER + " TEXT," +
             " UNIQUE ( " + Student.USER_CNAME + "," + Student.USER_GRADE + "," + Student.USER_SCHOOL + "));";
 
     public String CREATE_QUERY_TRACKING_EYEBALL = "CREATE TABLE " + TrackingEyeball.TABLE_NAME +
             "(" + TrackingEyeball.USER_StudID + " INTEGER," + TrackingEyeball.RECORD_DATE + " TEXT," + TrackingEyeball.HORIZONTAL_PARAMETER + " TEXT," +
             TrackingEyeball.NEED_BEANBAG + " TEXT," + TrackingEyeball.VERTICAL_PARAMETER + " TEXT," +
+            TrackingEyeball.TESTER + " TEXT," +
             " FOREIGN KEY(" + TrackingEyeball.USER_StudID + ") REFERENCES " + Student.TABLE_NAME + "(" +
             Student.USER_StudID + "));";
 
@@ -60,24 +56,28 @@ public class DatabaseOperations extends SQLiteOpenHelper {
             "(" + TrackingEyeball.USER_StudID + " INTEGER," + TrackingBalancing.RECORD_DATE + " TEXT," + TrackingBalancing.EYE_OPEN_RIGHT + " TEXT," +
             TrackingBalancing.EYE_OPEN_LEFT + " TEXT," + TrackingBalancing.EYE_CLOSE_RIGHT + " TEXT," +
             TrackingBalancing.EYE_CLOSE_LEFT + " TEXT," +
+            TrackingBalancing.TESTER + " TEXT," +
             " FOREIGN KEY(" + TrackingBalancing.USER_StudID + ") REFERENCES " + Student.TABLE_NAME + "(" +
             Student.USER_StudID + "));";
 
     public String CREATE_QUERY_SKIPPING = "CREATE TABLE " + TrackingSkipping.TABLE_NAME +
             "(" + TrackingSkipping.USER_StudID + " INTEGER," + TrackingSkipping.RECORD_DATE + " TEXT," +
             TrackingSkipping.PARAMETER + " TEXT," +
+            TrackingSkipping.TESTER + " TEXT," +
             " FOREIGN KEY(" + TrackingSkipping.USER_StudID + ") REFERENCES " + Student.TABLE_NAME + "(" +
             Student.USER_StudID + "));";
 
     public String CREATE_QUERY_TEAMING = "CREATE TABLE " + TrackingTeaming.TABLE_NAME +
             "(" + TrackingTeaming.USER_StudID + " INTEGER," + TrackingTeaming.RECORD_DATE + " TEXT," +
             TrackingTeaming.ROUND1 + " TEXT," + TrackingTeaming.ROUND2 + " TEXT," +
+            TrackingTeaming.TESTER + " TEXT," +
             " FOREIGN KEY(" + TrackingTeaming.USER_StudID + ") REFERENCES " + Student.TABLE_NAME + "(" +
             Student.USER_StudID + "));";
 
     public String CREATE_QUERY_VD = "CREATE TABLE " + TrackingVisualDiscrimination.TABLE_NAME +
             "(" + TrackingVisualDiscrimination.USER_StudID + " INTEGER," + TrackingVisualDiscrimination.RECORD_DATE + " TEXT," +
             TrackingVisualDiscrimination.PARAMETER + " TEXT," +
+            TrackingVisualDiscrimination.TESTER + " TEXT," +
             " FOREIGN KEY(" + TrackingVisualDiscrimination.USER_StudID + ") REFERENCES " + Student.TABLE_NAME + "(" +
             Student.USER_StudID + "));";
 
@@ -85,6 +85,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     public String CREATE_QUERY_CRAWLING = "CREATE TABLE " + TrackingCrawling.TABLE_NAME +
             "(" + TrackingCrawling.USER_StudID + " INTEGER," + TrackingCrawling.RECORD_DATE + " TEXT," +
             TrackingCrawling.PARAMETER + " TEXT," +
+            TrackingCrawling.TESTER + " TEXT," +
             " FOREIGN KEY(" + TrackingCrawling.USER_StudID + ") REFERENCES " + Student.TABLE_NAME + "(" +
             Student.USER_StudID + "));";
 
@@ -92,6 +93,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     public String CREATE_QUERY_COMMENTS = "CREATE TABLE " + TrackingComments.TABLE_NAME +
             "(" + TrackingComments.USER_StudID + " INTEGER," + TrackingComments.RECORD_DATE + " TEXT," +
             TrackingComments.COMMENTS + " TEXT," +
+            TrackingComments.TESTER + " TEXT," +
             " FOREIGN KEY(" + TrackingComments.USER_StudID + ") REFERENCES " + Student.TABLE_NAME + "(" +
             Student.USER_StudID + "));";
 
@@ -254,7 +256,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
 
 
-    public void insertStudentTrackingDetails(DatabaseOperations dop, String studId,String radioButton1,String radioButton2,String radioButton3)
+    public void insertStudentTrackingDetails(DatabaseOperations dop, String studId,String radioButton1,String radioButton2,String radioButton3,String TesterName)
     {
         SQLiteDatabase SQ = dop.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -263,26 +265,29 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         cv.put(TrackingEyeball.NEED_BEANBAG,radioButton2);
         cv.put(TrackingEyeball.VERTICAL_PARAMETER,radioButton3);
         cv.put(TrackingEyeball.RECORD_DATE,currentDateTimeString);
+        cv.put(TrackingEyeball.TESTER,TesterName);
         long k = SQ.insert(TrackingEyeball.TABLE_NAME, null, cv);
         Log.d(TrackingEyeball.TABLE_NAME, "done");
         Log.d("Database operations", "One row inserted");
         SQ.close();
     }
 
-    public void insertStudentSkippingDetails(DatabaseOperations dop, String studId,String radioButton1)
+    public void insertStudentSkippingDetails(DatabaseOperations dop, String studId,String radioButton1, String TesterName )
     {
         SQLiteDatabase SQ = dop.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(TrackingSkipping.USER_StudID,studId);
         cv.put(TrackingSkipping.PARAMETER, radioButton1);
         cv.put(TrackingSkipping.RECORD_DATE,currentDateTimeString);
+        cv.put(TrackingSkipping.TESTER,TesterName);
+
         long k = SQ.insert(TrackingSkipping.TABLE_NAME, null, cv);
         Log.d(TrackingSkipping.TABLE_NAME, "done");
         Log.d("Database operations", "One row inserted");
         SQ.close();
     }
 
-    public void insertStudentTeamingDetails(DatabaseOperations dop, String studId,String Radiobuttonteaming1,String Radiobuttonteaming2)
+    public void insertStudentTeamingDetails(DatabaseOperations dop, String studId,String Radiobuttonteaming1,String Radiobuttonteaming2, String TesterName)
     {
         SQLiteDatabase SQ = dop.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -290,52 +295,59 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         cv.put(TrackingTeaming.ROUND1, Radiobuttonteaming1);
         cv.put(TrackingTeaming.ROUND2, Radiobuttonteaming2);
         cv.put(TrackingTeaming.RECORD_DATE, currentDateTimeString);
+        cv.put(TrackingTeaming.TESTER,TesterName);
+
         long k = SQ.insert(TrackingTeaming.TABLE_NAME, null, cv);
         Log.d(TrackingTeaming.TABLE_NAME, "done");
         Log.d("Database operations", "One row inserted");
         SQ.close();
     }
 
-    public void insertStudentVDDetails(DatabaseOperations dop, String studId,String Radiobuttonvd)
+    public void insertStudentVDDetails(DatabaseOperations dop, String studId,String Radiobuttonvd, String TesterName)
     {
         SQLiteDatabase SQ = dop.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(TrackingVisualDiscrimination.USER_StudID,studId);
         cv.put(TrackingVisualDiscrimination.PARAMETER, Radiobuttonvd);
         cv.put(TrackingVisualDiscrimination.RECORD_DATE, currentDateTimeString);
+        cv.put(TrackingVisualDiscrimination.TESTER,TesterName);
+
         long k = SQ.insert(TrackingVisualDiscrimination.TABLE_NAME, null, cv);
         Log.d(TrackingVisualDiscrimination.TABLE_NAME, "done");
         Log.d("Database operations", "One row inserted");
         SQ.close();
     }
 
-    public void insertStudentCrawlingDetails(DatabaseOperations dop, String studId,String Crawlingtext)
+    public void insertStudentCrawlingDetails(DatabaseOperations dop, String studId,String Crawlingtext, String TesterName)
     {
         SQLiteDatabase SQ = dop.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(TrackingCrawling.USER_StudID,studId);
         cv.put(TrackingCrawling.PARAMETER, Crawlingtext);
         cv.put(TrackingCrawling.RECORD_DATE, currentDateTimeString);
+        cv.put(TrackingCrawling.TESTER,TesterName);
         long k = SQ.insert(TrackingCrawling.TABLE_NAME, null, cv);
         Log.d(TrackingCrawling.TABLE_NAME, "done");
         Log.d("Database operations", "One row inserted");
         SQ.close();
     }
 
-    public void insertStudentComments(DatabaseOperations dop, String studId,String comments)
+    public void insertStudentComments(DatabaseOperations dop, String studId,String comments, String TesterName)
     {
         SQLiteDatabase SQ = dop.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(TrackingComments.USER_StudID,studId);
         cv.put(TrackingComments.COMMENTS, comments);
         cv.put(TrackingComments.RECORD_DATE,currentDateTimeString);
+        cv.put(TrackingComments.TESTER,TesterName);
+
         long k = SQ.insert(TrackingComments.TABLE_NAME, null, cv);
         Log.d(TrackingComments.TABLE_NAME, "done");
         Log.d("Database operations", "One row inserted");
         SQ.close();
     }
 
-    public void insertStudentBalancingDetails(DatabaseOperations dop, String studId,String time1,String time2,String time3, String time4)
+    public void insertStudentBalancingDetails(DatabaseOperations dop, String studId,String time1,String time2,String time3, String time4, String TesterName)
     {
         SQLiteDatabase SQ = dop.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -343,16 +355,30 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         cv.put(TrackingBalancing.EYE_OPEN_RIGHT, time1);
         cv.put(TrackingBalancing.EYE_OPEN_LEFT,time2);
         cv.put(TrackingBalancing.EYE_CLOSE_RIGHT,time3);
-        cv.put(TrackingBalancing.EYE_CLOSE_LEFT,time3);
-        cv.put(TrackingEyeball.RECORD_DATE,currentDateTimeString);
+        cv.put(TrackingBalancing.EYE_CLOSE_LEFT,time4);
+        cv.put(TrackingBalancing.RECORD_DATE,currentDateTimeString);
+        cv.put(TrackingBalancing.TESTER,TesterName);
+
         long k = SQ.insert(TrackingBalancing.TABLE_NAME, null, cv);
         Log.d(TrackingBalancing.TABLE_NAME, "done");
         Log.d("Database operations", "One row inserted");
         SQ.close();
     }
 
+    public Cursor checkifRecordedToday(DatabaseOperations dop, String Sid){
 
-    public void register_student(DatabaseOperations dop,String struser_cname,String struser_tname,String struser_age,String struser_dos,String struser_school,String struser_grade)
+        String query = null;
+        query = "SELECT * FROM " + TrackingEyeball.TABLE_NAME + " where date(" + TrackingEyeball.RECORD_DATE + ") = date('" + currentDateTimeString + "') AND " +
+            TrackingEyeball.USER_StudID + " = '" + Sid + "' ;";
+
+        SQLiteDatabase SQ = dop.getReadableDatabase();
+        Cursor cr = SQ.rawQuery(query, null);
+        Log.d("Database operations", "rows retrieved");
+        return cr;
+    }
+
+
+    public void register_student(DatabaseOperations dop,String struser_cname,String struser_tname,String struser_age,String struser_dos,String struser_school,String struser_grade, String TesterName)
     {
         SQLiteDatabase SQ = dop.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -362,6 +388,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         cv.put(Student.USER_DOS, struser_dos);
         cv.put(Student.USER_GRADE, struser_grade);
         cv.put(Student.USER_SCHOOL, struser_school);
+        cv.put(Student.TESTER,TesterName);
 
         long k = SQ.insert(Student.TABLE_NAME, null, cv);
         Log.d(Student.TABLE_NAME, "done");
@@ -405,21 +432,50 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     {
 
         String query = null;
+//        query = "SELECT r.*,te.*,b.*,ts.*,c.*,t.*,vd.*,cm.* FROM " + Student.TABLE_NAME + " r INNER JOIN " + TrackingEyeball.TABLE_NAME + " te ON r." +
+//                Student.USER_StudID + " = te." + TrackingEyeball.USER_StudID +
+//                " INNER JOIN " + TrackingBalancing.TABLE_NAME + " b ON r." +
+//                Student.USER_StudID + " = b." + TrackingBalancing.USER_StudID +
+//                " INNER JOIN " + TrackingSkipping.TABLE_NAME + " ts ON r." +
+//                Student.USER_StudID + " = ts." + TrackingSkipping.USER_StudID +
+//                " INNER JOIN " + TrackingCrawling.TABLE_NAME + " c ON r." +
+//                Student.USER_StudID + " = c." + TrackingCrawling.USER_StudID +
+//                " INNER JOIN " + TrackingTeaming.TABLE_NAME + " t ON r." +
+//                Student.USER_StudID + " = t." + TrackingTeaming.USER_StudID +
+//                " INNER JOIN " + TrackingVisualDiscrimination.TABLE_NAME + " vd ON r." +
+//                Student.USER_StudID + " = vd." + TrackingVisualDiscrimination.USER_StudID +
+//                " INNER JOIN " + TrackingComments.TABLE_NAME + " cm ON r." +
+//                Student.USER_StudID + " = cm." + TrackingComments.USER_StudID +
+//                " WHERE date(te." + TrackingEyeball.RECORD_DATE + ") = '" + spinnervalue + "' ;";
         query = "SELECT r.*,te.*,b.*,ts.*,c.*,t.*,vd.*,cm.* FROM " + Student.TABLE_NAME + " r INNER JOIN " + TrackingEyeball.TABLE_NAME + " te ON r." +
                 Student.USER_StudID + " = te." + TrackingEyeball.USER_StudID +
-                " INNER JOIN " + TrackingBalancing.TABLE_NAME + " b ON r." +
-                Student.USER_StudID + " = b." + TrackingBalancing.USER_StudID +
-                " INNER JOIN " + TrackingSkipping.TABLE_NAME + " ts ON r." +
-                Student.USER_StudID + " = ts." + TrackingSkipping.USER_StudID +
-                " INNER JOIN " + TrackingCrawling.TABLE_NAME + " c ON r." +
-                Student.USER_StudID + " = c." + TrackingCrawling.USER_StudID +
-                " INNER JOIN " + TrackingTeaming.TABLE_NAME + " t ON r." +
-                Student.USER_StudID + " = t." + TrackingTeaming.USER_StudID +
-                " INNER JOIN " + TrackingVisualDiscrimination.TABLE_NAME + " vd ON r." +
-                Student.USER_StudID + " = vd." + TrackingVisualDiscrimination.USER_StudID +
-                " INNER JOIN " + TrackingComments.TABLE_NAME + " cm ON r." +
-                Student.USER_StudID + " = cm." + TrackingComments.USER_StudID +
-                " WHERE te." + TrackingEyeball.RECORD_DATE + " = '" + spinnervalue + "' ;";
+                " INNER JOIN " + TrackingBalancing.TABLE_NAME + " b ON te." +
+                TrackingEyeball.RECORD_DATE + " = b." + TrackingBalancing.RECORD_DATE + " AND te." + TrackingEyeball.USER_StudID + " = b." + TrackingBalancing.USER_StudID +
+                " AND te." + TrackingEyeball.RECORD_DATE + " >= Datetime ('" + spinnervalue + " 00:00:00') AND te." +
+                TrackingEyeball.RECORD_DATE + " <= Datetime ('" + spinnervalue + " 23:59:59') " +
+                " INNER JOIN " + TrackingSkipping.TABLE_NAME + " ts ON te." +
+                TrackingEyeball.RECORD_DATE + " = ts." + TrackingSkipping.RECORD_DATE + " AND te." + TrackingEyeball.USER_StudID + " = ts." + TrackingSkipping.USER_StudID +
+                " AND te." + TrackingEyeball.RECORD_DATE + " >= Datetime ('" + spinnervalue + " 00:00:00') AND te." +
+                TrackingEyeball.RECORD_DATE + " <= Datetime ('" + spinnervalue + " 23:59:59') " +
+                " INNER JOIN " + TrackingCrawling.TABLE_NAME + " c ON te." +
+                 TrackingEyeball.RECORD_DATE + " = c." + TrackingCrawling.RECORD_DATE + " AND te." + TrackingEyeball.USER_StudID + " = c." + TrackingCrawling.USER_StudID +
+                " AND te." + TrackingEyeball.RECORD_DATE + " >= Datetime ('" + spinnervalue + " 00:00:00') AND te." +
+                TrackingEyeball.RECORD_DATE + " <= Datetime ('" + spinnervalue + " 23:59:59') " +
+                " INNER JOIN " + TrackingTeaming.TABLE_NAME + " t ON te." +
+                TrackingEyeball.RECORD_DATE + " = t." + TrackingTeaming.RECORD_DATE + " AND te." + TrackingEyeball.USER_StudID + " = t." + TrackingTeaming.USER_StudID +
+                " AND te." + TrackingEyeball.RECORD_DATE + " >= Datetime ('" + spinnervalue + " 00:00:00') AND te." +
+                TrackingEyeball.RECORD_DATE + " <= Datetime ('" + spinnervalue + " 23:59:59') " +
+                " INNER JOIN " + TrackingVisualDiscrimination.TABLE_NAME + " vd ON te." +
+                TrackingEyeball.RECORD_DATE + " = vd." + TrackingVisualDiscrimination.RECORD_DATE + " AND te." + TrackingEyeball.USER_StudID + " = vd." + TrackingVisualDiscrimination.USER_StudID +
+                " AND te." + TrackingEyeball.RECORD_DATE + " >= Datetime ('" + spinnervalue + " 00:00:00') AND te." +
+                TrackingEyeball.RECORD_DATE + " <= Datetime ('" + spinnervalue + " 23:59:59') " +
+                " INNER JOIN " + TrackingComments.TABLE_NAME + " cm ON te." +
+                TrackingEyeball.RECORD_DATE + " = cm." + TrackingComments.RECORD_DATE + " AND te." + TrackingEyeball.USER_StudID + " = cm." + TrackingComments.USER_StudID +
+                " AND te." + TrackingEyeball.RECORD_DATE + " >= Datetime ('" + spinnervalue + " 00:00:00') AND te." +
+                TrackingEyeball.RECORD_DATE + " <= Datetime ('" + spinnervalue + " 23:59:59'); ";
+
+
+
 
                 SQLiteDatabase SQ = dop.getReadableDatabase();
         Cursor cr = SQ.rawQuery(query, null);
@@ -457,7 +513,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         List<String> labels = new ArrayList<String>();
 
         // Select All Query
-        String query = "SELECT DISTINCT " + TrackingEyeball.RECORD_DATE  + " FROM " + TrackingEyeball.TABLE_NAME + " ;";
+        String query = "SELECT DISTINCT date(" + TrackingEyeball.RECORD_DATE  + ") FROM " + TrackingEyeball.TABLE_NAME + " ;";
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);

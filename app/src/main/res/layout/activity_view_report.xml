@@ -32,13 +32,13 @@
         android:id="@+id/appIcon"
         android:adjustViewBounds="true"
         android:layout_height="150dp"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_gravity="top"
         android:scaleType="fitXY"
-        android:src="@drawable/main_background"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-    <ImageView
+        android:src="@drawable/report"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"/>
+   <!-- <ImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:id="@+id/imageViewid"
@@ -49,7 +49,7 @@
 
         android:layout_alignTop="@+id/title_studrep"
         android:layout_alignRight="@+id/relativeLayout"
-        android:layout_alignEnd="@+id/relativeLayout" />
+        android:layout_alignEnd="@+id/relativeLayout" /> -->
 
     <RelativeLayout
         android:layout_width="585dp"
@@ -215,6 +215,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView18"
+            android:textColor="#000000"
             android:layout_alignTop="@+id/textView14"
             android:layout_alignLeft="@+id/textViewbeandata"
             android:layout_alignStart="@+id/textViewbeandata"
@@ -224,6 +225,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView19"
+            android:textColor="#000000"
             android:layout_alignTop="@+id/textView15"
             android:layout_alignLeft="@+id/textView18"
             android:layout_alignStart="@+id/textView18" />
@@ -232,6 +234,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView20"
+            android:textColor="#000000"
             android:layout_alignTop="@+id/textView16"
             android:layout_alignLeft="@+id/textView19"
             android:layout_alignStart="@+id/textView19" />
@@ -240,6 +243,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView21"
+            android:textColor="#000000"
             android:layout_alignTop="@+id/textView17"
             android:layout_alignLeft="@+id/textView20"
             android:layout_alignStart="@+id/textView20" />
@@ -290,6 +294,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewrnd1text"
+            android:textColor="#000000"
             android:layout_alignTop="@+id/textViewrnd1"
             android:layout_alignLeft="@+id/textView19"
             android:layout_alignStart="@+id/textView19"/>
@@ -298,6 +303,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView23"
+            android:textColor="#000000"
             android:layout_alignTop="@+id/textViewrnd2"
             android:layout_alignLeft="@+id/textView19"
             android:layout_alignStart="@+id/textView19" />
@@ -336,6 +342,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView25"
+            android:textColor="#000000"
             android:layout_alignTop="@+id/textView24"
             android:layout_alignLeft="@+id/textView23"
             android:layout_alignStart="@+id/textView23" />
@@ -377,6 +384,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView27"
+            android:textColor="#000000"
             android:layout_alignTop="@+id/textView26"
             android:layout_alignLeft="@+id/textView25"
             android:layout_alignStart="@+id/textView25" />
@@ -417,7 +425,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView29"
-
+            android:textColor="#000000"
             android:layout_alignTop="@+id/textView28"
             android:layout_alignLeft="@+id/textView27"
             android:layout_alignStart="@+id/textView27" />
@@ -630,8 +638,8 @@
         android:textSize="40dp"
         android:onClick="cancelRegistration"
         android:layout_alignTop="@+id/user_cancel"
-        android:layout_alignRight="@+id/imageViewid"
-        android:layout_alignEnd="@+id/imageViewid" />
+        android:layout_alignLeft="@+id/textStudGrade"
+        android:layout_alignStart="@+id/textStudGrade" />
 
 
 

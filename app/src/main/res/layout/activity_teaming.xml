@@ -22,11 +22,27 @@
         android:id="@+id/appIcon"
         android:adjustViewBounds="true"
         android:layout_height="150dp"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_gravity="top"
         android:scaleType="fitXY"
-        android:src="@drawable/main_background"
-        />
+        android:src="@drawable/teaming"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"/>
+    <TextView
+        android:id="@+id/studname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:layout_toRightOf="@id/appIcon"
+        android:layout_marginLeft="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="50dp"
+        android:singleLine="false"
+        android:background="@drawable/gray"/>
 
     <TextView android:text="Teaming with pencil eraser" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,11 +52,11 @@
         android:fontFamily="sans-serif"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/appIcon"
-        android:layout_marginLeft="10dp"/>
+        android:layout_centerHorizontal="true"/>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+   <!-- <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/imageViewteaming"
         android:adjustViewBounds="true"
         android:layout_gravity="top"
@@ -52,14 +68,14 @@
         android:layout_alignEnd="@+id/textact4"
         android:layout_below="@+id/appIcon"
         android:layout_toEndOf="@+id/title_4"
-        android:layout_toRightOf="@+id/title_4" />
+        android:layout_toRightOf="@+id/title_4" />-->
 
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/balancing_teaming"
-        android:text="Hold a pencil with an eraser on top and a small dot marked on it in front of the child. Tell the child to look it the dot. Observe if the eyes cross or slide off."
+        android:text="Hold a pencil with an eraser on top and a small dot marked on it in front of the child. Tell the child to look at the dot. Observe if the eyes cross or slide off."
         android:textSize="25dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/textact4"
@@ -101,35 +117,39 @@
             android:text="smooth"
             android:textColor="#F0F0F0"
             android:checked="false"
-            android:textSize="30dp"/>
+            android:textSize="25dp"
+            android:button="@drawable/radiobutton"/>
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight=".99"
             android:layout_height="wrap_content"
             android:textColor="#F0F0F0"
             android:text="wiggly/jerky"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:id="@+id/radiobutton2"
-            android:checked="false" />
+            android:checked="false"
+            android:button="@drawable/radiobutton"/>
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight="1.02"
             android:layout_height="wrap_content"
             android:id="@+id/radiobutton3"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:checked="false"
             android:text="eyes together"
-            android:textColor="#F0F0F0"/>
+            android:textColor="#F0F0F0"
+            android:button="@drawable/radiobutton"/>
 
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:id="@+id/radiobutton4"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:checked="false"
             android:text="L or R moves"
-            android:textColor="#F0F0F0"/>
+            android:textColor="#F0F0F0"
+            android:button="@drawable/radiobutton" />
     </RadioGroup>
 
 
@@ -159,35 +179,39 @@
             android:text="smooth"
             android:textColor="#F0F0F0"
             android:checked="false"
-            android:textSize="30dp"/>
+            android:textSize="25dp"
+            android:button="@drawable/radiobutton"/>
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight=".99"
             android:layout_height="wrap_content"
             android:textColor="#F0F0F0"
             android:text="wiggly/jerky"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:id="@+id/radiobutton6"
-            android:checked="false" />
+            android:checked="false"
+            android:button="@drawable/radiobutton"/>
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight="1.02"
             android:layout_height="wrap_content"
             android:id="@+id/radiobutton7"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:checked="false"
             android:text="eyes together"
-            android:textColor="#F0F0F0"/>
+            android:textColor="#F0F0F0"
+            android:button="@drawable/radiobutton"/>
 
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:id="@+id/radiobutton8"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:checked="false"
             android:text="L or R moves"
-            android:textColor="#F0F0F0"/>
+            android:textColor="#F0F0F0"
+            android:button="@drawable/radiobutton"/>
     </RadioGroup>
 
     <Button

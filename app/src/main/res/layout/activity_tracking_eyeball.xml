@@ -22,11 +22,27 @@
         android:id="@+id/appIcon"
         android:adjustViewBounds="true"
         android:layout_height="150dp"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_gravity="top"
         android:scaleType="fitXY"
-        android:src="@drawable/main_background"
-        />
+        android:src="@drawable/trackingball"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"/>
+        <TextView
+            android:id="@+id/studname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@android:color/black"
+            android:textSize="15dp"
+            android:layout_toRightOf="@id/appIcon"
+            android:layout_marginLeft="20dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/gray"/>
+
 
         <TextView android:text="Tracking the eyeball" android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +52,7 @@
             android:fontFamily="sans-serif"
             android:layout_marginTop="20dp"
             android:layout_below="@+id/appIcon"
-            android:layout_marginLeft="25dp"/>
+            android:layout_centerHorizontal="true"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -78,14 +94,18 @@
         android:layout_alignRight="@+id/textact1"
         android:layout_alignEnd="@+id/textact1">
         <RadioButton
-            android:layout_width="0dp"
+        android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/radiobutton1"
             android:text="smooth and even"
             android:textColor="#F0F0F0"
             android:checked="false"
-            android:textSize="30dp"/>
+            android:textSize="30dp"
+            android:button="@drawable/radiobutton"
+            android:height="10dp"
+            android:width="10dp"
+            />
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight=".75"
@@ -94,7 +114,8 @@
             android:textSize="30dp"
             android:id="@+id/radiobutton2"
             android:textColor="#F0F0F0"
-            android:checked="false" />
+            android:checked="false"
+            android:button="@drawable/radiobutton"/>
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -104,6 +125,7 @@
             android:checked="false"
             android:textColor="#F0F0F0"
             android:text="unable to do"
+            android:button="@drawable/radiobutton"
             />
 
     </RadioGroup>
@@ -138,7 +160,8 @@
             android:textColor="#F0F0F0"
             android:text="yes"
             android:checked="false"
-            android:textSize="30dp"/>
+            android:textSize="30dp"
+            android:button="@drawable/radiobutton"/>
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight="0.5"
@@ -147,7 +170,8 @@
             android:text="no"
             android:checked="false"
             android:textColor="#F0F0F0"
-            android:id="@+id/radiobutton5"/>
+            android:id="@+id/radiobutton5"
+            android:button="@drawable/radiobutton"/>
         </RadioGroup>
 
 
@@ -178,7 +202,8 @@
             android:text="smooth and even"
             android:checked="false"
             android:textColor="#F0F0F0"
-            android:textSize="30dp"/>
+            android:textSize="30dp"
+            android:button="@drawable/radiobutton"/>
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight="0.75"
@@ -187,7 +212,8 @@
             android:id="@+id/radiobutton7"
             android:checked="false"
             android:textColor="#F0F0F0"
-            android:textSize="30dp"/>
+            android:textSize="30dp"
+            android:button="@drawable/radiobutton"/>
         <RadioButton
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -196,7 +222,8 @@
             android:id="@+id/radiobutton8"
             android:checked="false"
             android:textColor="#F0F0F0"
-            android:textSize="30dp"/>
+            android:textSize="30dp"
+            android:button="@drawable/radiobutton"/>
 
     </RadioGroup>
 
@@ -275,9 +302,9 @@
             android:layout_alignTop="@+id/button4"
             android:layout_marginLeft="305dp"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <!--<ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:id="@+id/imageView2"
             android:layout_toRightOf="@+id/title_1"
             android:adjustViewBounds="true"
@@ -289,7 +316,7 @@
             android:layout_alignRight="@+id/textact1"
             android:layout_alignEnd="@+id/textact1"
             android:layout_below="@+id/appIcon"
-            android:layout_marginLeft="25dp"/>
+            android:layout_marginLeft="25dp"/> -->
 
     </RelativeLayout>
     </ScrollView>

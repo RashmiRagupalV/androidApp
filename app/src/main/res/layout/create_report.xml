@@ -12,12 +12,12 @@
         android:id="@+id/appIcon"
         android:adjustViewBounds="true"
         android:layout_height="150dp"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_gravity="top"
         android:scaleType="fitXY"
-        android:src="@drawable/main_background"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:src="@drawable/report"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"/>
 
     <TextView android:text="Generate Report" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,7 +27,8 @@
         android:fontFamily="sans-serif"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/appIcon"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        />
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -47,24 +48,26 @@
         android:layout_below="@+id/rgrp1"
         android:textColor="#F0F0F0"
         android:buttonTint="#F0F0F0"
-        android:textSize="30dp"
+        android:textSize="27dp"
         android:checked="false"
         android:layout_marginLeft="10dp"
+        android:button="@drawable/radiobutton"
 
          />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="View latest report"
+            android:text="View student report"
             android:id="@+id/radioButtonstudent"
             android:textColor="#F0F0F0"
             android:layout_marginTop="10dp"
             android:buttonTint="#F0F0F0"
             android:layout_below="@+id/radiobtnreport"
-            android:textSize="30dp"
+            android:textSize="27dp"
             android:checked="false"
             android:layout_marginLeft="10dp"
+            android:button="@drawable/radiobutton"
             />
     </RadioGroup>
 
