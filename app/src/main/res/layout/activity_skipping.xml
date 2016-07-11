@@ -24,7 +24,7 @@
         android:layout_width="150dp"
         android:layout_gravity="top"
         android:scaleType="fitXY"
-        android:src="@drawable/skipping"
+        android:src="@drawable/skippingnew"
         android:layout_centerHorizontal="true"
         android:paddingTop="10dp"/>
 

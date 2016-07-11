@@ -3,7 +3,7 @@
 //import android.app.ActionBar;
 //import android.app.Activity;
 //import android.app.ProgressDialog;
-//import android.content.DialogInterface;
+//import android.content.DialoinsergInterface;
 //import android.content.pm.ActivityInfo;
 //import android.database.Cursor;
 //import android.graphics.Color;
@@ -283,8 +283,10 @@
 
 package redflag.capstone.com.redflag;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -596,7 +598,7 @@ public class Login extends FragmentActivity implements
 
     public void nextscreen(View view){
         SharedPreferences.Editor editor = sharedpreferences.edit();
-        editor.putString("TesterName",user_name);
+        editor.putString("TesterName", user_name);
         Intent loginIntent = new Intent(this, LoginSuccessActivity.class);
         loginIntent.putExtra("TesterName", user_name);
         startActivity(loginIntent);
@@ -725,6 +727,7 @@ public class Login extends FragmentActivity implements
 //        }
     }
 
+    
 }
 
 

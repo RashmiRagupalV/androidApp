@@ -29,7 +29,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 //    String currentDateTimeString = dateFormat.format(date);
 //
 
-    public static final int database_version = 34;
+    public static final int database_version = 38;
     public String CREATE_QUERY_LOGIN = "CREATE TABLE " + TableData.TableInfo.TABLE_NAME +
             "(" + TableData.TableInfo.USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," + TableData.TableInfo.USER_NAME + " TEXT," +
             TableData.TableInfo.USER_PASS + " TEXT," +
@@ -390,7 +390,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         cv.put(Student.USER_SCHOOL, struser_school);
         cv.put(Student.TESTER,TesterName);
 
-        long k = SQ.insert(Student.TABLE_NAME, null, cv);
+        long k = SQ.insertOrThrow(Student.TABLE_NAME, null, cv);
         Log.d(Student.TABLE_NAME, "done");
         Log.d("Database operations", "One row inserted");
         SQ.close();

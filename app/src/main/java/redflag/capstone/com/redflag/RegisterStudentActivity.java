@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.database.sqlite.SQLiteConstraintException;
+import android.database.sqlite.SQLiteException;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -60,6 +62,7 @@ public class RegisterStudentActivity extends Activity implements OnClickListener
     Button CLEAR;
     String TesterName;
     public static final String MyPREFERENCES = "MyPrefs" ;
+    boolean exception = false;
 
     String user_name;
     /**
@@ -184,15 +187,10 @@ public class RegisterStudentActivity extends Activity implements OnClickListener
                 struser_age = user_age.getText().toString();
 
                 struser_dos = user_dos.getText().toString();
-           //     struser_school = user_school.getText().toString();
+
                 struser_grade = user_grade.getText().toString();
                 selectedlabel = actv.getText().toString();
-//                if(selectedlabel == "Other"){
-//                    selectedlabel = others.getText().toString();
-//                    if (selectedlabel.length()==0)
-//                        others.setError("Please enter School Name !");
-//                }
-
+//
                 if (struser_cname.isEmpty() || struser_tname.isEmpty() || struser_age.isEmpty() || struser_dos.isEmpty() || selectedlabel.isEmpty() || struser_grade.isEmpty()) {
                     Toast.makeText(getBaseContext(), "Please fill up all details !", Toast.LENGTH_LONG).show();
                 } else {
@@ -211,25 +209,39 @@ public class RegisterStudentActivity extends Activity implements OnClickListener
                     }
                     else {
                         dBHelper = new DatabaseOperations(ctxt);
-                        dBHelper.register_student(dBHelper, struser_cname, struser_tname, struser_age, struser_dos, selectedlabel, struser_grade,TesterName);
-                        alertDialog.setMessage("Registration Success ! Do you want to Register more students ?");
+                        try {
+                            exception = false;
+                            dBHelper.register_student(dBHelper, struser_cname, struser_tname, struser_age, struser_dos, selectedlabel, struser_grade, TesterName);
+                        }catch (SQLiteConstraintException e){
+                            exception = true;
+                       //     e.printStackTrace();
+                            Toast.makeText(getBaseContext(), "The student has been already registered ! Please check the data entered ",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                        if (exception != true) {
+                            //dBHelper.register_student(dBHelper, struser_cname, struser_tname, struser_age, struser_dos, selectedlabel, struser_grade,TesterName);
+                            alertDialog.setMessage("Registration Success ! Do you want to Register more students ?");
 
-                        alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent registrationIntent = new Intent(getBaseContext(), RegisterStudentActivity.class);
-                                registrationIntent.putExtra("TesterName",user_name);
-                                startActivity(registrationIntent);
+                            alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent registrationIntent = new Intent(getBaseContext(), RegisterStudentActivity.class);
+                                    registrationIntent.putExtra("TesterName", user_name);
+                                    startActivity(registrationIntent);
 
-                            }
-                        });
-                        alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent loginintent = new Intent(getBaseContext(), LoginSuccessActivity.class);
-                                loginintent.putExtra("TesterName",user_name);
-                                startActivity(loginintent);
-                            }
-                        });
-                        alertDialog.show();
+                                }
+                            });
+                            alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent loginintent = new Intent(getBaseContext(), LoginSuccessActivity.class);
+                                    loginintent.putExtra("TesterName", user_name);
+                                    startActivity(loginintent);
+                                }
+                            });
+                            alertDialog.show();
+                            exception = false;
+                        }else{
+                            exception = false;
+                        }
 
                     }
                 }
@@ -351,7 +363,7 @@ public class RegisterStudentActivity extends Activity implements OnClickListener
       //  if
 //        struser_cname = user_cname.getText().toString();
 //        struser_tname = user_tname.getText().toString();
-//        struser_age = user_age.getText().toString();
+//        struser_age = user_rage.getText().toString();
 //        struser_dos = user_dos.getText().toString();
 //        struser_school = user_school.getText().toString();
 //        struser_grade = user_grade.getText().toString();
